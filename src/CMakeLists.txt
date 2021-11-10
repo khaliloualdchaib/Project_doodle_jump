@@ -1,0 +1,3 @@
+SET(SRC main.cpp)
+ADD_EXECUTABLE(doodlejump ${SRC})
+INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

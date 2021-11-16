@@ -1,4 +1,9 @@
 #include <SFML/Graphics.hpp>
+#include "logic_library/include/random.h"
+#include <iostream>
+
+using namespace std;
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -16,6 +21,10 @@ int main()
         }
         window.clear(sf::Color::Black);
     }
-
+    DoodleJump::Random::initialise_rng();
+    cout<<DoodleJump::Random::getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getrandomnumber()<<endl;
     return 0;
 }

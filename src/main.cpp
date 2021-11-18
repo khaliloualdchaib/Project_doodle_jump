@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "logic_library/include/random.h"
+#include "logic_library/include/stopwatch.h"
 #include <iostream>
 
 using namespace std;
@@ -20,11 +21,16 @@ int main()
                 window.close();
         }
         window.clear(sf::Color::Black);
+        DoodleJump::Stopwatch::getInstance().tick();
+        if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
+            DoodleJump::Stopwatch::getInstance().reset();
+            cout<<1/DoodleJump::Stopwatch::getInstance().getTime_difference()<<endl;
+        }
     }
-    DoodleJump::Random::initialise_rng();
-    cout<<DoodleJump::Random::getrandomnumber()<<endl;
-    cout<<DoodleJump::Random::getrandomnumber()<<endl;
-    cout<<DoodleJump::Random::getrandomnumber()<<endl;
-    cout<<DoodleJump::Random::getrandomnumber()<<endl;
+    DoodleJump::Random::getInstance().initialise_rng();
+    cout<<DoodleJump::Random::getInstance().getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getInstance().getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getInstance().getrandomnumber()<<endl;
+    cout<<DoodleJump::Random::getInstance().getrandomnumber()<<endl;
     return 0;
 }

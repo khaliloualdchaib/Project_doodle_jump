@@ -12,8 +12,8 @@ namespace DoodleJump
 {
     class Random{
     public:
-        static shared_ptr<Random>& getInstance();
-        static void initialise_rng();
+        static Random& getInstance();
+        static void initialise_rng(); // initialise random number generator
         Random(const Random&) = delete; //if the copy constructor is called the copy is going to get deleted
         Random& operator = (const Random&) = delete;
         static int getrandomnumber(); //This function returns a random number

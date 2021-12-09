@@ -21,6 +21,8 @@ ADD_EXECUTABLE(
         logic_library/include/observer_pattern/observable.h
         logic_library/include/observer_pattern/observer.h
         logic_library/src/observer_pattern/observable.cpp
+
+        logic_library/include/abstractFactory.h
 )
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

@@ -13,6 +13,11 @@ namespace DoodleJump{
          */
         virtual void HandleEvent() = 0;
 
+        /*
+         * This is a default constructor.
+         */
+        Observer() = default;
+
     };
 }
 #endif //DOODLEJUMP_OBSERVER_H

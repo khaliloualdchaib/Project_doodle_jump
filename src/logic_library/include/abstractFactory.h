@@ -19,7 +19,7 @@ namespace DoodleJump{
         virtual ~AbstractFactory() = default;
 
         //The following functions create and return the entities:
-        
+
     };
 }
 #endif //DOODLEJUMP_ABSTRACTFACTORY_H

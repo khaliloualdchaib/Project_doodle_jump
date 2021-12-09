@@ -29,6 +29,11 @@ namespace DoodleJump{
          */
         void notifyObservers();
 
+        /*
+         * This is a default constructor.
+         */
+        Observable() = default;
+
     };
 }
 #endif //DOODLEJUMP_OBSERVABLE_H

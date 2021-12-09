@@ -11,11 +11,24 @@
 namespace DoodleJump{
     class Observable{
     private:
-        std::vector<std::shared_ptr<Observer>> observers;
+        std::vector<std::shared_ptr<Observer>> observers; //this is a list of shared pointers to observers
     public:
+
+        /*
+         * addObserver adds an observer to the observers list given the observer that needs to be added.
+         */
         void addObserver(const std::shared_ptr<Observer>& observer);
+
+        /*
+         * removeObserver removes an observer from the observers list given the index of the observer that needs to be removed.
+         */
         void removeObserver(int index);
+
+        /*
+         * notifyObservers notifies all observers in the list observers.
+         */
         void notifyObservers();
+
     };
 }
 #endif //DOODLEJUMP_OBSERVABLE_H

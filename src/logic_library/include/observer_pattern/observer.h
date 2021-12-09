@@ -7,7 +7,12 @@
 namespace DoodleJump{
     class Observer{
     public:
+
+        /*
+         * HandleEvent handles the events
+         */
         virtual void HandleEvent() = 0;
+
     };
 }
 #endif //DOODLEJUMP_OBSERVER_H

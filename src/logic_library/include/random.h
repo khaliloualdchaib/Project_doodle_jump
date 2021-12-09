@@ -11,14 +11,35 @@ using namespace std;
 namespace DoodleJump
 {
     class Random{
-    public:
-        static Random& getInstance();
-        static void initialise_rng(); // initialise random number generator
-        Random(const Random&) = delete; //if the copy constructor is called the copy is going to get deleted
-        Random& operator = (const Random&) = delete;
-        static int getrandomnumber(); //This function returns a random number
     private:
         Random()=default;
+    public:
+
+        /*
+         * Normal singleton getInstance function.
+         */
+        static Random& getInstance();
+
+        /*
+         * Initialise_rng initialises the random number generator
+         */
+        static void initialise_rng();
+
+        /*
+         * If the copy constructor is called the copy is going to get deleted
+         */
+        Random(const Random&) = delete;
+
+        /*
+         * Delete the overloading operator.
+         */
+        Random& operator = (const Random&) = delete;
+
+        /*
+         * This function returns a random number
+         */
+        static int getrandomnumber();
+
     };
 }
 #endif //DOODLEJUMP_RANDOM_H

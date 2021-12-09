@@ -14,8 +14,21 @@ namespace SFMLDoodleJump{
     private:
         tuple <int, int> gameWindow = make_tuple(800, 600); //this the default width and height of the window
     public:
+
+        /*
+         * This a default constructor.
+         */
         Game() = default;
+
+        /*
+         * This is a constructor.
+         * The inputs are the width and height of the window.
+         */
         Game(int width, int height);
+
+        /*
+         * runGame runs the game, thus it also runs the main game loop.
+         */
         void runGame();
 
     };

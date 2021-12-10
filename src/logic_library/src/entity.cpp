@@ -8,11 +8,11 @@ const std::tuple<double, double> &DoodleJump::Entity::getPosition() const {
     return position;
 }
 
-void DoodleJump::Entity::setPosition(const tuple<double, double> &position) {
-    Entity::position = position;
+void DoodleJump::Entity::setPosition(const tuple<double, double> &pos) {
+    Entity::position = pos;
 }
 
-DoodleJump::Entity::Entity(double width, double height) {
+DoodleJump::Entity::Entity(unsigned int width, unsigned int height) {
     Entity::width = width;
     Entity::height = height;
 }
@@ -21,7 +21,7 @@ DoodleJump::Entity::Entity(tuple<double, double> pos) {
     Entity::position = pos;
 }
 
-DoodleJump::Entity::Entity(double width, double height, tuple<double, double> pos) {
+DoodleJump::Entity::Entity(unsigned int width, unsigned int height, tuple<double, double> pos) {
     Entity::position = pos;
     Entity::width = width;
     Entity::height = height;
@@ -31,15 +31,15 @@ double DoodleJump::Entity::getWidth() const {
     return width;
 }
 
-void DoodleJump::Entity::setWidth(double width) {
-    Entity::width = width;
+void DoodleJump::Entity::setWidth(unsigned int w) {
+    Entity::width = w;
 }
 
-double DoodleJump::Entity::getHeight() const {
+unsigned int DoodleJump::Entity::getHeight() const {
     return height;
 }
 
-void DoodleJump::Entity::setHeight(double height) {
-    Entity::height = height;
+void DoodleJump::Entity::setHeight(unsigned int h) {
+    Entity::height = h;
 }
 

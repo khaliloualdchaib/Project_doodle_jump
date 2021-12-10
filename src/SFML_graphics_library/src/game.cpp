@@ -4,6 +4,7 @@
 #include "../include/game.h"
 #include "../../logic_library/include/stopwatch.h"
 #include <SFML/Graphics.hpp>
+#include "../../logic_library/include/camera.h"
 
 SFMLDoodleJump::Game::Game(int width, int height) {
     gameWindow = make_tuple(width, height);
@@ -26,7 +27,6 @@ void SFMLDoodleJump::Game::runGame() {
         DoodleJump::Stopwatch::getInstance().tick();
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             DoodleJump::Stopwatch::getInstance().reset();
-
         }
     }
 }

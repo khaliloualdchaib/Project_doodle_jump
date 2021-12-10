@@ -23,6 +23,9 @@ ADD_EXECUTABLE(
         logic_library/src/observer_pattern/observable.cpp
 
         logic_library/include/abstractFactory.h
+
+        logic_library/include/camera.h
+        logic_library/src/camera.cpp
 )
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

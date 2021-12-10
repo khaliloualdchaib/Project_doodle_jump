@@ -12,26 +12,26 @@ namespace DoodleJump{
     class Entity{
     private:
         tuple<double, double> position = make_tuple(0.0, 0.0);
-        double width = 50.0; //width of the entity
-        double height = 50.0; //height of the entity
+        unsigned int width = 50; //width of the entity
+        unsigned int height = 50; //height of the entity
     public:
 
         /*
          * setHeight is a setter for the height of the entity.
          * The input is the new height
          */
-        void setHeight(double height);
+        void setHeight(unsigned int h);
 
         /*
          * getHeight is a getter for the height of the entity.
          */
-        double getHeight() const;
+        unsigned int getHeight() const;
 
         /*
          * setWidth is a setter for the width of the entity.
          * The input is the new width.
          */
-        void setWidth(double width);
+        void setWidth(unsigned int w);
 
         /*
          * update is a function that updates the entity.
@@ -63,13 +63,13 @@ namespace DoodleJump{
          * This is a constructor.
          * The inputs are the width, height and position of the entity.
          */
-        Entity(double width, double height, tuple<double, double> pos);
+        Entity(unsigned int width, unsigned int height, tuple<double, double> pos);
 
         /*
          * This is a constructor.
          * The inputs are the width and height of the entity.
          */
-        Entity(double width, double height);
+        Entity(unsigned int width, unsigned int height);
 
         /*
          * This is a constructor.
@@ -81,7 +81,7 @@ namespace DoodleJump{
          * setPosition is a setter for the position of the entity.
          * The input is tuple that is the new position.
          */
-        void setPosition(const tuple<double, double> &position);
+        void setPosition(const tuple<double, double> &pos);
 
         /*
          * getPosition is a getter for the position of the entity.

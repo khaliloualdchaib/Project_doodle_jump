@@ -11,7 +11,7 @@ namespace DoodleJump{
         /*
          * HandleEvent handles the events
          */
-        virtual void HandleEvent() = 0;
+        virtual void HandleEvent(){};
 
         /*
          * This is a default constructor.

@@ -19,15 +19,17 @@ namespace DoodleJump{
         Camera(unsigned int width, unsigned int height);
 
         /*
-         * Later commenten.
+         * Transform own 2D coordinate system coordinates to pixel coordinates.
+         * Takes own 2D coordinate system coordinates as input.
+         * Returns pixel coordinates.
          */
-        std::tuple<int, int> Transformation(double xpos, double ypos);
+        std::tuple<float, float> Transformation(float xpos, float ypos) const;
 
         /*
          *Later commenten
          */
         void update();
-        
+
     };
 }
 #endif //DOODLEJUMP_CAMERA_H

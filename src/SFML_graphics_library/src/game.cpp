@@ -13,8 +13,8 @@ SFMLDoodleJump::Game::Game() {
 }
 
 void SFMLDoodleJump::Game::runGame() {
-    //DoodleJump::Player p1 = DoodleJump::Player(60.f, 50.f, make_tuple(0, 0));
-    //SFMLDoodleJump::SFMLPlayer p2 = SFMLDoodleJump::SFMLPlayer(60, 59, make_tuple(0, 0), window);
+    DoodleJump::Player p1 = DoodleJump::Player(60.f, 50.f, make_tuple(0, 0));
+    SFMLDoodleJump::SFMLPlayer p2 = SFMLDoodleJump::SFMLPlayer(60, 59, make_tuple(0, 0), window);
     // run the program as long as the window is open
     while (window->isOpen())
     {

@@ -7,9 +7,8 @@
 #include "entity.h"
 namespace DoodleJump{
     class Player: public Entity{
-
     public:
-        //Player(unsigned int width, unsigned int height, tuple<double, double> pos);
+        Player(float width, float height, std::tuple<float, float> pos);
     };
 }
 #endif //DOODLEJUMP_PLAYER_H

@@ -4,10 +4,17 @@
 #include "../include/game.h"
 #include "../../logic_library/include/stopwatch.h"
 #include "../../logic_library/include/camera.h"
+
+#include "../../logic_library/include/player.h"
+#include "../include/SFMLplayer.h"
+
 SFMLDoodleJump::Game::Game() {
     window = std::make_shared<sf::RenderWindow>(sf::VideoMode(get<0>(gameWindow), get<1>(gameWindow)), "DoodleJump");
 }
+
 void SFMLDoodleJump::Game::runGame() {
+    //DoodleJump::Player p1 = DoodleJump::Player(60.f, 50.f, make_tuple(0, 0));
+    //SFMLDoodleJump::SFMLPlayer p2 = SFMLDoodleJump::SFMLPlayer(60, 59, make_tuple(0, 0), window);
     // run the program as long as the window is open
     while (window->isOpen())
     {

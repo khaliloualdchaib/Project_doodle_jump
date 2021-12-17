@@ -1,5 +1,5 @@
 //
-// Created by khalil on 12/7/21.
+// Created by khalil on 12/16/21.
 //
 
 #ifndef DOODLEJUMP_ENTITY_H
@@ -36,7 +36,7 @@ namespace DoodleJump{
         /*
          * update is a function that updates the entity.
          */
-        virtual void update() = 0;
+        virtual void update(){};
 
         /*
          * ~Entity is a default destructor.

@@ -1,9 +1,10 @@
 //
-// Created by khalil on 12/13/21.
+// Created by khalil on 12/16/21.
 //
 
-#ifndef DOODLEJUMP_ENTITY_H
-#define DOODLEJUMP_ENTITY_H
+#ifndef DOODLEJUMP_SFMLENTITY_H
+#define DOODLEJUMP_SFMLENTITY_H
+
 #include <iostream>
 #include <tuple>
 #include "../../logic_library/include/observer_pattern/observer.h"
@@ -12,7 +13,7 @@
 #include "../../logic_library/include/camera.h"
 
 namespace SFMLDoodleJump{
-    class Entity: public DoodleJump::Observer{
+    class SFMLEntity: public DoodleJump::Observer{
     private:
         std::tuple<float, float> position = std::make_tuple(0.0, 0.0);
         float width = 50; //width of the entity
@@ -54,15 +55,15 @@ namespace SFMLDoodleJump{
         virtual void update(){};
 
         /*
-         * ~Entity is a default destructor.
+         * ~SFMLEntity is a default destructor.
          */
-        virtual ~Entity() = default;
+        virtual ~SFMLEntity() = default;
 
         /*
          * This is a default copy constructor.
          * The input is the entity that will be copied.
          */
-        Entity(const Entity& entity) = default;
+        SFMLEntity(const SFMLEntity& entity) = default;
 
         /*
          * getWidth is a getter for the width of the entity.
@@ -74,7 +75,7 @@ namespace SFMLDoodleJump{
          * The inputs are the width, height and position of the entity.
          * It also has a window input
          */
-        Entity(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
+        SFMLEntity(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
         /*
          * setPosition is a setter for the position of the entity.
@@ -89,4 +90,5 @@ namespace SFMLDoodleJump{
 
     };
 }
-#endif //DOODLEJUMP_ENTITY_H
+
+#endif //DOODLEJUMP_SFMLENTITY_H

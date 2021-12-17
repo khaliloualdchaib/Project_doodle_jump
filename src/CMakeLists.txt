@@ -15,9 +15,6 @@ ADD_EXECUTABLE(
         logic_library/include/world.h
         logic_library/src/world.cpp
 
-        logic_library/include/entity.h
-        logic_library/src/entity.cpp
-
         logic_library/include/observer_pattern/observable.h
         logic_library/include/observer_pattern/observer.h
         logic_library/src/observer_pattern/observable.cpp
@@ -27,12 +24,6 @@ ADD_EXECUTABLE(
         logic_library/include/camera.h
         logic_library/src/camera.cpp
 
-        SFML_graphics_library/include/entity.h
-        SFML_graphics_library/src/entity.cpp
-
-        SFML_graphics_library/include/player.h
-        SFML_graphics_library/src/player.cpp
-        
-)
+        SFML_graphics_library/include/SFMLplayer.h SFML_graphics_library/src/SFMLplayer.cpp logic_library/include/player.h logic_library/src/player.cpp SFML_graphics_library/include/SFMLentity.h SFML_graphics_library/src/SFMLentity.cpp logic_library/include/entity.h logic_library/src/entity.cpp)
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

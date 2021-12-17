@@ -88,6 +88,8 @@ namespace SFMLDoodleJump{
          */
         const std::tuple<float, float> &getPosition() const;
 
+        virtual void draw() = 0;
+
     };
 }
 

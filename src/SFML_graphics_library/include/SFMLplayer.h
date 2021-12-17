@@ -11,8 +11,17 @@ namespace SFMLDoodleJump{
         sf::Texture texture;
         sf::Sprite sprite;
     public:
+
+        /*
+         * SFMLPlayer constructor that takes the following inputs:
+         * width, height pos and a pointer to the window
+         */
         SFMLPlayer(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
-        void createPlayer();
+
+        /*
+         * Draws the player
+         */
+        void draw() override;
     };
 }
 #endif //DOODLEJUMP_SFMLPLAYER_H

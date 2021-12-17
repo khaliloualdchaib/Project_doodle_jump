@@ -8,6 +8,12 @@
 namespace DoodleJump{
     class Player: public Entity{
     public:
+
+        /*
+         * Constructor
+         * It has the following inputs:
+         * width, height and pos
+         */
         Player(float width, float height, std::tuple<float, float> pos);
     };
 }

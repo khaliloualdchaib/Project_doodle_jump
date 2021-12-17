@@ -12,7 +12,7 @@
 namespace SFMLDoodleJump{
     class Game{
     private:
-        std::tuple <int, int> gameWindow = std::make_tuple(800, 600); //this the default width and height of the window
+        std::tuple <int, int> gameWindow = std::make_tuple(600, 800); //this the default width and height of the window
         std::shared_ptr<sf::RenderWindow> window;
     public:
 

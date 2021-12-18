@@ -4,6 +4,9 @@
 
 #ifndef DOODLEJUMP_OBSERVER_H
 #define DOODLEJUMP_OBSERVER_H
+#include <tuple>
+#include <limits>
+
 namespace DoodleJump{
     class Observer{
     public:
@@ -20,4 +23,5 @@ namespace DoodleJump{
 
     };
 }
+
 #endif //DOODLEJUMP_OBSERVER_H

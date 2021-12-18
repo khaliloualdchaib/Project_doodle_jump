@@ -8,20 +8,25 @@
 namespace SFMLDoodleJump{
     class SFMLPlayer: public SFMLEntity{
     private:
-        sf::Texture texture;
         sf::Sprite sprite;
+        float jumpspeed = 0.03f;
     public:
 
         /*
          * SFMLPlayer constructor that takes the following inputs:
          * width, height pos and a pointer to the window
          */
-        SFMLPlayer(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
+        SFMLPlayer(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w, sf::Texture& texture);
 
         /*
          * Draws the player
          */
         void draw() override;
+
+        /*
+         * Handles an event. inherited, form the virtual function in observer.h
+         */
+        void HandleEvent() override;
     };
 }
 #endif //DOODLEJUMP_SFMLPLAYER_H

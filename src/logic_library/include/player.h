@@ -7,6 +7,8 @@
 #include "entity.h"
 namespace DoodleJump{
     class Player: public Entity{
+    private:
+        float jumpspeed = 0.03f;
     public:
 
         /*
@@ -15,6 +17,11 @@ namespace DoodleJump{
          * width, height and pos
          */
         Player(float width, float height, std::tuple<float, float> pos);
+
+        /*
+         * Moves the player up.
+         */
+        void jump();
     };
 }
 #endif //DOODLEJUMP_PLAYER_H

@@ -4,15 +4,20 @@
 
 #ifndef DOODLEJUMP_SFMLSTATICPLATFORM_H
 #define DOODLEJUMP_SFMLSTATICPLATFORM_H
-#include "../SFMLentity.h"
+#include "SFMLplatform.h"
 
 namespace SFMLDoodleJump{
-    class SFMLstaticPlatform: public SFMLEntity{
-    private:
-        sf::RectangleShape platform;
+    class SFMLstaticPlatform: public SFMLPlatform{
     public:
+
+        /*
+         * Constructor that takes the same input as the SFMLPlatform class.
+         */
         SFMLstaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
+        /*
+         * draw() is a function that draws the static platform on the window.
+         */
         void draw() override;
 
         //void void HandleEvent() override;

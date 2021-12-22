@@ -9,7 +9,15 @@ namespace DoodleJump{
     class Player: public Entity{
     private:
         float jumpspeed = 0.03f;
+        bool isJumping = false; //checks if the player is middle in a jump
+        bool isFalling = false; //checks if the player is falling
+        float maxheight = 0; //this is the y coordinate of the max height of the jump
+        bool collision = false;
     public:
+        /*
+         * Setter for the collision bool
+         */
+        void setCollision(bool c);
 
         /*
          * Constructor

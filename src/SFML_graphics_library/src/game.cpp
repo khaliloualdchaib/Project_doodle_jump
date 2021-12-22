@@ -4,10 +4,11 @@
 #include "../include/game.h"
 #include "../../logic_library/include/stopwatch.h"
 #include "../../logic_library/include/camera.h"
-
-#include "../../logic_library/include/player.h"
 #include "../include/SFMLplayer.h"
 #include "../include/platforms/SFMLstaticPlatform.h"
+#include "../../logic_library/include/world.h"
+#include "../../logic_library/include/camera.h"
+#include "../../logic_library/include/platforms/staticPlatform.h"
 
 SFMLDoodleJump::Game::Game() {
     window = std::make_shared<sf::RenderWindow>(sf::VideoMode(get<0>(gameWindow), get<1>(gameWindow)), "DoodleJump");
@@ -18,9 +19,16 @@ void SFMLDoodleJump::Game::runGame() {
     if(!playerTexture.loadFromFile("sprites/doodleRight.png")){
         std::cout<<"doodleRight.png not found"<<std::endl;
     }
-    DoodleJump::Player p1 = DoodleJump::Player(60.f, 50.f, make_tuple(0, 0));
+    shared_ptr<DoodleJump::Camera> camera = make_shared<DoodleJump::Camera>(DoodleJump::Camera(get<0>(gameWindow), get<1>(gameWindow)));
+    DoodleJump::World world = DoodleJump::World(camera);
+    shared_ptr<DoodleJump::Player> p1 = make_shared<DoodleJump::Player>(DoodleJump::Player(60.f, 50.f, make_tuple(0, 0)));
     shared_ptr<SFMLDoodleJump::SFMLPlayer> p2 = make_shared<SFMLDoodleJump::SFMLPlayer>(SFMLDoodleJump::SFMLPlayer(60, 59, make_tuple(0, 0), window, playerTexture));
-    p1.addObserver(p2);
+    shared_ptr<SFMLDoodleJump::SFMLstaticPlatform> s1 = make_shared<SFMLDoodleJump::SFMLstaticPlatform>(SFMLDoodleJump::SFMLstaticPlatform(100, 10, make_tuple(0, 0), window));
+    shared_ptr<DoodleJump::staticPlatform> s2 = make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(100, 10, make_tuple(0, 0)));
+    world.setPlayer(p1);
+    world.getPlayer()->addObserver(p2);
+    s2->addObserver(s1);
+    world.addPlatform(s2);
     // run the program as long as the window is open
     while (window->isOpen())
     {
@@ -36,11 +44,11 @@ void SFMLDoodleJump::Game::runGame() {
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
             p2->draw();
-            p1.jump();
-            //cout<<"p1: "<<get<0>(p1.getPosition())<<", "<<get<1>(p1.getPosition())<<endl;
             //cout<<"p2: "<<get<0>(p2->getPosition())<<", "<<get<1>(p2->getPosition())<<endl;
-            SFMLDoodleJump::SFMLstaticPlatform s = SFMLDoodleJump::SFMLstaticPlatform(100, 10, make_tuple(0, 0), window);
-            s.draw();
+            s1->draw();
+            world.getPlayer()->jump();
+            //cout<<"p1: "<<get<0>(world.getPlayer()->getPosition())<<", "<<get<1>(world.getPlayer()->getPosition())<<endl;
+            world.collisionPlayerPlatform();
             //cout<<s.getWidth()<<", "<<s.getHeight()<<endl;
             DoodleJump::Stopwatch::getInstance().reset();
             window->display();

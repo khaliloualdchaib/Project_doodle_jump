@@ -27,7 +27,7 @@ namespace DoodleJump{
         /*
          * notifyObservers notifies all observers in the list observers.
          */
-        void notifyObservers();
+        void notifyObservers(std::tuple<float, float> pos);
 
         /*
          * This is a default constructor.

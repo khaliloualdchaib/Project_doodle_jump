@@ -4,10 +4,13 @@
 
 #ifndef DOODLEJUMP_STATICPLATFORM_H
 #define DOODLEJUMP_STATICPLATFORM_H
-#include "../entity.h"
+#include "platform.h"
 namespace DoodleJump{
-    class staticPlatform: public Entity{
+    class staticPlatform: public Platform{
     public:
+        /*
+         * Constructor with the same inputs as the Platform class.
+         */
         staticPlatform(float width, float height, std::tuple<float, float> pos);
     };
 }

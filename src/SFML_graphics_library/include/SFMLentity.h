@@ -88,6 +88,9 @@ namespace SFMLDoodleJump{
          */
         const std::tuple<float, float> &getPosition() const;
 
+        /*
+         * virtual draw function that draws the entity on the window.
+         */
         virtual void draw() = 0;
 
     };

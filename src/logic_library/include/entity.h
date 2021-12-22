@@ -6,6 +6,8 @@
 #define DOODLEJUMP_ENTITY_H
 #include <tuple>
 #include "observer_pattern/observable.h"
+#include <set>
+#include "camera.h"
 
 namespace DoodleJump{
     class Entity: public Observable{

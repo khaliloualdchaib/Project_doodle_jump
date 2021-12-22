@@ -6,14 +6,12 @@
 
 #include <utility>
 
-SFMLDoodleJump::SFMLstaticPlatform::SFMLstaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w): SFMLEntity(width, height, pos, std::move(w)) {
-    std::tuple<float, float> pixelco = SFMLstaticPlatform::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos));
-    sf::RectangleShape tmp(sf::Vector2f(width, height));
-    platform = tmp;
-    platform.setFillColor(sf::Color(100, 250, 50));
-    platform.setPosition(std::get<0>(pixelco), std::get<1>(pixelco));
+SFMLDoodleJump::SFMLstaticPlatform::SFMLstaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w): SFMLPlatform(width, height, pos, std::move(w)) {
+    SFMLstaticPlatform::getPlatform().setFillColor(sf::Color(100, 250, 50));
+    std::tuple<float, float> pixelco = SFMLPlatform::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos));
+    SFMLstaticPlatform::getPlatform().setPosition(std::get<0>(pixelco), std::get<1>(pixelco));
 }
 
 void SFMLDoodleJump::SFMLstaticPlatform::draw() {
-    SFMLstaticPlatform::getWindow()->draw(platform);
+    SFMLstaticPlatform::getWindow()->draw(SFMLstaticPlatform::getPlatform());
 }

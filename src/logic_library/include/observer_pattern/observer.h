@@ -14,7 +14,7 @@ namespace DoodleJump{
         /*
          * HandleEvent handles the events
          */
-        virtual void HandleEvent(){};
+        virtual void HandleEvent(std::tuple<float, float> nextpos){};
 
         /*
          * This is a default constructor.

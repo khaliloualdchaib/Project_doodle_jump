@@ -16,8 +16,7 @@ void SFMLDoodleJump::SFMLPlayer::draw() {
     SFMLDoodleJump::SFMLPlayer::getWindow()->draw(sprite);
 }
 
-void SFMLDoodleJump::SFMLPlayer::HandleEvent() {
-    SFMLPlayer::setPosition(std::make_tuple(std::get<0>(SFMLPlayer::getPosition()), std::get<1>(SFMLPlayer::getPosition())+jumpspeed));
-    std::tuple<float, float> pos = SFMLPlayer::getPosition();
-    sprite.setPosition(sf::Vector2f(std::get<0>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos))) , std::get<1>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos)))));
+void SFMLDoodleJump::SFMLPlayer::HandleEvent(std::tuple<float, float> nextpos) {
+    SFMLPlayer::setPosition(nextpos);
+    sprite.setPosition(sf::Vector2f(std::get<0>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos))) , std::get<1>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos)))));
 }

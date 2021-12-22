@@ -9,7 +9,6 @@ namespace SFMLDoodleJump{
     class SFMLPlayer: public SFMLEntity{
     private:
         sf::Sprite sprite;
-        float jumpspeed = 0.03f;
     public:
 
         /*
@@ -26,7 +25,7 @@ namespace SFMLDoodleJump{
         /*
          * Handles an event. inherited, form the virtual function in observer.h
          */
-        void HandleEvent() override;
+        void HandleEvent(std::tuple<float, float> nextpos) override;
     };
 }
 #endif //DOODLEJUMP_SFMLPLAYER_H

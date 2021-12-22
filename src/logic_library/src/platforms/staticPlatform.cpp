@@ -3,5 +3,5 @@
 //
 #include "../../include/platforms/staticPlatform.h"
 
-DoodleJump::staticPlatform::staticPlatform(float width, float height, std::tuple<float, float> pos): Entity(width, height, pos){}
+DoodleJump::staticPlatform::staticPlatform(float width, float height, std::tuple<float, float> pos): Platform(width, height, pos){}
 

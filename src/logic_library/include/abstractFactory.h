@@ -4,6 +4,16 @@
 
 #ifndef DOODLEJUMP_ABSTRACTFACTORY_H
 #define DOODLEJUMP_ABSTRACTFACTORY_H
+#include <iostream>
+#include "player.h"
+#include <memory>
+#include <set>
+
+namespace SFMLDoodleJump{
+    class SFMLPlayer;
+    class SFMLPlatform;
+}
+
 namespace DoodleJump{
     class AbstractFactory{
     public:
@@ -19,6 +29,9 @@ namespace DoodleJump{
         virtual ~AbstractFactory() = default;
 
         //The following functions create and return the entities:
+        virtual std::shared_ptr<SFMLDoodleJump::SFMLPlayer> createPlayer(std::shared_ptr<DoodleJump::Player> p) = 0;
+
+        //virtual std::set<std::shared_ptr<SFMLDoodleJump::SFMLPlatform>> createPlatforms(){};
 
     };
 }

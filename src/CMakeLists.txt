@@ -41,6 +41,6 @@ ADD_EXECUTABLE(
 
         SFML_graphics_library/include/platforms/SFMLstaticPlatform.h
         SFML_graphics_library/src/platforms/SFMLstaticPlatform.cpp
-        logic_library/include/platforms/platform.h logic_library/src/platforms/platform.cpp SFML_graphics_library/include/platforms/SFMLplatform.h SFML_graphics_library/src/platforms/SFMLplatform.cpp)
+        logic_library/include/platforms/platform.h logic_library/src/platforms/platform.cpp SFML_graphics_library/include/platforms/SFMLplatform.h SFML_graphics_library/src/platforms/SFMLplatform.cpp SFML_graphics_library/include/concreteFactory.h SFML_graphics_library/src/concreteFactory.cpp)
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

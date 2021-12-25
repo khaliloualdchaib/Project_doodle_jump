@@ -17,10 +17,10 @@ void SFMLDoodleJump::SFMLEntity::setPosition(const std::tuple<float, float> &pos
 
 SFMLDoodleJump::SFMLEntity::SFMLEntity(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w) {
     SFMLEntity::position = pos;
-    SFMLEntity::width = width;
-    SFMLEntity::height = height;
     SFMLEntity::window = std::move(w);
     SFMLEntity::camera = std::make_shared<DoodleJump::Camera>(DoodleJump::Camera(window->getSize().x, window->getSize().y));
+    SFMLEntity::width = camera->TransformWidth(width);
+    SFMLEntity::height = camera->TransformHeight(height);
 }
 
 float SFMLDoodleJump::SFMLEntity::getWidth() const {

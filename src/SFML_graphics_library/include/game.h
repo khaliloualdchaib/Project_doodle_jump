@@ -12,14 +12,15 @@
 namespace SFMLDoodleJump{
     class Game{
     private:
-        std::tuple <int, int> gameWindow = std::make_tuple(600, 800); //this the default width and height of the window
+        std::map<std::string, unsigned int> windowConfiguration;
+        std::map<std::string, float> GameConfiguration;
         std::shared_ptr<sf::RenderWindow> window;
     public:
 
         /*
-         * This a default constructor.
+         * Constructor.
          */
-        Game();
+        Game(const std::map<std::string, unsigned int>& windowconf, const std::map<std::string, float>& config);
 
         /*
          * runGame runs the game, thus it also runs the main game loop.

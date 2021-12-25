@@ -16,7 +16,6 @@ namespace DoodleJump{
     class World{
     private:
         std::shared_ptr<DoodleJump::Player> player;
-        std::shared_ptr<DoodleJump::Camera> camera;
         std::set<std::shared_ptr<Platform>> platforms;
     public:
 
@@ -41,9 +40,9 @@ namespace DoodleJump{
         void addPlatform(const std::shared_ptr<Platform>& p);
 
         /*
-         * Constructor that takes a camera as input
+         * Default constructor
          */
-        World(std::shared_ptr<DoodleJump::Camera> c);
+        World() = default;
 
         /*
          * Returns the positions of the bottom corners of the given entity
@@ -59,6 +58,7 @@ namespace DoodleJump{
          * checks for collision between player and platform
          */
         void collisionPlayerPlatform();
+
     };
 }
 #endif //DOODLEJUMP_WORLD_H

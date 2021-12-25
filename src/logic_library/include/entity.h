@@ -13,8 +13,8 @@ namespace DoodleJump{
     class Entity: public Observable{
     private:
         std::tuple<float, float> position = std::make_tuple(0.0, 0.0);
-        float width = 50.f; //width of the entity
-        float height = 50.f; //height of the entity
+        float width; //width of the entity
+        float height; //height of the entity
     public:
 
         /*

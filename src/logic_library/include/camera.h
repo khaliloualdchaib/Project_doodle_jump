@@ -26,6 +26,16 @@ namespace DoodleJump{
         std::tuple<float, float> Transformation(float xpos, float ypos) const;
 
         /*
+         * Transforms the width of my own coordinate system to width in pixels.
+         */
+        float TransformWidth(float w) const;
+
+        /*
+         *  Transforms the height of my own coordinate system to height in pixels.
+         */
+        float TransformHeight(float h) const;
+
+        /*
          *Later commenten
          */
         void update();

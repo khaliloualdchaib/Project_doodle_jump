@@ -10,14 +10,20 @@ namespace DoodleJump{
     private:
         float jumpspeed = 0.03f;
         bool isJumping = false; //checks if the player is middle in a jump
-        bool isFalling = false; //checks if the player is falling
+        bool Falling = false; //checks if the player is falling
+        bool collisionPlatform = false;
         float maxheight = 0; //this is the y coordinate of the max height of the jump
-        bool collision = false;
     public:
+
+        /*
+         * Getter for the Falling boolean.
+         */
+        bool isFalling() const;
+
         /*
          * Setter for the collision bool
          */
-        void setCollision(bool c);
+        void setCollisionPlatform(bool c);
 
         /*
          * Constructor
@@ -30,6 +36,7 @@ namespace DoodleJump{
          * Moves the player up.
          */
         void jump();
+
     };
 }
 #endif //DOODLEJUMP_PLAYER_H

@@ -6,21 +6,15 @@
 
 #include <utility>
 
-DoodleJump::World::World(std::shared_ptr<DoodleJump::Camera> c) {
-    World::camera = std::move(c);
-}
-
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity entity) const {
-    std::tuple<float, float> pixelco = camera->Transformation(std::get<0>(entity.getPosition()),std::get<1>(entity.getPosition()));
-    std::tuple<float, float> corner1 = {std::get<0>(pixelco), std::get<1>(pixelco) + entity.getHeight()};
-    std::tuple<float, float> corner2 = {std::get<0>(pixelco) + entity.getWidth(), std::get<1>(pixelco) + entity.getHeight()};
+    std::tuple<float, float> corner1 = {std::get<0>(entity.getPosition()), std::get<1>(entity.getPosition()) + entity.getHeight()};
+    std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition()) + entity.getHeight()};
     return {corner1, corner2};
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>> DoodleJump::World::getTopCorners(const DoodleJump::Entity entity) const {
-    std::tuple<float, float> pixelco = camera->Transformation(std::get<0>(entity.getPosition()),std::get<1>(entity.getPosition()));
-    std::tuple<float, float> corner1 = pixelco;
-    std::tuple<float, float> corner2 = {std::get<0>(pixelco) + entity.getWidth(), std::get<1>(pixelco)};
+    std::tuple<float, float> corner1 = entity.getPosition();
+    std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition())};
     return {corner1, corner2};
 }
 
@@ -32,11 +26,14 @@ void DoodleJump::World::collisionPlayerPlatform() {
         std::tuple<float, float> toprightcorner = std::get<1>(topcornersPlatform);
         std::tuple<float, float> bottomleftcorner = std::get<0>(bottomcornersPlayer);
         std::tuple<float, float> bottomrightcorner = std::get<1>(bottomcornersPlayer);
-        if (std::get<1>(topleftcorner)== std::get<1>(bottomleftcorner)+2){
-            if (std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner) or std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)){
-                player->setCollision(true);
+        if(player->isFalling()){
+            if ((std::get<1>(bottomleftcorner)-std::get<1>(topleftcorner))<=0.8){
+                if (std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner) or std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)){
+                    player->setCollisionPlatform(true);
+                }
             }
         }
+
     }
 }
 

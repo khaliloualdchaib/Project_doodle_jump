@@ -11,12 +11,16 @@
 #include "entity.h"
 #include "player.h"
 #include "platforms/platform.h"
-#include <math.h>
+#include "abstractFactory.h"
+#include <map>
+
 namespace DoodleJump{
     class World{
     private:
         std::shared_ptr<DoodleJump::Player> player;
         std::set<std::shared_ptr<Platform>> platforms;
+        std::shared_ptr<DoodleJump::AbstractFactory> factory;
+        std::map<std::string, float> GameConfigurations;
     public:
 
         /*
@@ -30,29 +34,29 @@ namespace DoodleJump{
         std::shared_ptr<DoodleJump::Player> getPlayer() const;
 
         /*
-         * Setter for the player
+         * Generates the player
          */
-        void setPlayer(std::shared_ptr<DoodleJump::Player> p);
+        void generatePlayer();
 
         /*
-         * Adds a platform to the set of platforms
+         * Generates given amount of platforms
          */
-        void addPlatform(const std::shared_ptr<Platform>& p);
+        void generatePlatforms(unsigned int amount);
 
         /*
-         * Default constructor
+         * Constructor
          */
-        World() = default;
+        World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config);
 
         /*
          * Returns the positions of the bottom corners of the given entity
          */
-        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getBottomCorners(DoodleJump::Entity entity) const;
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getBottomCorners(const DoodleJump::Entity& entity) const;
 
         /*
          * Returns the positions of the top corners of the given entity
          */
-        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getTopCorners(DoodleJump::Entity entity) const;
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getTopCorners(const DoodleJump::Entity& entity) const;
 
         /*
          * checks for collision between player and platform

@@ -11,11 +11,12 @@
 namespace SFMLDoodleJump{
     class ConcreteFactory: public DoodleJump::AbstractFactory{
     private:
-        std::map<std::string, float> GameConfiguration;
         std::shared_ptr<sf::RenderWindow> window;
+        sf::Texture playerTexture;
     public:
-        explicit ConcreteFactory(std::map<std::string, float> config, std::shared_ptr<sf::RenderWindow> w);
-        std::shared_ptr<SFMLDoodleJump::SFMLPlayer> createPlayer(std::shared_ptr<DoodleJump::Player> p) override;
+        ConcreteFactory(std::shared_ptr<sf::RenderWindow> w);
+        std::shared_ptr<DoodleJump::Observer> createPlayer(std::shared_ptr<DoodleJump::Player> p) override;
+        std::shared_ptr<DoodleJump::Observer> createPlatform(std::shared_ptr<DoodleJump::Platform>p) override;
     };
 }
 

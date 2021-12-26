@@ -1,5 +1,4 @@
 #include "../include/random.h"
-#include "time.h"
 
 DoodleJump::Random& DoodleJump::Random::getInstance() {
     static DoodleJump::Random instance;

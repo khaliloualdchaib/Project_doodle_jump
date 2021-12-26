@@ -20,6 +20,8 @@ namespace SFMLDoodleJump{
          * Constructor that takes the same input as the SFMLEntity class
          */
         SFMLPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
+
+        void draw() override {};
     };
 }
 #endif //DOODLEJUMP_SFMLPLATFORM_H

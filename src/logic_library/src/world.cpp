@@ -3,16 +3,21 @@
 //
 
 #include "../include/world.h"
-
+#include "../include/random.h"
 #include <utility>
 
-std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity entity) const {
+DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
+    factory = std::move(a);
+    GameConfigurations = std::move(config);
+}
+
+std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
     std::tuple<float, float> corner1 = {std::get<0>(entity.getPosition()), std::get<1>(entity.getPosition()) + entity.getHeight()};
     std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition()) + entity.getHeight()};
     return {corner1, corner2};
 }
 
-std::tuple<std::tuple<float, float>, std::tuple<float, float>> DoodleJump::World::getTopCorners(const DoodleJump::Entity entity) const {
+std::tuple<std::tuple<float, float>, std::tuple<float, float>> DoodleJump::World::getTopCorners(const DoodleJump::Entity& entity) const {
     std::tuple<float, float> corner1 = entity.getPosition();
     std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition())};
     return {corner1, corner2};
@@ -37,12 +42,29 @@ void DoodleJump::World::collisionPlayerPlatform() {
     }
 }
 
-void DoodleJump::World::setPlayer(std::shared_ptr<DoodleJump::Player> p) {
-    World::player = std::move(p);
+void DoodleJump::World::generatePlayer() {
+    player = std::make_shared<DoodleJump::Player>(DoodleJump::Player(GameConfigurations["PlayerWidth"], GameConfigurations["PlayerHeight"],
+                                                                     std::make_tuple(GameConfigurations["PlayerX_Position"], GameConfigurations["PlayerYPosition"])));
+    player->addObserver(factory->createPlayer(player));
 }
 
-void DoodleJump::World::addPlatform(const std::shared_ptr<Platform>& p) {
-    platforms.insert(p);
+void DoodleJump::World::generatePlatforms(unsigned int amount) {
+    DoodleJump::Random::getInstance().initialise_rng();
+    int isnegavtiveX = DoodleJump::Random::getInstance().getrandomnumber()%2;
+    int isnegavtiveY = DoodleJump::Random::getInstance().getrandomnumber()%2;
+    int randomX = DoodleJump::Random::getInstance().getrandomnumber();
+    int randomY = DoodleJump::Random::getInstance().getrandomnumber();
+    float xpos = randomX/((float) RAND_MAX*4);
+    float ypos = randomY/((float) RAND_MAX*3);
+    if(isnegavtiveX == 1){
+        xpos = xpos*-1;
+    }
+    if(isnegavtiveY == 1){
+        ypos = ypos*-1;
+    }
+    std::shared_ptr<DoodleJump::Platform> platform = std::make_shared<DoodleJump::Platform>(DoodleJump::Platform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],
+                                                                                                          std::make_tuple(xpos, ypos)));
+
 }
 
 std::shared_ptr<DoodleJump::Player> DoodleJump::World::getPlayer() const {

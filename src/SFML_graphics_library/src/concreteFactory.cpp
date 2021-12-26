@@ -4,7 +4,7 @@
 #include "../include/concreteFactory.h"
 #include <utility>
 #include "../include/SFMLplayer.h"
-#include "../include/platforms/SFMLplatform.h"
+#include "../include/platforms/SFMLstaticPlatform.h"
 
 SFMLDoodleJump::ConcreteFactory::ConcreteFactory(std::shared_ptr<sf::RenderWindow> w) {
     window = std::move(w);
@@ -21,6 +21,6 @@ std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createPla
 }
 
 std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createPlatform(std::shared_ptr<DoodleJump::Platform> p) {
-    std::shared_ptr<SFMLDoodleJump::SFMLPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLPlatform>(SFMLDoodleJump::SFMLPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
+    std::shared_ptr<SFMLDoodleJump::SFMLstaticPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLstaticPlatform>(SFMLDoodleJump::SFMLstaticPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
 }

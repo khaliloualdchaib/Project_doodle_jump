@@ -3,7 +3,7 @@
 //
 
 #include "../include/SFMLplayer.h"
-
+#include <limits>
 
 SFMLDoodleJump::SFMLPlayer::SFMLPlayer(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w, const sf::Texture& texture): SFMLEntity(width, height, pos, std::move(w)) {
     sprite.setTexture(texture);

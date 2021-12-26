@@ -20,7 +20,7 @@ namespace SFMLDoodleJump{
          */
         void draw() override;
 
-        //void void HandleEvent() override;
+        void HandleEvent(std::tuple<float, float> nextpos) override;
     };
 }
 #endif //DOODLEJUMP_SFMLSTATICPLATFORM_H

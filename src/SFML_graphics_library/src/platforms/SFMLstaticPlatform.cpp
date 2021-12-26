@@ -15,3 +15,7 @@ SFMLDoodleJump::SFMLstaticPlatform::SFMLstaticPlatform(float width, float height
 void SFMLDoodleJump::SFMLstaticPlatform::draw() {
     SFMLstaticPlatform::getWindow()->draw(SFMLstaticPlatform::getPlatform());
 }
+
+void SFMLDoodleJump::SFMLstaticPlatform::HandleEvent(std::tuple<float, float> nextpos) {
+    draw();
+}

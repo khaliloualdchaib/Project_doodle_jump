@@ -39,9 +39,11 @@ namespace DoodleJump{
         void generatePlayer();
 
         /*
-         * Generates given amount of platforms
+         * Generates given amount of platforms for the begin state of the game.
          */
         void generatePlatforms(unsigned int amount);
+
+        bool doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p);
 
         /*
          * Constructor

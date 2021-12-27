@@ -21,7 +21,7 @@ void SFMLDoodleJump::Game::runGame() {
     shared_ptr<SFMLDoodleJump::ConcreteFactory> factory = make_shared<SFMLDoodleJump::ConcreteFactory>(SFMLDoodleJump::ConcreteFactory(window));
     DoodleJump::World world = DoodleJump::World(factory, GameConfiguration);
     world.generatePlayer();
-    world.generatePlatforms(10);
+    world.generatePlatforms(30);
     while (window->isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -35,11 +35,20 @@ void SFMLDoodleJump::Game::runGame() {
         DoodleJump::Stopwatch::getInstance().tick();
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
-            world.getPlayer()->jump();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                world.getPlayer()->update(LEFT);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                world.getPlayer()->update(RIGHT);
+            }
+            else{
+                world.getPlayer()->update();
+            }
             for(const auto& platform: world.getPlatforms()){
                 platform->update();
             }
-            world.getPlayer()->setCollisionPlatform(false);
             world.collisionPlayerPlatform();
             //cout<<get<1>(world.getPlayer()->getPosition())<<endl;
             DoodleJump::Stopwatch::getInstance().reset();

@@ -23,7 +23,7 @@ namespace DoodleJump
         /*
          * Initialise_rng initialises the random number generator
          */
-        static void initialise_rng();
+        void initialise_rng();
 
         /*
          * If the copy constructor is called the copy is going to get deleted
@@ -38,7 +38,7 @@ namespace DoodleJump
         /*
          * This function returns a random number
          */
-        static int getrandomnumber();
+        double getrandomDouble(double min, double max);
 
     };
 }

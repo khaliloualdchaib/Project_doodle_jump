@@ -10,6 +10,8 @@
 DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
     factory = std::move(a);
     GameConfigurations = std::move(config);
+    std::shared_ptr<DoodleJump::staticPlatform> dummy_staticplatform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(0, 0)));
+    staticplatformObserver = factory->createStaticPlatform(dummy_staticplatform);
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
@@ -34,14 +36,18 @@ void DoodleJump::World::collisionPlayerPlatform() {
         std::tuple<float, float> bottomrightcorner = std::get<1>(bottomcornersPlayer);
         if(player->isFalling()){
             float distance = std::abs(std::abs(std::get<1>(bottomleftcorner))-std::abs(std::get<1>(topleftcorner)));
-            if (distance<=0.05f){
-                if (std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner) or std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)){
+            if (distance<=0.001f){
+                if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)) or
+                    (std::get<0>(topleftcorner)>=std::get<0>(bottomleftcorner) and std::get<0>(topleftcorner)>=std::get<0>(bottomrightcorner)) or
+                    (std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner) and std::get<0>(toprightcorner)<=std::get<0>(bottomrightcorner))){
                     player->setCollisionPlatform(true);
+                    return;
                 }
             }
         }
 
     }
+
 }
 
 void DoodleJump::World::generatePlayer() {
@@ -53,30 +59,17 @@ void DoodleJump::World::generatePlayer() {
 void DoodleJump::World::generatePlatforms(unsigned int amount) {
     unsigned int counter = amount;
     for (unsigned int i = 0; i < counter; ++i) {
-        /*DoodleJump::Random::getInstance().initialise_rng();
-
-        int isnegavtiveX = DoodleJump::Random::getInstance().getrandomnumber()%2;
-        DoodleJump::Random::getInstance().initialise_rng();
-        int isnegavtiveY = DoodleJump::Random::getInstance().getrandomnumber()%2;
-        DoodleJump::Random::getInstance().initialise_rng();
-        int randomX = DoodleJump::Random::getInstance().getrandomnumber();
-        DoodleJump::Random::getInstance().initialise_rng();
-        int randomY = DoodleJump::Random::getInstance().getrandomnumber();
-        float xpos = randomX/((double ) RAND_MAX*4);
-        float ypos = randomY/((double ) RAND_MAX*3);
-        if(isnegavtiveX == 1){
-            xpos = xpos*-1;
+        double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0);
+        double ypos = DoodleJump::Random::getInstance().getrandomDouble(-3.0, 3.0);
+        std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(xpos, ypos)));
+        if(doPlatformsCollide(platform)){
+            counter++;
+        } else{
+            platform->addObserver(staticplatformObserver);
+            platforms.insert(platform);
         }
-        if(isnegavtiveY == 1){
-            ypos = ypos*-1;
-        }*/
+
     }
-    std::shared_ptr<DoodleJump::Platform> platform = std::make_shared<DoodleJump::Platform>(DoodleJump::Platform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(0, 0)));
-    std::shared_ptr<DoodleJump::Platform> platform1 = std::make_shared<DoodleJump::Platform>(DoodleJump::Platform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(1, 1)));
-    platform->addObserver(factory->createPlatform(platform));
-    platform1->addObserver(factory->createPlatform(platform));
-    platforms.insert(platform);
-    platforms.insert(platform1);
 }
 
 bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p) {

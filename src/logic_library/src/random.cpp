@@ -4,10 +4,12 @@ DoodleJump::Random& DoodleJump::Random::getInstance() {
     static DoodleJump::Random instance;
     return instance;
 }
-int DoodleJump::Random::getrandomnumber() {
-    return rand();
+double DoodleJump::Random::getrandomDouble(double min, double max) {
+    double random = ((double) rand())/RAND_MAX;
+    double tmp = (max-min)*random;
+    return min +tmp;
 }
 void DoodleJump::Random::initialise_rng() {
-    srand(time(0));
+    srand(time(nullptr));
 }
 

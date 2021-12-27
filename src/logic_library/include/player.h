@@ -32,10 +32,8 @@ namespace DoodleJump{
          */
         Player(float width, float height, std::tuple<float, float> pos);
 
-        /*
-         * Moves the player up.
-         */
-        void jump();
+
+        void update(COMMAND=NONE) override;
 
     };
 }

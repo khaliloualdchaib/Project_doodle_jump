@@ -34,12 +34,6 @@ namespace DoodleJump{
          *  Transforms the height of my own coordinate system to height in pixels.
          */
         float TransformHeight(float h) const;
-
-        /*
-         *Later commenten
-         */
-        void update();
-
     };
 }
 #endif //DOODLEJUMP_CAMERA_H

@@ -20,7 +20,7 @@ std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createPla
     return player;
 }
 
-std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createPlatform(std::shared_ptr<DoodleJump::Platform> p) {
+std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createStaticPlatform(std::shared_ptr<DoodleJump::staticPlatform> p) {
     std::shared_ptr<SFMLDoodleJump::SFMLstaticPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLstaticPlatform>(SFMLDoodleJump::SFMLstaticPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
 }

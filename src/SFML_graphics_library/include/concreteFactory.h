@@ -16,7 +16,7 @@ namespace SFMLDoodleJump{
     public:
         ConcreteFactory(std::shared_ptr<sf::RenderWindow> w);
         std::shared_ptr<DoodleJump::Observer> createPlayer(std::shared_ptr<DoodleJump::Player> p) override;
-        std::shared_ptr<DoodleJump::Observer> createPlatform(std::shared_ptr<DoodleJump::Platform>p) override;
+        std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::staticPlatform>p) override;
     };
 }
 

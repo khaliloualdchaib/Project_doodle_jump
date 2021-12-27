@@ -19,7 +19,3 @@ float DoodleJump::Camera::TransformWidth(float w) const {
 float DoodleJump::Camera::TransformHeight(float h) const {
     return h * float(Camera::height / 6.0);
 }
-
-void DoodleJump::Camera::update() {
-
-}

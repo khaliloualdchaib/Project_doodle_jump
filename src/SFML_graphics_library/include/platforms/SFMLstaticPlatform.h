@@ -18,7 +18,7 @@ namespace SFMLDoodleJump{
         /*
          * draw() is a function that draws the static platform on the window.
          */
-        void draw() override;
+        void draw(std::tuple<float, float> pos = std::make_tuple(1000, 1000)) override;
 
         void HandleEvent(std::tuple<float, float> nextpos) override;
     };

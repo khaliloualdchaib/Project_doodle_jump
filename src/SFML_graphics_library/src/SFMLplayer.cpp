@@ -12,7 +12,7 @@ SFMLDoodleJump::SFMLPlayer::SFMLPlayer(float width, float height, std::tuple<flo
     sprite.setScale(targetSize.x/sprite.getLocalBounds().width, targetSize.y/sprite.getLocalBounds().height);
 }
 
-void SFMLDoodleJump::SFMLPlayer::draw() {
+void SFMLDoodleJump::SFMLPlayer::draw(std::tuple<float, float> pos) {
     SFMLDoodleJump::SFMLPlayer::getWindow()->draw(sprite);
 }
 

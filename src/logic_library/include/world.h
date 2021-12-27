@@ -21,6 +21,7 @@ namespace DoodleJump{
         std::set<std::shared_ptr<Platform>> platforms;
         std::shared_ptr<DoodleJump::AbstractFactory> factory;
         std::map<std::string, float> GameConfigurations;
+        std::shared_ptr<Observer> staticplatformObserver;
     public:
 
         /*

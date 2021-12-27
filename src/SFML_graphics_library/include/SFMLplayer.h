@@ -20,7 +20,7 @@ namespace SFMLDoodleJump{
         /*
          * Draws the player
          */
-        void draw() override;
+        void draw(std::tuple<float, float> pos = std::make_tuple(1000, 1000)) override;
 
         /*
          * Handles an event. inherited, form the virtual function in observer.h

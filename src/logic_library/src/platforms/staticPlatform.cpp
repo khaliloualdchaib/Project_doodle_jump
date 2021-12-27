@@ -5,7 +5,7 @@
 
 DoodleJump::staticPlatform::staticPlatform(float width, float height, std::tuple<float, float> pos): Platform(width, height, pos){}
 
-void DoodleJump::staticPlatform::update() {
+void DoodleJump::staticPlatform::update(COMMAND) {
     DoodleJump::staticPlatform::notifyObservers(staticPlatform::getPosition());
 }
 

@@ -33,21 +33,9 @@ namespace SFMLDoodleJump{
         const std::shared_ptr<sf::RenderWindow> &getWindow() const;
 
         /*
-         * setHeight is a setter for the height of the entity.
-         * The input is the new height
-         */
-        void setHeight(float h);
-
-        /*
          * getHeight is a getter for the height of the entity.
          */
         float getHeight() const;
-
-        /*
-         * setWidth is a setter for the width of the entity.
-         * The input is the new width.
-         */
-        void setWidth(float w);
 
         /*
          * update is a function that updates the entity.

@@ -27,16 +27,8 @@ float SFMLDoodleJump::SFMLEntity::getWidth() const {
     return width;
 }
 
-void SFMLDoodleJump::SFMLEntity::setWidth(float w) {
-    SFMLEntity::width = w;
-}
-
 float SFMLDoodleJump::SFMLEntity::getHeight() const {
     return height;
-}
-
-void SFMLDoodleJump::SFMLEntity::setHeight(float h) {
-    SFMLEntity::height = h;
 }
 
 const std::shared_ptr<sf::RenderWindow> &SFMLDoodleJump::SFMLEntity::getWindow() const {

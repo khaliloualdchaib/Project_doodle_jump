@@ -12,7 +12,7 @@ namespace DoodleJump{
         /*
          * Constructor with the same inputs as the Entity class
          */
-        Platform(float width, float height, std::tuple<float, float> pos);
+        Platform(std::tuple<float, float> pos);
 
     };
 }

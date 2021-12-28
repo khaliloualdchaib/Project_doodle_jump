@@ -9,7 +9,6 @@ DoodleJump::Player::Player(float width, float height, std::tuple<float, float> p
 void DoodleJump::Player::update(COMMAND c) {
     float X = 0.0f;
     float Y = 0.0f;
-    std::cout<<Jumping<<" "<<Falling<<" "<<collisionPlatform<<std::endl;
     if(!Jumping and !Falling){
         Jumping = true;
     }

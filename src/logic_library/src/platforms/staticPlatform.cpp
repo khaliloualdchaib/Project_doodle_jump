@@ -3,7 +3,7 @@
 //
 #include "../../include/platforms/staticPlatform.h"
 
-DoodleJump::staticPlatform::staticPlatform(float width, float height, std::tuple<float, float> pos): Platform(width, height, pos){}
+DoodleJump::staticPlatform::staticPlatform(std::tuple<float, float> pos): Platform(pos){}
 
 void DoodleJump::staticPlatform::update(COMMAND) {
     DoodleJump::staticPlatform::notifyObservers(staticPlatform::getPosition());

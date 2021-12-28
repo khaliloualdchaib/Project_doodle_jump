@@ -11,7 +11,7 @@ namespace DoodleJump{
         /*
          * Constructor with the same inputs as the Platform class.
          */
-        staticPlatform(float width, float height, std::tuple<float, float> pos);
+        staticPlatform(std::tuple<float, float> pos);
 
         /*
          * update the platform

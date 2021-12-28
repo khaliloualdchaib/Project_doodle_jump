@@ -10,7 +10,7 @@
 DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
     factory = std::move(a);
     GameConfigurations = std::move(config);
-    std::shared_ptr<DoodleJump::staticPlatform> dummy_staticplatform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(0, 0)));
+    std::shared_ptr<DoodleJump::staticPlatform> dummy_staticplatform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(std::make_tuple(0, 0)));
     staticplatformObserver = factory->createStaticPlatform(dummy_staticplatform);
 }
 
@@ -72,7 +72,7 @@ void DoodleJump::World::generatePlatforms(unsigned int amount) {
     for (unsigned int i = 0; i < counter; ++i) {
         double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0);
         double ypos = DoodleJump::Random::getInstance().getrandomDouble(-3.0, 3.0);
-        std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(GameConfigurations["PlatformWidth"], GameConfigurations["PlatformHeight"],std::make_tuple(xpos, ypos)));
+        std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(std::make_tuple(xpos, ypos)));
         if(doPlatformsCollide(platform)){
             counter++;
         } else{

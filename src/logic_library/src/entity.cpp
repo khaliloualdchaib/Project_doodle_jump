@@ -23,15 +23,7 @@ float DoodleJump::Entity::getWidth() const {
     return width;
 }
 
-void DoodleJump::Entity::setWidth(float w) {
-    Entity::width = w;
-}
-
 float DoodleJump::Entity::getHeight() const {
     return height;
-}
-
-void DoodleJump::Entity::setHeight(float h) {
-    Entity::height = h;
 }
 

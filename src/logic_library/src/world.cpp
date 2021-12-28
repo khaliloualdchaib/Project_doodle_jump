@@ -15,8 +15,8 @@ DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::ma
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
-    std::tuple<float, float> corner1 = {std::get<0>(entity.getPosition()), std::get<1>(entity.getPosition()) + entity.getHeight()};
-    std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition()) + entity.getHeight()};
+    std::tuple<float, float> corner1 = {std::get<0>(entity.getPosition()), std::get<1>(entity.getPosition()) - entity.getHeight()};
+    std::tuple<float, float> corner2 = {std::get<0>(entity.getPosition()) + entity.getWidth(), std::get<1>(entity.getPosition()) - entity.getHeight()};
     return {corner1, corner2};
 }
 
@@ -26,26 +26,37 @@ std::tuple<std::tuple<float, float>, std::tuple<float, float>> DoodleJump::World
     return {corner1, corner2};
 }
 
+float DoodleJump::World::round_float2decimals(float f) {
+    float value = (int)(f * 100 + .5);
+    return (float)value / 100;
+}
+
 void DoodleJump::World::collisionPlayerPlatform() {
+    player->setCollisionPlatform(false);
     std::tuple<std::tuple<float, float>, std::tuple<float, float>> bottomcornersPlayer = getBottomCorners(*player);
     for (auto& platform: platforms) {
         std::tuple<std::tuple<float, float>, std::tuple<float, float>>  topcornersPlatform = getTopCorners(*platform);
+        std::tuple<float, float> bottomleftcornersplatform = std::get<0>(getBottomCorners(*platform));
         std::tuple<float, float> topleftcorner = std::get<0>(topcornersPlatform);
         std::tuple<float, float> toprightcorner = std::get<1>(topcornersPlatform);
         std::tuple<float, float> bottomleftcorner = std::get<0>(bottomcornersPlayer);
         std::tuple<float, float> bottomrightcorner = std::get<1>(bottomcornersPlayer);
         if(player->isFalling()){
-            float distance = std::abs(std::abs(std::get<1>(bottomleftcorner))-std::abs(std::get<1>(topleftcorner)));
-            if (distance<=0.001f){
-                if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)) or
-                    (std::get<0>(topleftcorner)>=std::get<0>(bottomleftcorner) and std::get<0>(topleftcorner)>=std::get<0>(bottomrightcorner)) or
-                    (std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner) and std::get<0>(toprightcorner)<=std::get<0>(bottomrightcorner))){
+            if (round_float2decimals(std::get<1>(topleftcorner))== round_float2decimals(std::get<1>(bottomleftcorner))){
+                if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
+                    (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
+                    player->setCollisionPlatform(true);
+                    return;
+                }
+            }
+            if((round_float2decimals(std::get<1>(topleftcorner))>round_float2decimals(std::get<1>(bottomleftcorner))) and (round_float2decimals(std::get<1>(bottomleftcornersplatform))<round_float2decimals(std::get<1>(bottomleftcorner)))){
+                if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
+                    (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
                     player->setCollisionPlatform(true);
                     return;
                 }
             }
         }
-
     }
 
 }
@@ -70,6 +81,8 @@ void DoodleJump::World::generatePlatforms(unsigned int amount) {
         }
 
     }
+
+
 }
 
 bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p) {

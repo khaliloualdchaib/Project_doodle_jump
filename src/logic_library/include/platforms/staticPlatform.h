@@ -13,6 +13,9 @@ namespace DoodleJump{
          */
         staticPlatform(float width, float height, std::tuple<float, float> pos);
 
+        /*
+         * update the platform
+         */
         void update(COMMAND=NONE) override;
     };
 }

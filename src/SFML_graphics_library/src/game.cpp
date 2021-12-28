@@ -35,6 +35,9 @@ void SFMLDoodleJump::Game::runGame() {
         DoodleJump::Stopwatch::getInstance().tick();
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
+            for(const auto& platform: world.getPlatforms()){
+                platform->update();
+            }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
                 world.getPlayer()->update(LEFT);
@@ -46,11 +49,7 @@ void SFMLDoodleJump::Game::runGame() {
             else{
                 world.getPlayer()->update();
             }
-            for(const auto& platform: world.getPlatforms()){
-                platform->update();
-            }
             world.collisionPlayerPlatform();
-            //cout<<get<1>(world.getPlayer()->getPosition())<<endl;
             DoodleJump::Stopwatch::getInstance().reset();
             window->display();
         }

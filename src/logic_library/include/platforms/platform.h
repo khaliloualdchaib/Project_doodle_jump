@@ -8,10 +8,12 @@
 namespace DoodleJump{
     class Platform: public Entity{
     public:
+
         /*
          * Constructor with the same inputs as the Entity class
          */
         Platform(float width, float height, std::tuple<float, float> pos);
+
     };
 }
 #endif //DOODLEJUMP_PLATFORM_H

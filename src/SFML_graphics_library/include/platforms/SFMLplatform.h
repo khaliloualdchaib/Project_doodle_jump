@@ -21,7 +21,10 @@ namespace SFMLDoodleJump{
          */
         SFMLPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
-        void draw(std::tuple<float, float> pos = std::make_tuple(1000, 1000)) override {};
+        /*
+         * empty function
+         */
+        void draw(std::tuple<float, float> pos) override {};
     };
 }
 #endif //DOODLEJUMP_SFMLPLATFORM_H

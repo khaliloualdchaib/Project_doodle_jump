@@ -20,6 +20,9 @@ namespace SFMLDoodleJump{
          */
         void draw(std::tuple<float, float> pos = std::make_tuple(1000, 1000)) override;
 
+        /*
+         * HandleEvent function
+         */
         void HandleEvent(std::tuple<float, float> nextpos) override;
     };
 }

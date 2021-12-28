@@ -3,62 +3,36 @@
 //
 #include <iostream>
 #include "../include/player.h"
+
 DoodleJump::Player::Player(float width, float height, std::tuple<float, float> pos): Entity(width, height, pos) {}
 
 void DoodleJump::Player::update(COMMAND c) {
-    //std::cout<<"Jumping "<<isJumping<<" Fallinf "<<Falling<<" collision "<<collisionPlatform<<std::endl;
-    if((!isJumping and !Falling)){
-        maxheight = std::get<1>(Player::getPosition()) + 1.f;
-        isJumping = true;
-        collisionPlatform = false;
+    float X = 0.0f;
+    float Y = 0.0f;
+    std::cout<<Jumping<<" "<<Falling<<" "<<collisionPlatform<<std::endl;
+    if(!Jumping and !Falling){
+        Jumping = true;
+    }
+    if(collisionPlatform){
         Falling = false;
+        Jumping = true;
+        grav = 0;
     }
-    if(maxheight<=std::get<1>(getPosition())){
-        Falling = true;
-        isJumping = false;
-    }
-    if(Falling){
-        if(collisionPlatform){
-            maxheight = std::get<1>(Player::getPosition()) + 1.f;
-            collisionPlatform = false;
-            Falling = false;
-            isJumping = true;
-        }
-        else{
-            if(c == LEFT){
-                std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition())-0.01f, std::get<1>(Player::getPosition())-jumpspeed);
-                Player::setPosition(tmp);
-                Player::notifyObservers(tmp);
-            }
-            else if(c == RIGHT){
-                std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition())+0.01f, std::get<1>(Player::getPosition())-jumpspeed);
-                Player::setPosition(tmp);
-                Player::notifyObservers(tmp);
-            }
-            else{
-                std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition()), std::get<1>(Player::getPosition())-jumpspeed);
-                Player::setPosition(tmp);
-                Player::notifyObservers(tmp);
-            }
+    if (Jumping){
+        Y+=0.05f+grav;
+        grav-=0.001f;
+        if(Y<0){
+            Falling = true;
         }
     }
-    if(isJumping){
-        if(c == LEFT){
-            std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition())-0.01f, std::get<1>(Player::getPosition())+jumpspeed);
-            Player::setPosition(tmp);
-            Player::notifyObservers(tmp);
-        }
-        else if(c == RIGHT){
-            std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition())+0.01f, std::get<1>(Player::getPosition())+jumpspeed);
-            Player::setPosition(tmp);
-            Player::notifyObservers(tmp);
-        }
-        else{
-            std::tuple<float, float> tmp = std::make_tuple(std::get<0>(Player::getPosition()), std::get<1>(Player::getPosition())+jumpspeed);
-            Player::setPosition(tmp);
-            Player::notifyObservers(tmp);
-        }
+    if(c==LEFT){
+        X -= movementspeed;
     }
+    if(c==RIGHT){
+        X += movementspeed;
+    }
+    setPosition(std::make_tuple(std::get<0>(getPosition())+X, std::get<1>(getPosition())+Y));
+    notifyObservers(getPosition());
 }
 
 void DoodleJump::Player::setCollisionPlatform(bool c) {

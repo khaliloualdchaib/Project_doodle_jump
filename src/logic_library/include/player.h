@@ -8,11 +8,11 @@
 namespace DoodleJump{
     class Player: public Entity{
     private:
-        float jumpspeed = 0.03f;
-        bool isJumping = false; //checks if the player is middle in a jump
+        const float movementspeed = 0.03f;
+        bool Jumping = false; //checks if the player is middle in a jump
         bool Falling = false; //checks if the player is falling
         bool collisionPlatform = false;
-        float maxheight = 0; //this is the y coordinate of the max height of the jump
+        float grav = 0;
     public:
 
         /*
@@ -32,7 +32,9 @@ namespace DoodleJump{
          */
         Player(float width, float height, std::tuple<float, float> pos);
 
-
+        /*
+         * Updates the player
+         */
         void update(COMMAND=NONE) override;
 
     };

@@ -36,7 +36,7 @@ namespace DoodleJump
         Random& operator = (const Random&) = delete;
 
         /*
-         * This function returns a random number
+         * This function returns a random double
          */
         double getrandomDouble(double min, double max);
 

@@ -23,6 +23,12 @@ namespace DoodleJump{
         std::map<std::string, float> GameConfigurations;
         std::shared_ptr<Observer> staticplatformObserver;
     public:
+        /*
+         * rounds a float 2 decimals
+         * got the function from the following site:
+         * https://www.geeksforgeeks.org/rounding-floating-point-number-two-decimal-places-c-c/
+         */
+        static float round_float2decimals(float f);
 
         /*
          * Getter for the set of platforms
@@ -44,6 +50,9 @@ namespace DoodleJump{
          */
         void generatePlatforms(unsigned int amount);
 
+        /*
+         *  returns true if all the logic platform rules are followed.
+         */
         bool doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p);
 
         /*

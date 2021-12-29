@@ -5,25 +5,25 @@
 #ifndef DOODLEJUMP_RANDOM_H
 #define DOODLEJUMP_RANDOM_H
 #include <memory>
+#include <random>
 
 using namespace std;
 
 namespace DoodleJump
 {
+    //https://stackoverflow.com/questions/288739/generate-random-numbers-uniformly-over-an-entire-range
     class Random{
     private:
         Random()=default;
+        std::random_device rng;
+        std::mt19937 engine{rng()};
+
     public:
 
         /*
          * Normal singleton getInstance function.
          */
         static Random& getInstance();
-
-        /*
-         * Initialise_rng initialises the random number generator
-         */
-        void initialise_rng();
 
         /*
          * If the copy constructor is called the copy is going to get deleted

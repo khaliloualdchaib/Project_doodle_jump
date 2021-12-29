@@ -25,10 +25,10 @@ void DoodleJump::Player::update(COMMAND c) {
         }
     }
     if(c==LEFT){
-        X -= movementspeed;
+        X -= accelerationX;
     }
     if(c==RIGHT){
-        X += movementspeed;
+        X += accelerationX;
     }
     setPosition(std::make_tuple(std::get<0>(getPosition())+X, std::get<1>(getPosition())+Y));
     notifyObservers(getPosition());

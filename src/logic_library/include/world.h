@@ -48,7 +48,9 @@ namespace DoodleJump{
         /*
          * Generates given amount of platforms for the begin state of the game.
          */
-        void generatePlatforms(unsigned int amount);
+        void generate_initPlatforms(unsigned int amount);
+
+        void generatestaticPlatform();
 
         /*
          *  returns true if all the logic platform rules are followed.
@@ -74,6 +76,10 @@ namespace DoodleJump{
          * checks for collision between player and platform
          */
         void collisionPlayerPlatform();
+
+        void updateWorldCamera();
+
+        unsigned int PlatformSameRowCounter();
 
     };
 }

@@ -21,7 +21,7 @@ void SFMLDoodleJump::Game::runGame() {
     shared_ptr<SFMLDoodleJump::ConcreteFactory> factory = make_shared<SFMLDoodleJump::ConcreteFactory>(SFMLDoodleJump::ConcreteFactory(window));
     DoodleJump::World world = DoodleJump::World(factory, GameConfiguration);
     world.generatePlayer();
-    world.generatePlatforms(30);
+    world.generate_initPlatforms(10);
     while (window->isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -49,6 +49,7 @@ void SFMLDoodleJump::Game::runGame() {
             else{
                 world.getPlayer()->update();
             }
+            world.updateWorldCamera();
             world.collisionPlayerPlatform();
             DoodleJump::Stopwatch::getInstance().reset();
             window->display();

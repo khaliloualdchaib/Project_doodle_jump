@@ -8,10 +8,10 @@
 namespace DoodleJump{
     class Player: public Entity{
     private:
-        const float movementspeed = 0.03f;
         bool Jumping = false; //checks if the player is middle in a jump
         bool Falling = false; //checks if the player is falling
         bool collisionPlatform = false;
+        float accelerationX = 0.06;
         float grav = 0;
     public:
 

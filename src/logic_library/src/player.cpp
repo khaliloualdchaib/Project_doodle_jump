@@ -26,9 +26,15 @@ void DoodleJump::Player::update(COMMAND c) {
     }
     if(c==LEFT){
         X -= accelerationX;
+        if(std::get<0>(getPosition())+getWidth()<-4.f){
+            setPosition(std::make_tuple(4.f, std::get<1>(getPosition())));
+        }
     }
     if(c==RIGHT){
         X += accelerationX;
+        if(std::get<0>(getPosition())>4.f){
+            setPosition(std::make_tuple(-4.f, std::get<1>(getPosition())));
+        }
     }
     setPosition(std::make_tuple(std::get<0>(getPosition())+X, std::get<1>(getPosition())+Y));
     notifyObservers(getPosition());

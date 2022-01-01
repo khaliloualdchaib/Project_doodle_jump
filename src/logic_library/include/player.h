@@ -11,7 +11,7 @@ namespace DoodleJump{
         bool Jumping = false; //checks if the player is middle in a jump
         bool Falling = false; //checks if the player is falling
         bool collisionPlatform = false;
-        float accelerationX = 0.06;
+        float accelerationX = 0.07;
         float grav = 0;
     public:
 

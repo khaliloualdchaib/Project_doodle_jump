@@ -22,13 +22,17 @@ namespace DoodleJump{
         std::shared_ptr<DoodleJump::AbstractFactory> factory;
         std::map<std::string, float> GameConfigurations;
         std::shared_ptr<Observer> staticplatformObserver;
+        unsigned int easy = 15;
+        unsigned int medium = 10;
+        unsigned int hard = 8;
+        unsigned int currentlvl = 0;
     public:
         /*
          * rounds a float 2 decimals
          * got the function from the following site:
          * https://www.geeksforgeeks.org/rounding-floating-point-number-two-decimal-places-c-c/
          */
-        static float round_float2decimals(float f);
+        inline float round_float2decimals(float f);
 
         /*
          * Getter for the set of platforms
@@ -46,11 +50,11 @@ namespace DoodleJump{
         void generatePlayer();
 
         /*
-         * Generates given amount of platforms for the begin state of the game.
+         * Generates random amount of platforms for the begin state of the game.
          */
-        void generate_initPlatforms(unsigned int amount);
+        void generate_initPlatforms();
 
-        void generatestaticPlatform();
+        void generatestaticPlatform(unsigned int difficulty);
 
         /*
          *  returns true if all the logic platform rules are followed.
@@ -79,7 +83,7 @@ namespace DoodleJump{
 
         void updateWorldCamera();
 
-        unsigned int PlatformSameRowCounter();
+        float heighestPlatform_Ypos();
 
     };
 }

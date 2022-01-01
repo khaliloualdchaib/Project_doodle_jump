@@ -159,12 +159,13 @@ void DoodleJump::World::updateWorldCamera() {
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
-            float ypos = std::get<1>(platform->getPosition())-0.05f-std::get<1>(player->getPosition());
+            float ypos = std::get<1>(platform->getPosition())-player->getInitialVelocity();
             platform->setPosition(make_tuple(xpos, ypos));
         }
-        player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-0.05-std::get<1>(player->getPosition())));
+
+        player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
         currentlvl++;
-        cout<<currentlvl<<endl;
+        //cout<<currentlvl<<endl;
         //cout<<std::get<1>(player->getPosition())<<std::endl;
 
 

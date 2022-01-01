@@ -12,7 +12,16 @@ namespace DoodleJump{
         bool Falling = false; //checks if the player is falling
         bool collisionPlatform = false;
         float accelerationX = 0.07;
-        float grav = 0;
+        float accelerationY = 0.001;
+        float initial_velocity = 0.03;
+    public:
+        float getInitialVelocity() const;
+
+    private:
+        float velocity = 2*initial_velocity;
+    public:
+        float getVelocity() const;
+
     public:
 
         /*

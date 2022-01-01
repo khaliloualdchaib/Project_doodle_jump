@@ -12,16 +12,24 @@ void DoodleJump::Player::update(COMMAND c) {
     if(!Jumping and !Falling){
         Jumping = true;
     }
-    if(collisionPlatform){
-        Falling = false;
-        Jumping = true;
-        grav = 0;
-    }
     if (Jumping){
-        Y+=0.05f+grav;
-        grav-=0.001f;
-        if(Y<0){
+        Y+=velocity;
+        velocity-=accelerationY;
+        if(velocity<0){
             Falling = true;
+            Jumping = false;
+        }
+    }
+    else{
+        if(collisionPlatform){
+            velocity = 2*initial_velocity;
+            Y = velocity;
+            Falling = false;
+            Jumping = true;
+
+        }else{
+            Y+=velocity;
+            velocity-=accelerationY;
         }
     }
     if(c==LEFT){
@@ -46,4 +54,12 @@ void DoodleJump::Player::setCollisionPlatform(bool c) {
 
 bool DoodleJump::Player::isFalling() const {
     return Falling;
+}
+
+float DoodleJump::Player::getVelocity() const {
+    return velocity;
+}
+
+float DoodleJump::Player::getInitialVelocity() const {
+    return initial_velocity;
 }

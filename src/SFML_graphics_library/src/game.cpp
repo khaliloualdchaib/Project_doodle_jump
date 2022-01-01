@@ -35,6 +35,7 @@ void SFMLDoodleJump::Game::runGame() {
         DoodleJump::Stopwatch::getInstance().tick();
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
+            world.updateWorldCamera();
             for(const auto& platform: world.getPlatforms()){
                 platform->update();
             }
@@ -49,7 +50,6 @@ void SFMLDoodleJump::Game::runGame() {
             else{
                 world.getPlayer()->update();
             }
-            world.updateWorldCamera();
             world.collisionPlayerPlatform();
             DoodleJump::Stopwatch::getInstance().reset();
             window->display();

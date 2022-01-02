@@ -8,4 +8,3 @@ DoodleJump::staticPlatform::staticPlatform(std::tuple<float, float> pos): Platfo
 void DoodleJump::staticPlatform::update(COMMAND) {
     DoodleJump::staticPlatform::notifyObservers(staticPlatform::getPosition());
 }
-

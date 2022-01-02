@@ -14,6 +14,10 @@ namespace DoodleJump{
          */
         Platform(std::tuple<float, float> pos);
 
+        virtual bool temporaryJumped() const {return false;};
+
+        virtual void settemporaryJumped(bool b){};
+
     };
 }
 #endif //DOODLEJUMP_PLATFORM_H

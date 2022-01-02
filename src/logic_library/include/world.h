@@ -22,6 +22,7 @@ namespace DoodleJump{
         std::shared_ptr<DoodleJump::AbstractFactory> factory;
         std::map<std::string, float> GameConfigurations;
         std::shared_ptr<Observer> staticplatformObserver;
+        std::shared_ptr<Observer> temporaryplatformObserver;
         unsigned int easy = 15;
         unsigned int medium = 10;
         unsigned int hard = 8;
@@ -54,7 +55,13 @@ namespace DoodleJump{
          */
         void generate_initPlatforms();
 
-        void generatestaticPlatform(unsigned int difficulty);
+        void generatePlatform(unsigned int probStatic, unsigned int probTemporary, unsigned int probHorizontal, unsigned int probVertical, unsigned int difficulty);
+
+        void generatestaticPlatform(unsigned int difficulty, std::tuple<float, float> pos);
+
+        void spreadPlatforms();
+
+        void generatetemporaryPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
         /*
          *  returns true if all the logic platform rules are followed.

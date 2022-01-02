@@ -6,6 +6,9 @@
 #include "../include/random.h"
 #include <utility>
 #include "cmath"
+#include <cassert>
+#include <vector>
+#include <algorithm>
 
 DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
     factory = std::move(a);
@@ -14,6 +17,9 @@ DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::ma
     staticplatformObserver = factory->createStaticPlatform(init_platform);
     init_platform->addObserver(staticplatformObserver);
     platforms.insert(init_platform);
+
+    std::shared_ptr<DoodleJump::temporaryPlatform> temp_platform = std::make_shared<DoodleJump::temporaryPlatform>(DoodleJump::temporaryPlatform(make_tuple(0, 0)));
+    temporaryplatformObserver = factory->createTemporaryPlatform(temp_platform);
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
@@ -48,6 +54,10 @@ void DoodleJump::World::collisionPlayerPlatform() {
                 if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
                     (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
                     player->setCollisionPlatform(true);
+                    platform->settemporaryJumped(true);
+                    if(platform->temporaryJumped()){
+                        platforms.erase(platform);
+                    }
                     return;
                 }
             }
@@ -55,6 +65,10 @@ void DoodleJump::World::collisionPlayerPlatform() {
                 if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
                     (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
                     player->setCollisionPlatform(true);
+                    platform->settemporaryJumped(true);
+                    if(platform->temporaryJumped()){
+                        platforms.erase(platform);
+                    }
                     return;
                 }
             }
@@ -105,14 +119,88 @@ float DoodleJump::World::heighestPlatform_Ypos() {
     return ypos;
 }
 
-
-void DoodleJump::World::generatestaticPlatform(unsigned int difficulty) {
+void DoodleJump::World::generatePlatform(const unsigned int probStatic, const unsigned int probTemporary, const unsigned int probHorizontal, const unsigned int probVertical, unsigned int difficulty) {
+    const unsigned int total = probStatic + probTemporary + probHorizontal + probVertical;
+    assert(total == 100);
     DoodleJump::staticPlatform dummy_platform = DoodleJump::staticPlatform(make_tuple(0, 0));
     double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0-dummy_platform.getWidth());
-    float maxheight = heighestPlatform_Ypos()+1.f;
+    float maxheight = heighestPlatform_Ypos()+1.2f;
     double ypos = DoodleJump::Random::getInstance().getrandomDouble(3.0, maxheight);
-    //cout<<"max: "<<ypos<<endl;
-    std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(std::make_tuple(xpos, ypos)));
+    unsigned int platformProb = floor(DoodleJump::Random::getInstance().getrandomDouble(1, 100));
+    //put all probabilities in list
+    vector<pair<unsigned int, std::string>> probabilities = {{probStatic, "static"}, {probTemporary, "temporary"}, {probHorizontal, "Horizontal"}, {probVertical, "Vertical"}};
+    //sort probabilities
+    std::sort(probabilities.begin(), probabilities.end());
+    //erase all probabilities equal to 0
+    unsigned int index = 0;
+    while(index<probabilities.size()){
+        if(probabilities[index].first == 0){
+            probabilities.erase(probabilities.begin()+index);
+        } else{
+            index++;
+        }
+    }
+    vector<pair<unsigned int, std::string>>  copy_prob = probabilities;
+    //calculate cumulative probability
+    for (unsigned int i = 1; i < probabilities.size(); ++i) {
+        if(probabilities[i].second != probabilities[probabilities.size()-1].second){
+            if(probabilities[i].first != probabilities[i+1].first){
+                probabilities[i+1].first += probabilities[i].first;
+            }
+        }
+        else if(probabilities.size()>1){
+            if(copy_prob[i].first != copy_prob[i-1].first){
+                probabilities[i].first += probabilities[i-1].first;
+            }
+        }
+    }
+    //determine wich platform to generate
+    std::string platformtype;
+    if(probabilities.size() == 1){
+        platformtype = probabilities[0].second;
+    }
+    else{
+        for (unsigned int i = 0; i < probabilities.size(); ++i) {
+            if(platformProb<=probabilities[i].first){
+                //determine wich platform belongs to the prob
+                if(probabilities[i].first!=probabilities[i+1].first){
+                    platformtype = probabilities[i].second;
+                    break;
+                }
+                else{
+                    if(i==probabilities.size()-1){
+                        platformtype = probabilities[i].second;
+                    }
+                    else{
+                        double choosplatform = DoodleJump::Random::getInstance().getrandomDouble(1, 3);
+                        if(choosplatform<=2){
+                            platformtype = probabilities[i].second;
+                            break;
+                        }
+                        else{
+                            platformtype = probabilities[i+1].second;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //generate the platform dertimined by the type of platform.
+    if(platformtype == "static"){
+        generatestaticPlatform(difficulty, std::make_tuple(xpos, ypos));
+    }
+    else if(platformtype == "temporary"){
+        generatetemporaryPlatform(difficulty, std::make_tuple(xpos, ypos));
+    }
+    else if(platformtype == "Horizontal"){
+    }
+    else if(platformtype == "Vertical"){
+    }
+}
+
+void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
+    std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(pos));
     if(doPlatformsCollide(platform) or platforms.size()>difficulty){
         return;
     }
@@ -120,28 +208,22 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty) {
         platform->addObserver(staticplatformObserver);
         platforms.insert(platform);
     }
-    //platform placement
+    if(difficulty == medium){
+        spreadPlatforms();
+    }
+}
+
+void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
+    std::shared_ptr<DoodleJump::temporaryPlatform> platform = std::make_shared<DoodleJump::temporaryPlatform>(DoodleJump::temporaryPlatform(pos));
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+        return;
+    }
+    else{
+        platform->addObserver(temporaryplatformObserver);
+        platforms.insert(platform);
+    }
     if(difficulty == medium or difficulty == hard){
-        for(auto& p1: platforms){
-            for(auto& p2: platforms){
-                if(std::get<1>(p1->getPosition())>3 and std::get<1>(p2->getPosition())>3){
-                    float distance = sqrt(pow(std::get<1>(p1->getPosition()), 2.f)-pow(std::get<1>(p2->getPosition()), 2.f));
-                    if(distance != 0){
-                        if(distance>1.f or distance<0.5f){
-                            if(std::get<1>(p1->getPosition())>std::get<1>(p2->getPosition())){
-                                p1->setPosition(make_tuple(std::get<0>(p1->getPosition()), std::get<1>(p2->getPosition())+1.f));
-                            }
-                            else{
-                                p2->setPosition(make_tuple(std::get<0>(p2->getPosition()), std::get<1>(p1->getPosition())+1.f));
-                            }
-                        }
-                    }
-                }
-                if(std::get<1>(p1->getPosition())== std::get<1>(p2->getPosition()) and std::get<0>(p1->getPosition())!= std::get<0>(p2->getPosition())){
-                    p1->setPosition(make_tuple(std::get<0>(p1->getPosition()), std::get<1>(p1->getPosition())+1.f));
-                }
-            }
-        }
+        spreadPlatforms();
     }
 }
 
@@ -149,13 +231,13 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty) {
 void DoodleJump::World::updateWorldCamera() {
     if(std::get<1>(player->getPosition())>=0){
         if(currentlvl<=500){
-            generatestaticPlatform(easy);
+            generatePlatform(70, 30, 0, 0, easy);
         }
         else if(currentlvl<=1000){
-            generatestaticPlatform(medium);
+            generatePlatform(70, 30, 0, 0, medium);
         }
         else{
-            generatestaticPlatform(hard);
+            generatePlatform(70, 30, 0, 0, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
@@ -165,7 +247,7 @@ void DoodleJump::World::updateWorldCamera() {
 
         player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
         currentlvl++;
-        //cout<<currentlvl<<endl;
+        cout<<currentlvl<<endl;
         //cout<<std::get<1>(player->getPosition())<<std::endl;
 
 
@@ -209,5 +291,28 @@ std::shared_ptr<DoodleJump::Player> DoodleJump::World::getPlayer() const {
 
 const std::set<std::shared_ptr<DoodleJump::Platform>> &DoodleJump::World::getPlatforms() const {
     return platforms;
+}
+
+void DoodleJump::World::spreadPlatforms() {
+    for(auto& p1: platforms){
+        for(auto& p2: platforms){
+            if(std::get<1>(p1->getPosition())>3 and std::get<1>(p2->getPosition())>3){
+                float distance = sqrt(pow(std::get<1>(p1->getPosition()), 2.f)-pow(std::get<1>(p2->getPosition()), 2.f));
+                if(distance != 0){
+                    if(distance>1.f or distance<0.5f){
+                        if(std::get<1>(p1->getPosition())>std::get<1>(p2->getPosition())){
+                            p1->setPosition(make_tuple(std::get<0>(p1->getPosition()), std::get<1>(p2->getPosition())+1.f));
+                        }
+                        else{
+                            p2->setPosition(make_tuple(std::get<0>(p2->getPosition()), std::get<1>(p1->getPosition())+1.f));
+                        }
+                    }
+                }
+            }
+            if(std::get<1>(p1->getPosition())== std::get<1>(p2->getPosition()) and std::get<0>(p1->getPosition())!= std::get<0>(p2->getPosition())){
+                p1->setPosition(make_tuple(std::get<0>(p1->getPosition()), std::get<1>(p1->getPosition())+1.f));
+            }
+        }
+    }
 }
 

@@ -30,6 +30,8 @@ namespace SFMLDoodleJump{
          */
         std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::staticPlatform>p) override;
 
+        std::shared_ptr<DoodleJump::Observer> createTemporaryPlatform(std::shared_ptr<DoodleJump::temporaryPlatform>p) override;
+
     };
 }
 

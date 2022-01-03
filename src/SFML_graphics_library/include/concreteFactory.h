@@ -34,6 +34,8 @@ namespace SFMLDoodleJump{
 
         std::shared_ptr<DoodleJump::Observer> createHorizontalPlatform(std::shared_ptr<DoodleJump::HorizontalPlatform>p) override;
 
+        std::shared_ptr<DoodleJump::Observer> createVerticalPlatform(std::shared_ptr<DoodleJump::VerticalPlatform> p) override;
+
     };
 }
 

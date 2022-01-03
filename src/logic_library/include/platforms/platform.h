@@ -19,6 +19,7 @@ namespace DoodleJump{
 
         virtual void settemporaryJumped(bool b){};
 
+        virtual bool isHorizontal(){return false;};
     };
 }
 #endif //DOODLEJUMP_PLATFORM_H

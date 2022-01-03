@@ -14,6 +14,7 @@ namespace DoodleJump{
     public:
         explicit HorizontalPlatform(const std::tuple<float, float> &pos);
         void update(COMMAND) override;
+        bool isHorizontal() override {return true;};
     };
 }
 #endif //DOODLEJUMP_HORIZONTALPLATFORM_H

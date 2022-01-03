@@ -24,6 +24,7 @@ namespace DoodleJump{
         std::shared_ptr<Observer> staticplatformObserver;
         std::shared_ptr<Observer> temporaryplatformObserver;
         std::shared_ptr<Observer> horizontalplatformObserver;
+        std::shared_ptr<Observer> verticalplatformObserver;
         unsigned int easy = 15;
         unsigned int medium = 10;
         unsigned int hard = 8;
@@ -60,11 +61,11 @@ namespace DoodleJump{
 
         void generatestaticPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
-        void spreadPlatforms();
-
         void generatetemporaryPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
         void generatehorizontalPlatform(unsigned int difficulty, std::tuple<float, float> pos);
+
+        void generateVerticalPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
         /*
          *  returns true if all the logic platform rules are followed.

@@ -7,7 +7,7 @@
 #include <utility>
 
 SFMLDoodleJump::SFMLStaticPlatform::SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w): SFMLPlatform(width, height, pos, std::move(w)) {
-    SFMLStaticPlatform::getPlatform().setFillColor(sf::Color(0, 250, 0));
+    SFMLStaticPlatform::getPlatform().setFillColor(sf::Color(0, 255, 0));
 }
 
 void SFMLDoodleJump::SFMLStaticPlatform::draw(std::tuple<float, float> pos) {

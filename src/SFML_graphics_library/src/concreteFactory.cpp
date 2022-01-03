@@ -7,6 +7,7 @@
 #include "../include/platforms/SFMLstaticPlatform.h"
 #include "../include/platforms/SFMLtemporaryPlatform.h"
 #include "../include/platforms/SFMLhorizontalPlatform.h"
+#include "../include/platforms/SFMLverticalPlatform.h"
 
 SFMLDoodleJump::ConcreteFactory::ConcreteFactory(std::shared_ptr<sf::RenderWindow> w) {
     window = std::move(w);
@@ -34,5 +35,10 @@ std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createTem
 
 std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createHorizontalPlatform(std::shared_ptr<DoodleJump::HorizontalPlatform> p) {
     std::shared_ptr<SFMLDoodleJump::SFMLHorizontalPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLHorizontalPlatform>(SFMLDoodleJump::SFMLHorizontalPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
+    return platform;
+}
+
+std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createVerticalPlatform(std::shared_ptr<DoodleJump::VerticalPlatform> p) {
+    std::shared_ptr<SFMLDoodleJump::SFMLVerticalPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLVerticalPlatform>(SFMLDoodleJump::SFMLVerticalPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
 }

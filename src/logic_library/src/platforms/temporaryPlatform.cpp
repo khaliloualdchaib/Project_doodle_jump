@@ -4,16 +4,16 @@
 
 #include "../../include/platforms/temporaryPlatform.h"
 
-bool DoodleJump::temporaryPlatform::temporaryJumped() const {
+bool DoodleJump::TemporaryPlatform::temporaryJumped() const {
     return temporaryjumped;
 }
 
-DoodleJump::temporaryPlatform::temporaryPlatform(std::tuple<float, float> pos): Platform(pos) {}
+DoodleJump::TemporaryPlatform::TemporaryPlatform(std::tuple<float, float> pos): Platform(pos) {}
 
-void DoodleJump::temporaryPlatform::update(COMMAND) {
-    DoodleJump::temporaryPlatform::notifyObservers(temporaryPlatform::getPosition());
+void DoodleJump::TemporaryPlatform::update(COMMAND) {
+    DoodleJump::TemporaryPlatform::notifyObservers(TemporaryPlatform::getPosition());
 }
 
-void DoodleJump::temporaryPlatform::settemporaryJumped(bool b) {
+void DoodleJump::TemporaryPlatform::settemporaryJumped(bool b) {
     temporaryjumped = b;
 }

@@ -8,6 +8,7 @@
 #include "player.h"
 #include "platforms/staticPlatform.h"
 #include "platforms/temporaryPlatform.h"
+#include "platforms/horizontalPlatform.h"
 #include <memory>
 #include <set>
 #include "observer_pattern/observer.h"
@@ -29,9 +30,11 @@ namespace DoodleJump{
 
         virtual std::shared_ptr<DoodleJump::Observer> createPlayer(std::shared_ptr<DoodleJump::Player> p) = 0;
 
-        virtual std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::staticPlatform> p) = 0;
+        virtual std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::StaticPlatform> p) = 0;
 
-        virtual std::shared_ptr<DoodleJump::Observer> createTemporaryPlatform(std::shared_ptr<DoodleJump::temporaryPlatform> p) = 0;
+        virtual std::shared_ptr<DoodleJump::Observer> createTemporaryPlatform(std::shared_ptr<DoodleJump::TemporaryPlatform> p) = 0;
+
+        virtual std::shared_ptr<DoodleJump::Observer> createHorizontalPlatform(std::shared_ptr<DoodleJump::HorizontalPlatform> p) = 0;
 
     };
 }

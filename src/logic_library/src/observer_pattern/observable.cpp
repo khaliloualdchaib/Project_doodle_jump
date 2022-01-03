@@ -3,7 +3,7 @@
 //
 #include "../../include/observer_pattern/observable.h"
 
-void DoodleJump::Observable::addObserver(const std::shared_ptr<Observer> observer) {
+void DoodleJump::Observable::addObserver(const std::shared_ptr<Observer>& observer) {
     Observable::observers.push_back(observer);
 }
 

@@ -6,17 +6,17 @@
 #define DOODLEJUMP_STATICPLATFORM_H
 #include "platform.h"
 namespace DoodleJump{
-    class staticPlatform: public Platform{
+    class StaticPlatform: public Platform{
     public:
         /*
          * Constructor with the same inputs as the Platform class.
          */
-        explicit staticPlatform(std::tuple<float, float> pos);
+        explicit StaticPlatform(std::tuple<float, float> pos);
 
         /*
          * update the platform
          */
-        void update(COMMAND=NONE) override;
+        void update(COMMAND) override;
     };
 }
 #endif //DOODLEJUMP_STATICPLATFORM_H

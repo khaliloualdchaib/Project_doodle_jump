@@ -6,6 +6,7 @@
 #include "../include/SFMLplayer.h"
 #include "../include/platforms/SFMLstaticPlatform.h"
 #include "../include/platforms/SFMLtemporaryPlatform.h"
+#include "../include/platforms/SFMLhorizontalPlatform.h"
 
 SFMLDoodleJump::ConcreteFactory::ConcreteFactory(std::shared_ptr<sf::RenderWindow> w) {
     window = std::move(w);
@@ -21,12 +22,17 @@ std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createPla
     return player;
 }
 
-std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createStaticPlatform(std::shared_ptr<DoodleJump::staticPlatform> p) {
-    std::shared_ptr<SFMLDoodleJump::SFMLstaticPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLstaticPlatform>(SFMLDoodleJump::SFMLstaticPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
+std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createStaticPlatform(std::shared_ptr<DoodleJump::StaticPlatform> p) {
+    std::shared_ptr<SFMLDoodleJump::SFMLStaticPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLStaticPlatform>(SFMLDoodleJump::SFMLStaticPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
 }
 
-std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createTemporaryPlatform(std::shared_ptr<DoodleJump::temporaryPlatform> p) {
-    std::shared_ptr<SFMLDoodleJump::SFMLtemporaryPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLtemporaryPlatform>(SFMLDoodleJump::SFMLtemporaryPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
+std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createTemporaryPlatform(std::shared_ptr<DoodleJump::TemporaryPlatform> p) {
+    std::shared_ptr<SFMLDoodleJump::SFMLTemporaryPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLTemporaryPlatform>(SFMLDoodleJump::SFMLTemporaryPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
+    return platform;
+}
+
+std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createHorizontalPlatform(std::shared_ptr<DoodleJump::HorizontalPlatform> p) {
+    std::shared_ptr<SFMLDoodleJump::SFMLHorizontalPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLHorizontalPlatform>(SFMLDoodleJump::SFMLHorizontalPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
 }

@@ -7,13 +7,13 @@
 #include "SFMLplatform.h"
 
 namespace SFMLDoodleJump{
-    class SFMLstaticPlatform: public SFMLPlatform{
+    class SFMLStaticPlatform: public SFMLPlatform{
     public:
 
         /*
          * Constructor that takes the same input as the SFMLPlatform class.
          */
-        SFMLstaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
+        SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
         /*
          * draw() is a function that draws the static platform on the window.

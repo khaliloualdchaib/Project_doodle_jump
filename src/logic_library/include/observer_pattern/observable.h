@@ -17,7 +17,7 @@ namespace DoodleJump{
         /*
          * addObserver adds an observer to the observers list given the observer that needs to be added.
          */
-        void addObserver(std::shared_ptr<Observer> observer);
+        void addObserver(const std::shared_ptr<Observer>& observer);
 
         /*
          * removeObserver removes an observer from the observers list given the index of the observer that needs to be removed.

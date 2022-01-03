@@ -27,7 +27,7 @@ namespace DoodleJump{
         /*
          * update is a function that updates the entity.
          */
-        virtual void update(COMMAND=NONE){};
+        virtual void update(COMMAND c){};
 
         /*
          * ~Entity is a default destructor.

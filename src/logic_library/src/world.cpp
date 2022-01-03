@@ -13,13 +13,16 @@
 DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
     factory = std::move(a);
     GameConfigurations = std::move(config);
-    std::shared_ptr<DoodleJump::staticPlatform> init_platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(std::make_tuple(GameConfigurations["PlayerX_Position"], GameConfigurations["PlayerY_Position"])));
+    std::shared_ptr<DoodleJump::StaticPlatform> init_platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(std::make_tuple(GameConfigurations["PlayerX_Position"], GameConfigurations["PlayerY_Position"])));
     staticplatformObserver = factory->createStaticPlatform(init_platform);
     init_platform->addObserver(staticplatformObserver);
     platforms.insert(init_platform);
 
-    std::shared_ptr<DoodleJump::temporaryPlatform> temp_platform = std::make_shared<DoodleJump::temporaryPlatform>(DoodleJump::temporaryPlatform(make_tuple(0, 0)));
+    std::shared_ptr<DoodleJump::TemporaryPlatform> temp_platform = std::make_shared<DoodleJump::TemporaryPlatform>(DoodleJump::TemporaryPlatform(make_tuple(0, 0)));
     temporaryplatformObserver = factory->createTemporaryPlatform(temp_platform);
+
+    std::shared_ptr<DoodleJump::HorizontalPlatform> horizontal_platform = std::make_shared<DoodleJump::HorizontalPlatform>(DoodleJump::HorizontalPlatform(std::make_tuple(0, 0)));
+    horizontalplatformObserver = factory->createHorizontalPlatform(horizontal_platform);
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
@@ -87,9 +90,9 @@ void DoodleJump::World::generate_initPlatforms() {
     unsigned int amount = floor(DoodleJump::Random::getInstance().getrandomDouble(10, 15));
     float heightcounter = -2.f;
     while (amount!=platforms.size()) {
-        DoodleJump::staticPlatform dummy_platform = DoodleJump::staticPlatform(make_tuple(0, 0));
+        DoodleJump::StaticPlatform dummy_platform = DoodleJump::StaticPlatform(make_tuple(0, 0));
         double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0-dummy_platform.getWidth());
-        std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(std::make_tuple(xpos, heightcounter)));
+        std::shared_ptr<DoodleJump::StaticPlatform> platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(std::make_tuple(xpos, heightcounter)));
         if(doPlatformsCollide(platform)){
             continue;
         } else{
@@ -122,7 +125,7 @@ float DoodleJump::World::heighestPlatform_Ypos() {
 void DoodleJump::World::generatePlatform(const unsigned int probStatic, const unsigned int probTemporary, const unsigned int probHorizontal, const unsigned int probVertical, unsigned int difficulty) {
     const unsigned int total = probStatic + probTemporary + probHorizontal + probVertical;
     assert(total == 100);
-    DoodleJump::staticPlatform dummy_platform = DoodleJump::staticPlatform(make_tuple(0, 0));
+    DoodleJump::StaticPlatform dummy_platform = DoodleJump::StaticPlatform(make_tuple(0, 0));
     double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0-dummy_platform.getWidth());
     float maxheight = heighestPlatform_Ypos()+1.2f;
     double ypos = DoodleJump::Random::getInstance().getrandomDouble(3.0, maxheight);
@@ -194,27 +197,26 @@ void DoodleJump::World::generatePlatform(const unsigned int probStatic, const un
         generatetemporaryPlatform(difficulty, std::make_tuple(xpos, ypos));
     }
     else if(platformtype == "Horizontal"){
+        generatehorizontalPlatform(difficulty, std::make_tuple(xpos, ypos));
     }
     else if(platformtype == "Vertical"){
     }
 }
 
 void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
-    std::shared_ptr<DoodleJump::staticPlatform> platform = std::make_shared<DoodleJump::staticPlatform>(DoodleJump::staticPlatform(pos));
+    std::shared_ptr<DoodleJump::StaticPlatform> platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(pos));
     if(doPlatformsCollide(platform) or platforms.size()>difficulty){
         return;
     }
     else{
+        cout<<std::get<0>(platform->getPosition())<<" "<<std::get<1>(platform->getPosition())<<endl;
         platform->addObserver(staticplatformObserver);
         platforms.insert(platform);
-    }
-    if(difficulty == medium){
-        spreadPlatforms();
     }
 }
 
 void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
-    std::shared_ptr<DoodleJump::temporaryPlatform> platform = std::make_shared<DoodleJump::temporaryPlatform>(DoodleJump::temporaryPlatform(pos));
+    std::shared_ptr<DoodleJump::TemporaryPlatform> platform = std::make_shared<DoodleJump::TemporaryPlatform>(DoodleJump::TemporaryPlatform(pos));
     if(doPlatformsCollide(platform) or platforms.size()>difficulty){
         return;
     }
@@ -222,22 +224,33 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
         platform->addObserver(temporaryplatformObserver);
         platforms.insert(platform);
     }
-    if(difficulty == medium or difficulty == hard){
-        spreadPlatforms();
+}
+
+void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
+    std::shared_ptr<DoodleJump::HorizontalPlatform> platform = std::make_shared<DoodleJump::HorizontalPlatform>(DoodleJump::HorizontalPlatform(pos));
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+        return;
+    }
+    else{
+        platform->addObserver(horizontalplatformObserver);
+        platforms.insert(platform);
     }
 }
 
 
 void DoodleJump::World::updateWorldCamera() {
+    if(currentlvl>500){
+        spreadPlatforms();
+    }
     if(std::get<1>(player->getPosition())>=0){
         if(currentlvl<=500){
-            generatePlatform(70, 30, 0, 0, easy);
+            generatePlatform(100, 0, 0, 0, easy);
         }
         else if(currentlvl<=1000){
-            generatePlatform(70, 30, 0, 0, medium);
+            generatePlatform(60, 10, 30, 0, medium);
         }
         else{
-            generatePlatform(70, 30, 0, 0, hard);
+            generatePlatform(60, 10, 30, 0, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
@@ -246,8 +259,8 @@ void DoodleJump::World::updateWorldCamera() {
         }
 
         player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
-        currentlvl++;
-        cout<<currentlvl<<endl;
+        //currentlvl++;
+        //cout<<currentlvl<<endl;
         //cout<<std::get<1>(player->getPosition())<<std::endl;
 
 

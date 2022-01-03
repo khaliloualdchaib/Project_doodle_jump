@@ -6,13 +6,13 @@
 #define DOODLEJUMP_TEMPORARYPLATFORM_H
 #include "platform.h"
 namespace DoodleJump{
-    class temporaryPlatform: public Platform{
+    class TemporaryPlatform: public Platform{
     private:
         bool temporaryjumped = false;
     public:
         bool temporaryJumped() const override;
-        explicit temporaryPlatform(std::tuple<float, float> pos);
-        void update(COMMAND=NONE) override;
+        explicit TemporaryPlatform(std::tuple<float, float> pos);
+        void update(COMMAND) override;
         void  settemporaryJumped(bool b) override;
     };
 }

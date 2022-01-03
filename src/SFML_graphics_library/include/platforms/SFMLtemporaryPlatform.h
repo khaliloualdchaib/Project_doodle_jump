@@ -6,9 +6,9 @@
 #define DOODLEJUMP_SFMLTEMPORARYPLATFORM_H
 #include "SFMLplatform.h"
 namespace SFMLDoodleJump{
-    class SFMLtemporaryPlatform: public SFMLPlatform{
+    class SFMLTemporaryPlatform: public SFMLPlatform{
     public:
-        SFMLtemporaryPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
+        SFMLTemporaryPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
         void draw(std::tuple<float, float> pos) override;
         void HandleEvent(std::tuple<float, float> nextpos) override;
     };

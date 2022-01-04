@@ -9,7 +9,6 @@ namespace SFMLDoodleJump{
     class SFMLTemporaryPlatform: public SFMLPlatform{
     public:
         SFMLTemporaryPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
-        void draw(std::tuple<float, float> pos) override;
         void HandleEvent(std::tuple<float, float> nextpos) override;
     };
 }

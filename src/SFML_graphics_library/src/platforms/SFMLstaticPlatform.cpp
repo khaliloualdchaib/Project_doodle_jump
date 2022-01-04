@@ -10,12 +10,6 @@ SFMLDoodleJump::SFMLStaticPlatform::SFMLStaticPlatform(float width, float height
     SFMLStaticPlatform::getPlatform().setFillColor(sf::Color(0, 255, 0));
 }
 
-void SFMLDoodleJump::SFMLStaticPlatform::draw(std::tuple<float, float> pos) {
-    std::tuple<float, float> pixelco = SFMLPlatform::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos));
-    SFMLStaticPlatform::getPlatform().setPosition(std::get<0>(pixelco), std::get<1>(pixelco));
-    SFMLStaticPlatform::getWindow()->draw(SFMLStaticPlatform::getPlatform());
-}
-
 void SFMLDoodleJump::SFMLStaticPlatform::HandleEvent(std::tuple<float, float> nextpos) {
     draw(nextpos);
 }

@@ -12,3 +12,9 @@ SFMLDoodleJump::SFMLPlatform::SFMLPlatform(float width, float height, std::tuple
 sf::RectangleShape &SFMLDoodleJump::SFMLPlatform::getPlatform() {
     return platform;
 }
+
+void SFMLDoodleJump::SFMLPlatform::draw(std::tuple<float, float> pos) {
+    std::tuple<float, float> pixelco = SFMLPlatform::getCamera()->Transformation(std::get<0>(pos), std::get<1>(pos));
+    SFMLPlatform::getPlatform().setPosition(std::get<0>(pixelco), std::get<1>(pixelco));
+    SFMLPlatform::getWindow()->draw(SFMLPlatform::getPlatform());
+}

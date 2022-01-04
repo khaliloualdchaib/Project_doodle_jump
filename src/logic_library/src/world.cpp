@@ -95,23 +95,12 @@ void DoodleJump::World::generatePlayer() {
 
 void DoodleJump::World::generate_initPlatforms() {
     unsigned int amount = floor(DoodleJump::Random::getInstance().getrandomDouble(10, 15));
-    float heightcounter = -2.f;
+
     while (amount!=platforms.size()) {
         DoodleJump::StaticPlatform dummy_platform = DoodleJump::StaticPlatform(make_tuple(0, 0));
         double xpos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0-dummy_platform.getWidth());
-        std::shared_ptr<DoodleJump::StaticPlatform> platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(std::make_tuple(xpos, heightcounter)));
-        if(doPlatformsCollide(platform)){
-            continue;
-        } else{
-            platform->addObserver(staticplatformObserver);
-            platforms.insert(platform);
-        }
-        if(heightcounter>=3){
-            heightcounter = -2.f;
-        }
-        else{
-            heightcounter=heightcounter+0.5f;
-        }
+        double ypos = DoodleJump::Random::getInstance().getrandomDouble(-4.0, 4.0);
+        generatestaticPlatform(easy, std::make_tuple(xpos, ypos));
     }
 }
 
@@ -150,36 +139,52 @@ void DoodleJump::World::generatePlatform(const unsigned int probStatic, const un
             index++;
         }
     }
-    vector<pair<unsigned int, std::string>>  copy_prob = probabilities;
-    //calculate cumulative probability
-    for (unsigned int i = 1; i < probabilities.size(); ++i) {
-        if(probabilities[i].second != probabilities[probabilities.size()-1].second){
-            if(probabilities[i].first != probabilities[i+1].first){
-                probabilities[i+1].first += probabilities[i].first;
-            }
-        }
-        else if(probabilities.size()>1){
-            if(copy_prob[i].first != copy_prob[i-1].first){
-                probabilities[i].first += probabilities[i-1].first;
-            }
-        }
-    }
     //determine wich platform to generate
     std::string platformtype;
-    if(probabilities.size() == 1){
-        platformtype = probabilities[0].second;
+    if(probStatic == probTemporary and probTemporary == probHorizontal and probHorizontal == probVertical){
+        int rng = floor(DoodleJump::Random::getInstance().getrandomDouble(1, 4));
+        if(rng == 1){
+            platformtype = "static";
+        }
+        else if(rng == 2){
+            platformtype = "temporary";
+        }
+        else if(rng == 3){
+            platformtype = "Horizontal";
+        }
+        else if(rng == 4){
+            platformtype = "Vertical";
+        }
     }
     else{
-        for (unsigned int i = 0; i < probabilities.size(); ++i) {
-            if(platformProb<=probabilities[i].first){
-                //determine wich platform belongs to the prob
-                if(probabilities[i].first!=probabilities[i+1].first){
-                    platformtype = probabilities[i].second;
-                    break;
+        vector<pair<unsigned int, std::string>>  copy_prob = probabilities;
+        //calculate cumulative probability
+        for (unsigned int i = 1; i < probabilities.size(); ++i) {
+            if(probabilities[i].second != probabilities[probabilities.size()-1].second){
+                if(probabilities[i].first != probabilities[i+1].first){
+                    probabilities[i+1].first += probabilities[i].first;
                 }
-                else{
+            }
+            else if(probabilities.size()>1){
+                if(copy_prob[i].first != copy_prob[i-1].first){
+                    probabilities[i].first += probabilities[i-1].first;
+                }
+            }
+        }
+        if(probabilities.size() == 1){
+            platformtype = probabilities[0].second;
+        }
+        else{
+            for (unsigned int i = 0; i < probabilities.size(); ++i) {
+                if(platformProb<=probabilities[i].first){
+                    //determine wich platform belongs to the prob
                     if(i==probabilities.size()-1){
                         platformtype = probabilities[i].second;
+                        break;
+                    }
+                    if(probabilities[i].first!=probabilities[i+1].first){
+                        platformtype = probabilities[i].second;
+                        break;
                     }
                     else{
                         double choosplatform = DoodleJump::Random::getInstance().getrandomDouble(1, 3);
@@ -257,14 +262,14 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
 
 void DoodleJump::World::updateWorldCamera() {
     if(std::get<1>(player->getPosition())>=0){
-        if(currentlvl<=500){
-            generatePlatform(35, 35, 30, 0, easy);
+        if(currentlvl<=2000){
+            generatePlatform(40, 30, 30, 0, easy);
         }
-        else if(currentlvl<=1000){
+        else if(currentlvl<=3000){
             generatePlatform(25, 25, 25, 25, medium);
         }
         else{
-            generatePlatform(0, 35, 35, 30, hard);
+            generatePlatform(0, 50, 35, 15, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
@@ -278,7 +283,10 @@ void DoodleJump::World::updateWorldCamera() {
     set<shared_ptr<DoodleJump::Platform>> copy_Platforms = platforms;
     for(auto& platform: copy_Platforms){
         float ypos = std::get<1>(platform->getPosition());
-        if(ypos<-3){
+        if(ypos<-3 and !platform->isVertical()){
+            platforms.erase(platform);
+        }
+        else if(ypos<=-3-platform->getMaxHeight()){
             platforms.erase(platform);
         }
     }
@@ -335,10 +343,10 @@ bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Pla
         std::tuple<float, float> toprightcornerp2 = std::get<1>(topcornersPlatform2);
         std::tuple<float, float> bottomleftcornerp2 = std::get<0>(bottomcornersPlatform2);
         if(p->isHorizontal()){
-            if(std::get<1>(topleftcornerp1)>=std::get<1>(topleftcornerp2) and std::get<1>(bottomleftcornerp1)<=std::get<1>(bottomleftcornerp2)){
+            if(std::get<1>(topleftcornerp1)>=std::get<1>(bottomleftcornerp2) and std::get<1>(topleftcornerp1)<=std::get<1>(topleftcornerp2)){
                 return true;
             }
-            if(std::get<1>(topleftcornerp2)>=std::get<1>(topleftcornerp1) and std::get<1>(bottomleftcornerp2)<=std::get<1>(bottomleftcornerp1)){
+            if(std::get<1>(bottomleftcornerp1)<=std::get<1>(topleftcornerp2) and std::get<1>(bottomleftcornerp2)<=std::get<1>(bottomleftcornerp1)){
                 return true;
             }
         }

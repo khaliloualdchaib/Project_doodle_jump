@@ -25,9 +25,9 @@ namespace DoodleJump{
         std::shared_ptr<Observer> temporaryplatformObserver;
         std::shared_ptr<Observer> horizontalplatformObserver;
         std::shared_ptr<Observer> verticalplatformObserver;
-        unsigned int easy = 15;
-        unsigned int medium = 10;
-        unsigned int hard = 8;
+        unsigned int easy = 12;
+        unsigned int medium = 8;
+        unsigned int hard = 6;
         unsigned int currentlvl = 0;
     public:
         /*

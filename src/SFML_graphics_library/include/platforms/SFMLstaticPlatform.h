@@ -16,11 +16,6 @@ namespace SFMLDoodleJump{
         SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
         /*
-         * draw() is a function that draws the static platform on the window.
-         */
-        void draw(std::tuple<float, float> pos = std::make_tuple(1000, 1000)) override;
-
-        /*
          * HandleEvent function
          */
         void HandleEvent(std::tuple<float, float> nextpos) override;

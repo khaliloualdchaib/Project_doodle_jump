@@ -2,10 +2,20 @@
 // Created by khalil on 1/3/22.
 //
 #include "../../include/platforms/verticalPlatform.h"
+#include "../../include/random.h"
 
 DoodleJump::VerticalPlatform::VerticalPlatform(const std::tuple<float, float> &pos) : Platform(pos){}
 
 void DoodleJump::VerticalPlatform::update(COMMAND c) {
+    if(!goUP and !goDOWN){
+        double rng = DoodleJump::Random::getInstance().getrandomDouble(0, 2);
+        if(rng>=1){
+            goDOWN = true;
+        }
+        else{
+            goUP = true;
+        }
+    }
     if(heightcounter >= maxheight){
         goDOWN = true;
         goUP = false;

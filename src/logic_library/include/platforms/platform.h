@@ -20,6 +20,11 @@ namespace DoodleJump{
         virtual void settemporaryJumped(bool b){};
 
         virtual bool isHorizontal(){return false;};
+
+        virtual bool isVertical(){return false;};
+
+        virtual float getMaxHeight(){return 0;};
+
     };
 }
 #endif //DOODLEJUMP_PLATFORM_H

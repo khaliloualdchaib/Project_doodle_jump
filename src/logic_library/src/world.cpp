@@ -213,7 +213,7 @@ void DoodleJump::World::generatePlatform(const unsigned int probStatic, const un
 
 void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
     std::shared_ptr<DoodleJump::StaticPlatform> platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(pos));
-    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty or arePlatforms2close(platform)){
         return;
     }
     else{
@@ -224,7 +224,7 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tup
 
 void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
     std::shared_ptr<DoodleJump::TemporaryPlatform> platform = std::make_shared<DoodleJump::TemporaryPlatform>(DoodleJump::TemporaryPlatform(pos));
-    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty or arePlatforms2close(platform)){
         return;
     }
     else{
@@ -235,7 +235,7 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
 
 void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
     std::shared_ptr<DoodleJump::HorizontalPlatform> platform = std::make_shared<DoodleJump::HorizontalPlatform>(DoodleJump::HorizontalPlatform(pos));
-    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty or arePlatforms2close(platform)){
         return;
     }
     else{
@@ -246,7 +246,7 @@ void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std:
 
 void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::tuple<float, float> pos) {
     std::shared_ptr<DoodleJump::VerticalPlatform> platform = std::make_shared<DoodleJump::VerticalPlatform>(DoodleJump::VerticalPlatform(pos));
-    if(doPlatformsCollide(platform) or platforms.size()>difficulty){
+    if(doPlatformsCollide(platform) or platforms.size()>difficulty or arePlatforms2close(platform)){
         return;
     }
     else{
@@ -258,25 +258,22 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
 void DoodleJump::World::updateWorldCamera() {
     if(std::get<1>(player->getPosition())>=0){
         if(currentlvl<=500){
-            generatePlatform(0, 0, 0, 100, easy);
+            generatePlatform(35, 35, 30, 0, easy);
         }
         else if(currentlvl<=1000){
-            generatePlatform(0, 0, 0, 100, medium);
+            generatePlatform(25, 25, 25, 25, medium);
         }
         else{
-            generatePlatform(0, 0, 0, 100, hard);
+            generatePlatform(0, 35, 35, 30, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
             float ypos = std::get<1>(platform->getPosition())-player->getInitialVelocity();
             platform->setPosition(make_tuple(xpos, ypos));
         }
-
         player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
-        //currentlvl++;
+        currentlvl++;
         cout<<currentlvl<<endl;
-        //cout<<std::get<1>(player->getPosition())<<std::endl;
-
     }
     set<shared_ptr<DoodleJump::Platform>> copy_Platforms = platforms;
     for(auto& platform: copy_Platforms){
@@ -285,6 +282,42 @@ void DoodleJump::World::updateWorldCamera() {
             platforms.erase(platform);
         }
     }
+}
+
+bool DoodleJump::World::arePlatforms2close(const std::shared_ptr<DoodleJump::Platform> &p) {
+    std::tuple<std::tuple<float, float>, std::tuple<float, float>>  topcornersPlatform = getTopCorners(*p);
+    std::tuple<std::tuple<float, float>, std::tuple<float, float>> bottomcornersPlatform = getBottomCorners(*p);
+    std::tuple<float, float> topleftcornerp1 = std::get<0>(topcornersPlatform);
+    std::tuple<float, float> toprightcornerp1 = std::get<1>(topcornersPlatform);
+    std::tuple<float, float> bottomleftcornerp1 = std::get<0>(bottomcornersPlatform);
+    std::tuple<float, float> bottomrightcornerp1 = std::get<1>(bottomcornersPlatform);
+    set<std::tuple<float, float>> setOFcorners = {topleftcornerp1, toprightcornerp1, bottomleftcornerp1, bottomrightcornerp1};
+    for (const auto& platform: platforms) {
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> topcornersPlatform2 = getTopCorners(*platform);
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> bottomcornersPlatform2 = getBottomCorners(
+                *platform);
+        std::tuple<float, float> topleftcornerp2 = std::get<0>(topcornersPlatform2);
+        std::tuple<float, float> toprightcornerp2 = std::get<1>(topcornersPlatform2);
+        std::tuple<float, float> bottomleftcornerp2 = std::get<0>(bottomcornersPlatform2);
+        std::tuple<float, float> bottomrightcornerp2 = std::get<1>(bottomcornersPlatform2);
+        for (auto corner: setOFcorners) {
+            //distance from the 4 corners to a the other platform its corners.
+            float distance1 = sqrt(std::pow(std::get<0>(topleftcornerp2) - std::get<0>(corner), 2) +
+                                   std::pow(std::get<1>(topleftcornerp2) - std::get<1>(corner), 2));
+            float distance2 = sqrt(std::pow(std::get<0>(toprightcornerp2) - std::get<0>(corner), 2) +
+                                   std::pow(std::get<1>(toprightcornerp2) - std::get<1>(corner), 2));
+            float distance3 = sqrt(std::pow(std::get<0>(bottomleftcornerp2) - std::get<0>(corner), 2) +
+                                   std::pow(std::get<1>(bottomleftcornerp2) - std::get<1>(corner), 2));
+            float distance4 = sqrt(std::pow(std::get<0>(bottomrightcornerp2) - std::get<0>(corner), 2) +
+                                   std::pow(std::get<1>(bottomrightcornerp2) - std::get<1>(corner), 2));
+            //check if all these distances are smaller then the platform width if they are smaller, it means the platforms are to close to each other.
+            if (distance1 <= platform->getWidth() or distance2 <= platform->getWidth() or
+                distance3 <= platform->getWidth() or distance4 <= platform->getWidth()) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p) {
@@ -301,23 +334,19 @@ bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Pla
         std::tuple<float, float> topleftcornerp2 = std::get<0>(topcornersPlatform2);
         std::tuple<float, float> toprightcornerp2 = std::get<1>(topcornersPlatform2);
         std::tuple<float, float> bottomleftcornerp2 = std::get<0>(bottomcornersPlatform2);
-        std::tuple<float, float> bottomrightcornerp2 = std::get<1>(bottomcornersPlatform2);
-        for(auto corner: setOFcorners){
-            //distance from the 4 corners to a the other platform its corners.
-            float distance1 = sqrt(std::pow(std::get<0>(topleftcornerp2)-std::get<0>(corner), 2) + std::pow(std::get<1>(topleftcornerp2)-std::get<1>(corner), 2));
-            float distance2 = sqrt(std::pow(std::get<0>(toprightcornerp2)-std::get<0>(corner), 2) + std::pow(std::get<1>(toprightcornerp2)-std::get<1>(corner), 2));
-            float distance3 = sqrt(std::pow(std::get<0>(bottomleftcornerp2)-std::get<0>(corner), 2) + std::pow(std::get<1>(bottomleftcornerp2)-std::get<1>(corner), 2));
-            float distance4 = sqrt(std::pow(std::get<0>(bottomrightcornerp2)-std::get<0>(corner), 2) + std::pow(std::get<1>(bottomrightcornerp2)-std::get<1>(corner), 2));
-            if(distance1<=platform->getWidth() or distance2<=platform->getWidth() or distance3<=platform->getWidth()  or distance4<=platform->getWidth()){
-                return true;
-            }
-        }
         if(p->isHorizontal()){
             if(std::get<1>(topleftcornerp1)>=std::get<1>(topleftcornerp2) and std::get<1>(bottomleftcornerp1)<=std::get<1>(bottomleftcornerp2)){
                 return true;
             }
             if(std::get<1>(topleftcornerp2)>=std::get<1>(topleftcornerp1) and std::get<1>(bottomleftcornerp2)<=std::get<1>(bottomleftcornerp1)){
                 return true;
+            }
+        }
+        if(p->isVertical()){
+            if(std::get<0>(topleftcornerp1)<=std::get<0>(topleftcornerp2) and std::get<0>(toprightcornerp1)>=std::get<0>(toprightcornerp2)){
+                if(std::get<1>(topleftcornerp1)+p->getMaxHeight()>= std::get<1>(topleftcornerp2) and  std::get<1>(topleftcornerp1)-p->getMaxHeight()<= std::get<1>(topleftcornerp2)){
+                    return true;
+                }
             }
         }
     }

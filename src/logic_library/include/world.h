@@ -72,6 +72,8 @@ namespace DoodleJump{
          */
         bool doPlatformsCollide(const std::shared_ptr<DoodleJump::Platform>& p);
 
+        bool arePlatforms2close(const std::shared_ptr<DoodleJump::Platform>& p);
+
         /*
          * Constructor
          */

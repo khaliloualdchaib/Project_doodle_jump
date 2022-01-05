@@ -16,11 +16,11 @@ void DoodleJump::VerticalPlatform::update(COMMAND c) {
             goUP = true;
         }
     }
-    if(heightcounter >= maxheight){
+    else if(heightcounter >= maxheight){
         goDOWN = true;
         goUP = false;
     }
-    if(heightcounter <= 0 ){
+    else if(heightcounter <= 0 ){
         goDOWN = false;
         goUP = true;
     }

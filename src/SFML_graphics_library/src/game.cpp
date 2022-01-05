@@ -20,7 +20,6 @@ void SFMLDoodleJump::Game::runGame() {
     shared_ptr<DoodleJump::Camera> camera = make_shared<DoodleJump::Camera>(DoodleJump::Camera(windowConfiguration["Width"], windowConfiguration["Height"]));
     shared_ptr<SFMLDoodleJump::ConcreteFactory> factory = make_shared<SFMLDoodleJump::ConcreteFactory>(SFMLDoodleJump::ConcreteFactory(window));
     DoodleJump::World world = DoodleJump::World(factory, GameConfiguration);
-    world.generatePlayer();
     world.generate_initPlatforms();
     while (window->isOpen())
     {

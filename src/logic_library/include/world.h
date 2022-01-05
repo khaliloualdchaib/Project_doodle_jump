@@ -26,7 +26,7 @@ namespace DoodleJump{
         std::shared_ptr<Observer> horizontalplatformObserver;
         std::shared_ptr<Observer> verticalplatformObserver;
         unsigned int easy = 12;
-        unsigned int medium = 8;
+        unsigned int medium = 9;
         unsigned int hard = 6;
         unsigned int currentlvl = 0;
     public:
@@ -46,11 +46,6 @@ namespace DoodleJump{
          * Getter for the player
          */
         std::shared_ptr<DoodleJump::Player> getPlayer() const;
-
-        /*
-         * Generates the player
-         */
-        void generatePlayer();
 
         /*
          * Generates random amount of platforms for the begin state of the game.

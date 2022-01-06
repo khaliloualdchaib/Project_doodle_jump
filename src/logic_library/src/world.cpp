@@ -42,6 +42,10 @@ DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::ma
     tiles[0] = std::make_shared<DoodleJump::bg_Tile>(DoodleJump::bg_Tile(make_tuple(-4, 3+t->getHeight())));
     tiles[1]->addObserver(bgTileObserver);
     tiles[0]->addObserver(bgTileObserver);
+
+    //Initialising spring observer.
+    std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(0, 0)));
+    springObserver = factory->createSpring(spring);
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
@@ -120,7 +124,6 @@ void DoodleJump::World::generate_initPlatforms() {
         }
     }
 }
-
 
 float DoodleJump::World::heighestPlatform_Ypos() {
     float ypos = -1;
@@ -293,9 +296,14 @@ void DoodleJump::World::updateWorldCamera() {
             float ypos = std::get<1>(platform->getPosition())-player->getInitialVelocity();
             platform->setPosition(make_tuple(xpos, ypos));
         }
+        for(const auto& bonus: bonusList){
+            float xpos = std::get<0>(bonus->getPosition());
+            float ypos = std::get<1>(bonus->getPosition())-player->getInitialVelocity();
+            bonus->setPosition(make_tuple(xpos, ypos));
+        }
         player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
         currentlvl++;
-        cout<<currentlvl<<endl;
+        //cout<<currentlvl<<endl;
     }
     set<shared_ptr<DoodleJump::Platform>> copy_Platforms = platforms;
     for(auto& platform: copy_Platforms){
@@ -399,5 +407,23 @@ void DoodleJump::World::updateTiles() {
     else{
         tiles[1]->update(NONE);
         tiles[0]->update(NONE);
+    }
+}
+
+void DoodleJump::World::generateSprings() {
+    for(const auto& platform: platforms){
+        float xpos = std::get<0>(platform->getPosition());
+        float ypos = std::get<1>(platform->getPosition());
+        if(ypos>3){
+            std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(xpos, ypos+player->getHeight())));
+            spring->addObserver(springObserver);
+            bonusList.insert(spring);
+        }
+    }
+}
+
+void DoodleJump::World::updateBonus() {
+    for(const auto& bonus: bonusList){
+        bonus->update(NONE);
     }
 }

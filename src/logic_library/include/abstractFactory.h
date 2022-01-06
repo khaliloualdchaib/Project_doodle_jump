@@ -10,6 +10,7 @@
 #include "platforms/temporaryPlatform.h"
 #include "platforms/horizontalPlatform.h"
 #include "platforms/verticalPlatform.h"
+#include "bonus/spring.h"
 #include "bg_tile.h"
 #include <memory>
 #include <set>
@@ -42,6 +43,7 @@ namespace DoodleJump{
 
         virtual std::shared_ptr<DoodleJump::Observer> createbgTile(std::shared_ptr<DoodleJump::bg_Tile> b) = 0;
 
+        virtual std::shared_ptr<DoodleJump::Observer> createSpring(std::shared_ptr<DoodleJump::Spring> s) = 0;
     };
 }
 #endif //DOODLEJUMP_ABSTRACTFACTORY_H

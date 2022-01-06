@@ -6,9 +6,8 @@
 #include "../../logic_library/include/camera.h"
 #include "../include/platforms/SFMLstaticPlatform.h"
 #include "../../logic_library/include/world.h"
-#include "../../logic_library/include/camera.h"
-#include "../../logic_library/include/platforms/staticPlatform.h"
 #include "../include/concreteFactory.h"
+#include "../include/bonus/SFMLspring.h"
 
 SFMLDoodleJump::Game::Game(const std::map<std::string, unsigned int>& windowconf, const std::map<std::string, float>& config) {
     windowConfiguration = windowconf;
@@ -36,6 +35,8 @@ void SFMLDoodleJump::Game::runGame() {
             window->clear(sf::Color::Black);
             world.updateWorldCamera();
             world.updateTiles();
+            world.generateSprings();
+            world.updateBonus();
             for(const auto& platform: world.getPlatforms()){
                 platform->update(NONE);
             }

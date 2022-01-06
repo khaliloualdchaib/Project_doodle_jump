@@ -14,6 +14,7 @@ namespace SFMLDoodleJump{
         std::shared_ptr<sf::RenderWindow> window;
         sf::Texture playerTexture;
         sf::Texture tileTexture;
+        sf::Texture springTexture;
     public:
 
         /*
@@ -38,6 +39,8 @@ namespace SFMLDoodleJump{
         std::shared_ptr<DoodleJump::Observer> createVerticalPlatform(std::shared_ptr<DoodleJump::VerticalPlatform> p) override;
 
         std::shared_ptr<DoodleJump::Observer> createbgTile(std::shared_ptr<DoodleJump::bg_Tile> b) override;
+
+        std::shared_ptr<DoodleJump::Observer> createSpring(std::shared_ptr<DoodleJump::Spring> s) override;
 
     };
 }

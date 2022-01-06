@@ -12,6 +12,7 @@
 #include "player.h"
 #include "bg_tile.h"
 #include "platforms/platform.h"
+#include "bonus/bonus.h"
 #include "abstractFactory.h"
 #include <map>
 
@@ -20,14 +21,17 @@ namespace DoodleJump{
     private:
         std::shared_ptr<DoodleJump::Player> player;
         std::set<std::shared_ptr<Platform>> platforms;
+        std::set<std::shared_ptr<Bonus>> bonusList;
         std::shared_ptr<DoodleJump::AbstractFactory> factory;
         std::map<std::string, float> GameConfigurations;
         std::shared_ptr<Observer> staticplatformObserver;
         std::shared_ptr<Observer> temporaryplatformObserver;
         std::shared_ptr<Observer> horizontalplatformObserver;
         std::shared_ptr<Observer> verticalplatformObserver;
+        std::shared_ptr<Observer> springObserver;
         std::shared_ptr<Observer> bgTileObserver;
         std::shared_ptr<bg_Tile> tiles[2];
+
         unsigned int easy = 12;
         unsigned int medium = 9;
         unsigned int hard = 6;
@@ -68,6 +72,8 @@ namespace DoodleJump{
 
         void generateVerticalPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
+        void generateSprings();
+
         /*
          *  returns true if all the logic platform rules are followed.
          */
@@ -99,6 +105,7 @@ namespace DoodleJump{
 
         float heighestPlatform_Ypos();
 
+        void updateBonus();
     };
 }
 #endif //DOODLEJUMP_WORLD_H

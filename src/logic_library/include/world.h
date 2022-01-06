@@ -10,6 +10,7 @@
 #include <iostream>
 #include "entity.h"
 #include "player.h"
+#include "bg_tile.h"
 #include "platforms/platform.h"
 #include "abstractFactory.h"
 #include <map>
@@ -25,11 +26,16 @@ namespace DoodleJump{
         std::shared_ptr<Observer> temporaryplatformObserver;
         std::shared_ptr<Observer> horizontalplatformObserver;
         std::shared_ptr<Observer> verticalplatformObserver;
+        std::shared_ptr<Observer> bgTileObserver;
+        std::shared_ptr<bg_Tile> tiles[2];
         unsigned int easy = 12;
         unsigned int medium = 9;
         unsigned int hard = 6;
         unsigned int currentlvl = 0;
     public:
+
+        void updateTiles();
+
         /*
          * rounds a float 2 decimals
          * got the function from the following site:

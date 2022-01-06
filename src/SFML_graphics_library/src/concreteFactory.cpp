@@ -8,14 +8,20 @@
 #include "../include/platforms/SFMLtemporaryPlatform.h"
 #include "../include/platforms/SFMLhorizontalPlatform.h"
 #include "../include/platforms/SFMLverticalPlatform.h"
+#include "../include/SFMLbg_tile.h"
 
 SFMLDoodleJump::ConcreteFactory::ConcreteFactory(std::shared_ptr<sf::RenderWindow> w) {
     window = std::move(w);
-    sf::Texture texture;
-    if(!texture.loadFromFile("sprites/doodleRight.png")){
+    sf::Texture ptexture;
+    sf::Texture tileText;
+    if(!ptexture.loadFromFile("sprites/doodleRight.png")){
         std::cout<<"doodleRight.png not found"<<std::endl;
     }
-    playerTexture = texture;
+    if(!tileText.loadFromFile("sprites/background.png")){
+        std::cout<<"background.png not found"<<std::endl;
+    }
+    playerTexture = ptexture;
+    tileTexture = tileText;
 }
 
 std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createPlayer(const std::shared_ptr<DoodleJump::Player> p) {
@@ -41,4 +47,9 @@ std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createHori
 std::shared_ptr<DoodleJump::Observer> SFMLDoodleJump::ConcreteFactory::createVerticalPlatform(std::shared_ptr<DoodleJump::VerticalPlatform> p) {
     std::shared_ptr<SFMLDoodleJump::SFMLVerticalPlatform> platform = std::make_shared<SFMLDoodleJump::SFMLVerticalPlatform>(SFMLDoodleJump::SFMLVerticalPlatform(p->getWidth(), p->getHeight(), p->getPosition(), window));
     return platform;
+}
+
+std::shared_ptr<DoodleJump::Observer>SFMLDoodleJump::ConcreteFactory::createbgTile(std::shared_ptr<DoodleJump::bg_Tile> b) {
+    std::shared_ptr<SFMLDoodleJump::SFMLbg_Tile> tile = std::make_shared<SFMLDoodleJump::SFMLbg_Tile>(SFMLDoodleJump::SFMLbg_Tile(b->getWidth(), b->getWidth(), b->getPosition(), window, tileTexture));
+    return tile;
 }

@@ -14,11 +14,6 @@ namespace SFMLDoodleJump{
          * Constructor that takes the same input as the SFMLPlatform class.
          */
         SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
-
-        /*
-         * HandleEvent function
-         */
-        void HandleEvent(std::tuple<float, float> nextpos) override;
     };
 }
 #endif //DOODLEJUMP_SFMLSTATICPLATFORM_H

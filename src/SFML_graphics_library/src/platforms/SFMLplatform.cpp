@@ -18,3 +18,7 @@ void SFMLDoodleJump::SFMLPlatform::draw(std::tuple<float, float> pos) {
     SFMLPlatform::getPlatform().setPosition(std::get<0>(pixelco), std::get<1>(pixelco));
     SFMLPlatform::getWindow()->draw(SFMLPlatform::getPlatform());
 }
+
+void SFMLDoodleJump::SFMLPlatform::HandleEvent(std::tuple<float, float> nextpos) {
+    draw(nextpos);
+}

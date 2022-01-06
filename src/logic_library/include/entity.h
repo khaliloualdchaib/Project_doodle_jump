@@ -9,7 +9,7 @@
 #include <set>
 #include "camera.h"
 
-enum COMMAND{LEFT, RIGHT, UP, DOWN, NONE};
+enum COMMAND{LEFT, RIGHT, NONE, MOVE};
 
 namespace DoodleJump{
     class Entity: public Observable{

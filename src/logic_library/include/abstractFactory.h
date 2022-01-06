@@ -10,6 +10,7 @@
 #include "platforms/temporaryPlatform.h"
 #include "platforms/horizontalPlatform.h"
 #include "platforms/verticalPlatform.h"
+#include "bg_tile.h"
 #include <memory>
 #include <set>
 #include "observer_pattern/observer.h"
@@ -38,6 +39,8 @@ namespace DoodleJump{
         virtual std::shared_ptr<DoodleJump::Observer> createHorizontalPlatform(std::shared_ptr<DoodleJump::HorizontalPlatform> p) = 0;
 
         virtual std::shared_ptr<DoodleJump::Observer> createVerticalPlatform(std::shared_ptr<DoodleJump::VerticalPlatform> p) = 0;
+
+        virtual std::shared_ptr<DoodleJump::Observer> createbgTile(std::shared_ptr<DoodleJump::bg_Tile> b) = 0;
 
     };
 }

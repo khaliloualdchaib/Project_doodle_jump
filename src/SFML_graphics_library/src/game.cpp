@@ -35,6 +35,7 @@ void SFMLDoodleJump::Game::runGame() {
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
             world.updateWorldCamera();
+            world.updateTiles();
             for(const auto& platform: world.getPlatforms()){
                 platform->update(NONE);
             }

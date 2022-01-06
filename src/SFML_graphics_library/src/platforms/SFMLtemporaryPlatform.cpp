@@ -8,6 +8,3 @@
 SFMLDoodleJump::SFMLTemporaryPlatform::SFMLTemporaryPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w): SFMLPlatform(width, height, pos, std::move(w)) {
     SFMLTemporaryPlatform::getPlatform().setFillColor(sf::Color(255, 255, 255));
 }
-void SFMLDoodleJump::SFMLTemporaryPlatform::HandleEvent(std::tuple<float, float> nextpos) {
-    draw(nextpos);
-}

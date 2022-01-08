@@ -11,18 +11,25 @@ namespace DoodleJump{
         bool Jumping = false; //checks if the player is middle in a jump
         bool Falling = false; //checks if the player is falling
         bool collisionPlatform = false;
+        bool collisionSpring = false;
+        bool highspeed = false;
+    public:
+        bool isHighspeed() const;
+
+    private:
+        bool collisionJetpack = false;
         float accelerationX = 0.07;
         float accelerationY = 0.001;
         float initial_velocity = 0.03;
-    public:
-        float getInitialVelocity() const;
-
-    private:
         float velocity = 2*initial_velocity;
     public:
-        float getVelocity() const;
+        void setCollisionSpring(bool c);
 
-    public:
+        bool isCollisionSpring() const;
+
+        float getInitialVelocity() const;
+
+        float getVelocity() const;
 
         /*
          * Getter for the Falling boolean.
@@ -44,7 +51,7 @@ namespace DoodleJump{
         /*
          * Updates the player
          */
-        void update(COMMAND=NONE) override;
+        void update(COMMAND c, float speed) override;
 
     };
 }

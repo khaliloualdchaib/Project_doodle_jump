@@ -5,6 +5,7 @@
 
 DoodleJump::StaticPlatform::StaticPlatform(std::tuple<float, float> pos): Platform(pos){}
 
-void DoodleJump::StaticPlatform::update(COMMAND c) {
+void DoodleJump::StaticPlatform::update(COMMAND c, float speed) {
+    updateBonus(c);
     DoodleJump::StaticPlatform::notifyObservers(StaticPlatform::getPosition());
 }

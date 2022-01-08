@@ -114,6 +114,7 @@ void DoodleJump::World::generate_initPlatforms() {
             continue;
         } else{
             platform->addObserver(staticplatformObserver);
+            generatespring(platform);
             platforms.insert(platform);
         }
         if(heightcounter>=3){
@@ -242,6 +243,7 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tup
         return;
     }
     else{
+        generatespring(platform);
         platform->addObserver(staticplatformObserver);
         platforms.insert(platform);
     }
@@ -253,6 +255,7 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
         return;
     }
     else{
+        generatespring(platform);
         platform->addObserver(temporaryplatformObserver);
         platforms.insert(platform);
     }
@@ -264,6 +267,7 @@ void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std:
         return;
     }
     else{
+        generatespring(platform);
         platform->addObserver(horizontalplatformObserver);
         platforms.insert(platform);
     }
@@ -275,6 +279,7 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
         return;
     }
     else{
+        generatespring(platform);
         platform->addObserver(verticalplatformObserver);
         platforms.insert(platform);
     }
@@ -293,15 +298,22 @@ void DoodleJump::World::updateWorldCamera() {
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
-            float ypos = std::get<1>(platform->getPosition())-player->getInitialVelocity();
+            float ypos;
+            if(player->isHighspeed()){
+                ypos = std::get<1>(platform->getPosition())-(player->getVelocity());
+            }
+            else{
+                ypos = std::get<1>(platform->getPosition())-player->getInitialVelocity();
+            }
+
             platform->setPosition(make_tuple(xpos, ypos));
         }
-        for(const auto& bonus: bonusList){
-            float xpos = std::get<0>(bonus->getPosition());
-            float ypos = std::get<1>(bonus->getPosition())-player->getInitialVelocity();
-            bonus->setPosition(make_tuple(xpos, ypos));
+        if(player->isHighspeed()){
+            player->setPosition(make_tuple(std::get<0>(player->getPosition()), 0));
         }
-        player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
+        else{
+            player->setPosition(make_tuple(std::get<0>(player->getPosition()), std::get<1>(player->getPosition())-player->getInitialVelocity()));
+        }
         currentlvl++;
         //cout<<currentlvl<<endl;
     }
@@ -385,6 +397,7 @@ bool DoodleJump::World::doPlatformsCollide(const std::shared_ptr<DoodleJump::Pla
     }
     return false;
 }
+
 std::shared_ptr<DoodleJump::Player> DoodleJump::World::getPlayer() const {
     return player;
 }
@@ -395,8 +408,8 @@ const std::set<std::shared_ptr<DoodleJump::Platform>> &DoodleJump::World::getPla
 
 void DoodleJump::World::updateTiles() {
     if(std::get<1>(player->getPosition())>=0){
-        tiles[1]->update(MOVE);
-        tiles[0]->update(MOVE);
+        tiles[1]->update(NONE, player->getInitialVelocity());
+        tiles[0]->update(NONE, player->getInitialVelocity());
         if(std::get<1>(tiles[1]->getPosition())<-3){
             tiles[1]->setPosition(std::make_tuple(-4, 3+tiles[0]->getHeight()));
         }
@@ -405,25 +418,13 @@ void DoodleJump::World::updateTiles() {
         }
     }
     else{
-        tiles[1]->update(NONE);
-        tiles[0]->update(NONE);
+        tiles[1]->update(NONE, 0);
+        tiles[0]->update(NONE, 0);
     }
 }
 
-void DoodleJump::World::generateSprings() {
-    for(const auto& platform: platforms){
-        float xpos = std::get<0>(platform->getPosition());
-        float ypos = std::get<1>(platform->getPosition());
-        if(ypos>3){
-            std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(xpos, ypos+player->getHeight())));
-            spring->addObserver(springObserver);
-            bonusList.insert(spring);
-        }
-    }
-}
-
-void DoodleJump::World::updateBonus() {
-    for(const auto& bonus: bonusList){
-        bonus->update(NONE);
-    }
+void DoodleJump::World::generatespring(const std::shared_ptr<DoodleJump::Platform>&platform) {
+    std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(std::get<0>(platform->getPosition()), std::get<1>(platform->getPosition())+0.5)));
+    spring->addObserver(springObserver);
+    platform->setBonus(spring);
 }

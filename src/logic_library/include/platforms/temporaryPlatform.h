@@ -12,7 +12,7 @@ namespace DoodleJump{
     public:
         bool temporaryJumped() const override;
         explicit TemporaryPlatform(std::tuple<float, float> pos);
-        void update(COMMAND) override;
+        void update(COMMAND c, float speed) override;
         void  settemporaryJumped(bool b) override;
     };
 }

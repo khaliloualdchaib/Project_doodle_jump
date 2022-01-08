@@ -10,7 +10,7 @@ namespace DoodleJump{
     public:
         explicit bg_Tile(const std::tuple<float, float> &pos);
 
-        void update(COMMAND c) override;
+        void update(COMMAND c, float speed) override;
     };
 }
 #endif //DOODLEJUMP_BG_TILE_H

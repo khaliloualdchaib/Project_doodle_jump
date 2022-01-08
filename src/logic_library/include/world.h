@@ -72,8 +72,6 @@ namespace DoodleJump{
 
         void generateVerticalPlatform(unsigned int difficulty, std::tuple<float, float> pos);
 
-        void generateSprings();
-
         /*
          *  returns true if all the logic platform rules are followed.
          */
@@ -105,7 +103,7 @@ namespace DoodleJump{
 
         float heighestPlatform_Ypos();
 
-        void updateBonus();
+        void generatespring(const std::shared_ptr<DoodleJump::Platform>& platform);
     };
 }
 #endif //DOODLEJUMP_WORLD_H

@@ -6,9 +6,10 @@
 
 DoodleJump::Player::Player(float width, float height, std::tuple<float, float> pos): Entity(width, height, pos) {}
 
-void DoodleJump::Player::update(COMMAND c) {
+void DoodleJump::Player::update(COMMAND c, float speed) {
     float X = 0.0f;
     float Y = 0.0f;
+
     if(!Jumping and !Falling){
         Jumping = true;
     }
@@ -21,17 +22,28 @@ void DoodleJump::Player::update(COMMAND c) {
         }
     }
     else{
-        if(collisionPlatform){
+        if(collisionSpring){
+            velocity = 5*initial_velocity;
+            Y = velocity;
+            Falling = false;
+            Jumping = true;
+            collisionSpring = false;
+            highspeed = true;
+
+        }
+        else if(collisionPlatform){
             velocity = 2*initial_velocity;
             Y = velocity;
             Falling = false;
             Jumping = true;
 
         }else{
+            highspeed = false;
             Y+=velocity;
             velocity-=accelerationY;
         }
     }
+
     if(c==LEFT){
         X -= accelerationX;
         if(std::get<0>(getPosition())+getWidth()<-4.f){
@@ -62,4 +74,16 @@ float DoodleJump::Player::getVelocity() const {
 
 float DoodleJump::Player::getInitialVelocity() const {
     return initial_velocity;
+}
+
+bool DoodleJump::Player::isCollisionSpring() const {
+    return collisionSpring;
+}
+
+void DoodleJump::Player::setCollisionSpring(bool c) {
+    Player::collisionSpring = c;
+}
+
+bool DoodleJump::Player::isHighspeed() const {
+    return highspeed;
 }

@@ -10,7 +10,8 @@ bool DoodleJump::TemporaryPlatform::temporaryJumped() const {
 
 DoodleJump::TemporaryPlatform::TemporaryPlatform(std::tuple<float, float> pos): Platform(pos) {}
 
-void DoodleJump::TemporaryPlatform::update(COMMAND) {
+void DoodleJump::TemporaryPlatform::update(COMMAND c, float speed) {
+    updateBonus(c);
     DoodleJump::TemporaryPlatform::notifyObservers(TemporaryPlatform::getPosition());
 }
 

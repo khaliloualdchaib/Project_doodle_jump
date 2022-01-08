@@ -16,7 +16,7 @@ namespace DoodleJump{
         /*
          * update the platform
          */
-        void update(COMMAND) override;
+        void update(COMMAND c, float speed) override;
     };
 }
 #endif //DOODLEJUMP_STATICPLATFORM_H

@@ -5,4 +5,6 @@
 #include <tuple>
 #include "../../include/bonus/spring.h"
 
-DoodleJump::Spring::Spring(const std::tuple<float, float> &pos) : Bonus(0.5, 0.4, pos) {}
+
+DoodleJump::Spring::Spring(const std::tuple<float, float> &pos) : Bonus(0.5, 0.5, pos) {}
+

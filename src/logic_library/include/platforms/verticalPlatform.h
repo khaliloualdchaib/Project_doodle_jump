@@ -16,7 +16,7 @@ namespace DoodleJump{
     public:
         explicit VerticalPlatform(const std::tuple<float, float> &pos);
 
-        void update(COMMAND c) override;
+        void update(COMMAND c, float speed) override;
 
         bool isVertical() override{return true;};
 

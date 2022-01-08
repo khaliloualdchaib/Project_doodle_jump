@@ -13,7 +13,7 @@ namespace DoodleJump{
         bool goRight = false;
     public:
         explicit HorizontalPlatform(const std::tuple<float, float> &pos);
-        void update(COMMAND) override;
+        void update(COMMAND c, float speed) override;
         bool isHorizontal() override {return true;};
     };
 }

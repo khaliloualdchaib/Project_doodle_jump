@@ -41,6 +41,61 @@ ADD_EXECUTABLE(
 
         SFML_graphics_library/include/platforms/SFMLstaticPlatform.h
         SFML_graphics_library/src/platforms/SFMLstaticPlatform.cpp
-        logic_library/include/platforms/platform.h logic_library/src/platforms/platform.cpp SFML_graphics_library/include/platforms/SFMLplatform.h SFML_graphics_library/src/platforms/SFMLplatform.cpp SFML_graphics_library/include/concreteFactory.h SFML_graphics_library/src/concreteFactory.cpp logic_library/include/platforms/temporaryPlatform.h logic_library/src/platforms/temporaryPlatform.cpp SFML_graphics_library/include/platforms/SFMLtemporaryPlatform.h SFML_graphics_library/src/platforms/SFMLtemporaryPlatform.cpp logic_library/include/platforms/horizontalPlatform.h logic_library/src/platforms/horizontalPlatform.cpp SFML_graphics_library/include/platforms/SFMLhorizontalPlatform.h SFML_graphics_library/src/platforms/SFMLhorizontalPlatform.cpp logic_library/include/platforms/verticalPlatform.h logic_library/src/platforms/verticalPlatform.cpp SFML_graphics_library/include/platforms/SFMLverticalPlatform.h SFML_graphics_library/src/platforms/SFMLverticalPlatform.cpp logic_library/include/bonus/bonus.h logic_library/src/bonus/bonus.cpp logic_library/include/bg_tile.h logic_library/src/bg_tile.cpp SFML_graphics_library/include/SFMLbg_tile.h SFML_graphics_library/src/SFMLbg_tile.cpp logic_library/include/bonus/spring.h logic_library/src/bonus/spring.cpp logic_library/src/bonus/jetpack.cpp logic_library/include/bonus/jetpack.h SFML_graphics_library/include/bonus/SFMLbonus.h SFML_graphics_library/src/bonus/SFMLbonus.cpp SFML_graphics_library/include/bonus/SFMLspring.h SFML_graphics_library/src/bonus/SFMLspring.cpp SFML_graphics_library/include/bonus/SFMLjetpack.h SFML_graphics_library/src/bonus/SFMLjetpack.cpp)
+
+        logic_library/include/platforms/platform.h
+        logic_library/src/platforms/platform.cpp
+
+        SFML_graphics_library/include/platforms/SFMLplatform.h
+        SFML_graphics_library/src/platforms/SFMLplatform.cpp
+
+        SFML_graphics_library/include/concreteFactory.h
+        SFML_graphics_library/src/concreteFactory.cpp
+
+        logic_library/include/platforms/temporaryPlatform.h
+        logic_library/src/platforms/temporaryPlatform.cpp
+
+        SFML_graphics_library/include/platforms/SFMLtemporaryPlatform.h
+        SFML_graphics_library/src/platforms/SFMLtemporaryPlatform.cpp
+
+        logic_library/include/platforms/horizontalPlatform.h
+        logic_library/src/platforms/horizontalPlatform.cpp
+
+        SFML_graphics_library/include/platforms/SFMLhorizontalPlatform.h
+        SFML_graphics_library/src/platforms/SFMLhorizontalPlatform.cpp
+
+        logic_library/include/platforms/verticalPlatform.h
+        logic_library/src/platforms/verticalPlatform.cpp
+
+        SFML_graphics_library/include/platforms/SFMLverticalPlatform.h
+        SFML_graphics_library/src/platforms/SFMLverticalPlatform.cpp
+
+        logic_library/include/bonus/bonus.h
+        logic_library/src/bonus/bonus.cpp
+
+        logic_library/include/bg_tile.h
+        logic_library/src/bg_tile.cpp
+
+        SFML_graphics_library/include/SFMLbg_tile.h
+        SFML_graphics_library/src/SFMLbg_tile.cpp
+
+        logic_library/include/bonus/spring.h
+        logic_library/src/bonus/spring.cpp
+
+        logic_library/src/bonus/jetpack.cpp
+        logic_library/include/bonus/jetpack.h
+
+        SFML_graphics_library/include/bonus/SFMLbonus.h
+        SFML_graphics_library/src/bonus/SFMLbonus.cpp
+
+        SFML_graphics_library/include/bonus/SFMLspring.h
+        SFML_graphics_library/src/bonus/SFMLspring.cpp
+
+        SFML_graphics_library/include/bonus/SFMLjetpack.h
+        SFML_graphics_library/src/bonus/SFMLjetpack.cpp
+
+        logic_library/include/command_pattern/command.h
+
+        logic_library/include/command_pattern/collisionBonusPlayer.h
+        logic_library/src/command_pattern/collisionBonusPlayer.cpp)
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

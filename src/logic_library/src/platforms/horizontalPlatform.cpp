@@ -7,7 +7,7 @@
 
 DoodleJump::HorizontalPlatform::HorizontalPlatform(const std::tuple<float, float> &pos) : Platform(pos) {}
 
-void DoodleJump::HorizontalPlatform::update(COMMAND c) {
+void DoodleJump::HorizontalPlatform::update(COMMAND c, float speed) {
     if(!goLeft and !goRight){
         if(std::get<0>(getPosition())>=0){
             goRight = true;
@@ -30,5 +30,6 @@ void DoodleJump::HorizontalPlatform::update(COMMAND c) {
     if(goLeft){
         HorizontalPlatform::setPosition(std::make_tuple(std::get<0>(getPosition())-0.02, std::get<1>(getPosition())));
     }
+    updateBonus(c);
     DoodleJump::HorizontalPlatform::notifyObservers(HorizontalPlatform::getPosition());
 }

@@ -8,6 +8,7 @@
 #include "../../logic_library/include/world.h"
 #include "../include/concreteFactory.h"
 #include "../include/bonus/SFMLspring.h"
+#include "../../logic_library/include/command_pattern/collisionBonusPlayer.h"
 
 SFMLDoodleJump::Game::Game(const std::map<std::string, unsigned int>& windowconf, const std::map<std::string, float>& config) {
     windowConfiguration = windowconf;
@@ -35,21 +36,21 @@ void SFMLDoodleJump::Game::runGame() {
             window->clear(sf::Color::Black);
             world.updateWorldCamera();
             world.updateTiles();
-            world.generateSprings();
-            world.updateBonus();
             for(const auto& platform: world.getPlatforms()){
-                platform->update(NONE);
+                platform->update(NONE, 0);
+                DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
+                collision.execute();
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
-                world.getPlayer()->update(LEFT);
+                world.getPlayer()->update(LEFT, 0);
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             {
-                world.getPlayer()->update(RIGHT);
+                world.getPlayer()->update(RIGHT, 0);
             }
             else{
-                world.getPlayer()->update();
+                world.getPlayer()->update(NONE, 0);
             }
             world.collisionPlayerPlatform();
             DoodleJump::Stopwatch::getInstance().reset();

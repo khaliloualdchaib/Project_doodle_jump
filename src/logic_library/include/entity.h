@@ -9,7 +9,7 @@
 #include <set>
 #include "camera.h"
 
-enum COMMAND{LEFT, RIGHT, NONE, MOVE};
+enum COMMAND{LEFT, RIGHT, NONE, MOVE, UP, DOWN};
 
 namespace DoodleJump{
     class Entity: public Observable{
@@ -27,7 +27,7 @@ namespace DoodleJump{
         /*
          * update is a function that updates the entity.
          */
-        virtual void update(COMMAND c){};
+        virtual void update(COMMAND c, float speed){};
 
         /*
          * ~Entity is a default destructor.

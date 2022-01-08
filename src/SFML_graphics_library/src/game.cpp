@@ -38,8 +38,11 @@ void SFMLDoodleJump::Game::runGame() {
             world.updateTiles();
             for(const auto& platform: world.getPlatforms()){
                 platform->update(NONE, 0);
-                DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
-                collision.execute();
+                if(platform->hasBonus()){
+                    DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
+                    collision.execute();
+                }
+
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {

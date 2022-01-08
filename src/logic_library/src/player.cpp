@@ -31,6 +31,14 @@ void DoodleJump::Player::update(COMMAND c, float speed) {
             highspeed = true;
 
         }
+        else if(collisionJetpack){
+            velocity = 10*initial_velocity;
+            Y = velocity;
+            Falling = false;
+            Jumping = true;
+            collisionJetpack = false;
+            highspeed = true;
+        }
         else if(collisionPlatform){
             velocity = 2*initial_velocity;
             Y = velocity;
@@ -86,4 +94,8 @@ void DoodleJump::Player::setCollisionSpring(bool c) {
 
 bool DoodleJump::Player::isHighspeed() const {
     return highspeed;
+}
+
+void DoodleJump::Player::setCollisionJetpack(bool collisionJetpack) {
+    Player::collisionJetpack = collisionJetpack;
 }

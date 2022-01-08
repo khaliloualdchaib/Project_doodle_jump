@@ -46,6 +46,11 @@ DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::ma
     //Initialising spring observer.
     std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(0, 0)));
     springObserver = factory->createSpring(spring);
+
+    //Initialising jetpack observer.
+    std::shared_ptr<DoodleJump::Jetpack> jetpack = std::make_shared<DoodleJump::Jetpack>(DoodleJump::Jetpack(std::make_tuple(0, 0)));
+    jetpackObserver = factory->createJetpack(jetpack);
+
 }
 
 std::tuple<std::tuple<float, float>, std::tuple<float, float>>  DoodleJump::World::getBottomCorners(const DoodleJump::Entity& entity) const {
@@ -114,7 +119,7 @@ void DoodleJump::World::generate_initPlatforms() {
             continue;
         } else{
             platform->addObserver(staticplatformObserver);
-            generatespring(platform);
+            generatejetpack(platform);
             platforms.insert(platform);
         }
         if(heightcounter>=3){
@@ -243,7 +248,7 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tup
         return;
     }
     else{
-        generatespring(platform);
+        generatejetpack(platform);
         platform->addObserver(staticplatformObserver);
         platforms.insert(platform);
     }
@@ -255,7 +260,7 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
         return;
     }
     else{
-        generatespring(platform);
+        //generatespring(platform);
         platform->addObserver(temporaryplatformObserver);
         platforms.insert(platform);
     }
@@ -267,7 +272,7 @@ void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std:
         return;
     }
     else{
-        generatespring(platform);
+        //generatespring(platform);
         platform->addObserver(horizontalplatformObserver);
         platforms.insert(platform);
     }
@@ -279,7 +284,7 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
         return;
     }
     else{
-        generatespring(platform);
+        //generatespring(platform);
         platform->addObserver(verticalplatformObserver);
         platforms.insert(platform);
     }
@@ -424,7 +429,13 @@ void DoodleJump::World::updateTiles() {
 }
 
 void DoodleJump::World::generatespring(const std::shared_ptr<DoodleJump::Platform>&platform) {
-    std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(std::get<0>(platform->getPosition()), std::get<1>(platform->getPosition())+0.5)));
+    std::shared_ptr<DoodleJump::Spring> spring = std::make_shared<DoodleJump::Spring>(DoodleJump::Spring(std::make_tuple(std::get<0>(platform->getPosition()), std::get<1>(platform->getPosition()))));
     spring->addObserver(springObserver);
     platform->setBonus(spring);
+}
+
+void DoodleJump::World::generatejetpack(const std::shared_ptr<DoodleJump::Platform> &platform) {
+    std::shared_ptr<DoodleJump::Jetpack> jetpack = std::make_shared<DoodleJump::Jetpack>(DoodleJump::Jetpack(std::make_tuple(std::get<0>(platform->getPosition()), std::get<1>(platform->getPosition()))));
+    jetpack->addObserver(jetpackObserver);
+    platform->setBonus(jetpack);
 }

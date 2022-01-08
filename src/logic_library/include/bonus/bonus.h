@@ -10,7 +10,10 @@ namespace DoodleJump{
     class Bonus: public Entity{
     public:
         Bonus(float width, float height, const std::tuple<float, float> &pos);
-        void update(COMMAND c, float speed) override;
+
+        virtual bool isJetpack(){return false;};
+
+        virtual bool isSpring(){return false;};
     };
 }
 #endif //DOODLEJUMP_BONUS_H

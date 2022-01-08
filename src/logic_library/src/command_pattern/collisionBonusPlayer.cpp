@@ -11,13 +11,23 @@ DoodleJump::CollisionBonusPlayer::CollisionBonusPlayer(std::shared_ptr<DoodleJum
 
 void DoodleJump::CollisionBonusPlayer::execute() {
     if(player->isFalling()){
-        if(std::get<1>(player->getPosition()) - player->getHeight()<=std::get<1>(bonus->getPosition()) and
-           std::get<1>(player->getPosition()) - player->getHeight()>=std::get<1>(bonus->getPosition())-bonus->getHeight()){
-            if((std::get<0>(player->getPosition())<=std::get<0>(bonus->getPosition())+bonus->getWidth() and
-                std::get<0>(player->getPosition())>=std::get<0>(bonus->getPosition())) or
-               (std::get<0>(player->getPosition())+player->getWidth()-player->getWidth()/3.2>=std::get<0>(bonus->getPosition()) and
-                std::get<0>(player->getPosition())+player->getWidth()-player->getWidth()/3.2<=std::get<0>(bonus->getPosition())+bonus->getWidth())){
-                player->setCollisionSpring(true);
+        if(std::get<1>(player->getPosition()) - player->getHeight()<= std::get<1>(bonus->getPosition())-0.2f and
+           std::get<1>(player->getPosition())>= std::get<1>(bonus->getPosition())-0.2f){
+            float playerleftcornerx = std::get<0>(player->getPosition());
+            float playerrightcornerx = std::get<0>(player->getPosition()) + player->getWidth();
+            float bonusleftcornerx = std::get<0>(bonus->getPosition());
+            float bonusrightcornerx = std::get<0>(bonus->getPosition()) + bonus->getWidth();
+            if((bonusleftcornerx<=playerrightcornerx and bonusleftcornerx>=playerleftcornerx) or
+               (bonusrightcornerx>=playerleftcornerx and bonusrightcornerx<=playerrightcornerx)){
+                if(bonus->isSpring()){
+                    player->setCollisionSpring(true);
+                    return;
+                }
+                if(bonus->isJetpack()){
+                    player->setCollisionJetpack(true);
+                    return;
+                }
+
             }
         }
     }

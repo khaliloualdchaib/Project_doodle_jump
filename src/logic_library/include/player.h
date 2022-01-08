@@ -13,16 +13,17 @@ namespace DoodleJump{
         bool collisionPlatform = false;
         bool collisionSpring = false;
         bool highspeed = false;
-    public:
-        bool isHighspeed() const;
-
-    private:
         bool collisionJetpack = false;
+        unsigned int jetpackcounter = 0;
         float accelerationX = 0.07;
         float accelerationY = 0.001;
         float initial_velocity = 0.03;
         float velocity = 2*initial_velocity;
     public:
+        void setCollisionJetpack(bool collisionJetpack);
+
+        bool isHighspeed() const;
+
         void setCollisionSpring(bool c);
 
         bool isCollisionSpring() const;

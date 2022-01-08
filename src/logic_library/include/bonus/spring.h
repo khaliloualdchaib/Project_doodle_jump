@@ -10,6 +10,8 @@ namespace DoodleJump{
     class Spring: public Bonus{
     public:
         explicit Spring(const std::tuple<float, float> &pos);
+        void update(COMMAND c, float speed) override;
+        bool isSpring() override{return true;};
     };
 }
 #endif //DOODLEJUMP_SPRING_H

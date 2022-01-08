@@ -9,7 +9,9 @@
 namespace DoodleJump{
     class Jetpack: public Bonus{
     public:
-        Jetpack(float width, float height, const std::tuple<float, float> &pos);
+        explicit Jetpack(const std::tuple<float, float> &pos);
+        void update(COMMAND c, float speed) override;
+        bool isJetpack() override {return true;};
 
     };
 }

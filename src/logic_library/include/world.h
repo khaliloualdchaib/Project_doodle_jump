@@ -29,6 +29,7 @@ namespace DoodleJump{
         std::shared_ptr<Observer> horizontalplatformObserver;
         std::shared_ptr<Observer> verticalplatformObserver;
         std::shared_ptr<Observer> springObserver;
+        std::shared_ptr<Observer> jetpackObserver;
         std::shared_ptr<Observer> bgTileObserver;
         std::shared_ptr<bg_Tile> tiles[2];
 
@@ -104,6 +105,8 @@ namespace DoodleJump{
         float heighestPlatform_Ypos();
 
         void generatespring(const std::shared_ptr<DoodleJump::Platform>& platform);
+
+        void generatejetpack(const std::shared_ptr<DoodleJump::Platform>& platform);
     };
 }
 #endif //DOODLEJUMP_WORLD_H

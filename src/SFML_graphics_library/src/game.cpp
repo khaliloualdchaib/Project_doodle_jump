@@ -21,6 +21,11 @@ void SFMLDoodleJump::Game::runGame() {
     shared_ptr<SFMLDoodleJump::ConcreteFactory> factory = make_shared<SFMLDoodleJump::ConcreteFactory>(SFMLDoodleJump::ConcreteFactory(window));
     DoodleJump::World world = DoodleJump::World(factory, GameConfiguration);
     world.generate_initPlatforms();
+    sf::Font font;
+    if (!font.loadFromFile("font/Academy.ttf"))
+    {
+        // error...
+    }
     while (window->isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -36,6 +41,12 @@ void SFMLDoodleJump::Game::runGame() {
             window->clear(sf::Color::Black);
             world.updateWorldCamera();
             world.updateTiles();
+            sf::Text text;
+            text.setFont(font);
+            text.setString(world.returnScore());
+            text.setCharacterSize(24);
+            text.setFillColor(sf::Color::White);
+            window->draw(text);
             for(const auto& platform: world.getPlatforms()){
                 platform->update(NONE, 0);
                 if(platform->hasBonus()){

@@ -19,6 +19,6 @@ void SFMLDoodleJump::SFMLPlatform::draw(std::tuple<float, float> pos) {
     SFMLPlatform::getWindow()->draw(SFMLPlatform::getPlatform());
 }
 
-void SFMLDoodleJump::SFMLPlatform::HandleEvent(std::tuple<float, float> nextpos) {
+void SFMLDoodleJump::SFMLPlatform::HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) {
     draw(nextpos);
 }

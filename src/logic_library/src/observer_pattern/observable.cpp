@@ -11,8 +11,8 @@ void DoodleJump::Observable::removeObserver(int index) {
     Observable::observers.erase(Observable::observers.begin()+index);
 }
 
-void DoodleJump::Observable::notifyObservers(std::tuple<float, float>pos) {
+void DoodleJump::Observable::notifyObservers(std::tuple<float, float>pos, scoreUpdate s) {
     for (unsigned int i = 0; i < Observable::observers.size(); ++i) {
-        Observable::observers[i]->HandleEvent(pos);
+        Observable::observers[i]->HandleEvent(pos, s);
     }
 }

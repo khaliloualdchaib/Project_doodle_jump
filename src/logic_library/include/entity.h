@@ -8,8 +8,7 @@
 #include "observer_pattern/observable.h"
 #include <set>
 #include "camera.h"
-
-enum COMMAND{LEFT, RIGHT, NONE, MOVE, UP, DOWN};
+enum COMMAND{LEFT, RIGHT, NONE};
 
 namespace DoodleJump{
     class Entity: public Observable{

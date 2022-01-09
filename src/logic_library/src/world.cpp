@@ -18,6 +18,7 @@ DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::ma
     player = std::make_shared<DoodleJump::Player>(DoodleJump::Player(GameConfigurations["PlayerWidth"], GameConfigurations["PlayerHeight"],
                                                                      std::make_tuple(GameConfigurations["PlayerX_Position"], GameConfigurations["PlayerY_Position"])));
     player->addObserver(factory->createPlayer(player));
+    player->addObserver(score);
 
     //Initialising static platform observer.
     std::shared_ptr<DoodleJump::StaticPlatform> init_platform = std::make_shared<DoodleJump::StaticPlatform>(DoodleJump::StaticPlatform(player->getPosition()));
@@ -81,22 +82,12 @@ void DoodleJump::World::collisionPlayerPlatform() {
         std::tuple<float, float> bottomleftcorner = std::get<0>(bottomcornersPlayer);
         std::tuple<float, float> bottomrightcorner = std::get<1>(bottomcornersPlayer);
         if(player->isFalling()){
-            if (round_float2decimals(std::get<1>(topleftcorner))== round_float2decimals(std::get<1>(bottomleftcorner))){
+            if((round_float2decimals(std::get<1>(topleftcorner))>=round_float2decimals(std::get<1>(bottomleftcorner))) and (round_float2decimals(std::get<1>(bottomleftcornersplatform))<=round_float2decimals(std::get<1>(bottomleftcorner)))){
                 if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
                     (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
                     player->setCollisionPlatform(true);
                     platform->settemporaryJumped(true);
-                    if(platform->temporaryJumped()){
-                        platforms.erase(platform);
-                    }
-                    return;
-                }
-            }
-            if((round_float2decimals(std::get<1>(topleftcorner))>round_float2decimals(std::get<1>(bottomleftcorner))) and (round_float2decimals(std::get<1>(bottomleftcornersplatform))<round_float2decimals(std::get<1>(bottomleftcorner)))){
-                if ((std::get<0>(topleftcorner)<=std::get<0>(bottomleftcorner)+0.04f and std::get<0>(toprightcorner)>=std::get<0>(bottomleftcorner)+0.04f) or
-                    (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
-                    player->setCollisionPlatform(true);
-                    platform->settemporaryJumped(true);
+                    platform->Jumped();
                     if(platform->temporaryJumped()){
                         platforms.erase(platform);
                     }
@@ -119,7 +110,7 @@ void DoodleJump::World::generate_initPlatforms() {
             continue;
         } else{
             platform->addObserver(staticplatformObserver);
-            generatejetpack(platform);
+            platform->addObserver(score);
             platforms.insert(platform);
         }
         if(heightcounter>=3){
@@ -248,8 +239,9 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tup
         return;
     }
     else{
-        generatejetpack(platform);
+        generateBonus(platform, 80, 15, 5);
         platform->addObserver(staticplatformObserver);
+        platform->addObserver(score);
         platforms.insert(platform);
     }
 }
@@ -260,7 +252,7 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
         return;
     }
     else{
-        //generatespring(platform);
+        generateBonus(platform, 80, 15, 5);
         platform->addObserver(temporaryplatformObserver);
         platforms.insert(platform);
     }
@@ -272,8 +264,9 @@ void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std:
         return;
     }
     else{
-        //generatespring(platform);
+        generateBonus(platform, 80, 15, 5);
         platform->addObserver(horizontalplatformObserver);
+        platform->addObserver(score);
         platforms.insert(platform);
     }
 }
@@ -284,8 +277,9 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
         return;
     }
     else{
-        //generatespring(platform);
+        generateBonus(platform, 80, 15, 5);
         platform->addObserver(verticalplatformObserver);
+        platform->addObserver(score);
         platforms.insert(platform);
     }
 }
@@ -438,4 +432,63 @@ void DoodleJump::World::generatejetpack(const std::shared_ptr<DoodleJump::Platfo
     std::shared_ptr<DoodleJump::Jetpack> jetpack = std::make_shared<DoodleJump::Jetpack>(DoodleJump::Jetpack(std::make_tuple(std::get<0>(platform->getPosition()), std::get<1>(platform->getPosition()))));
     jetpack->addObserver(jetpackObserver);
     platform->setBonus(jetpack);
+}
+
+void DoodleJump::World::generateBonus(const std::shared_ptr<DoodleJump::Platform> &platform, unsigned int none,unsigned int springprob, unsigned int jetpackprob) {
+    unsigned int total = none +springprob +jetpackprob;
+    assert(total == 100);
+    unsigned int bonusProb = floor(DoodleJump::Random::getInstance().getrandomDouble(1, 100));
+    vector<pair<unsigned int, std::string>> probabilities = {{none, "none"}, {springprob, "spring"}, {jetpackprob, "jetpack"}};
+    //sort probabilities
+    std::sort(probabilities.begin(), probabilities.end());
+    //erase all probabilities equal to 0
+    unsigned int index = 0;
+    while(index<probabilities.size()){
+        if(probabilities[index].first == 0){
+            probabilities.erase(probabilities.begin()+index);
+        } else{
+            index++;
+        }
+    }
+    std::string bonus;
+    vector<pair<unsigned int, std::string>>  copy_prob = probabilities;
+    if(probabilities.size() == 1){
+        bonus = probabilities[0].second;
+    }
+    else{
+        for (unsigned int i = 0; i < probabilities.size(); ++i) {
+            if(bonusProb <=probabilities[i].first){
+                //determine wich platform belongs to the prob
+                if(i==probabilities.size()-1){
+                    bonus = probabilities[i].second;
+                    break;
+                }
+                if(probabilities[i].first!=probabilities[i+1].first){
+                    bonus = probabilities[i].second;
+                    break;
+                }
+                else{
+                    double choose = DoodleJump::Random::getInstance().getrandomDouble(1, 3);
+                    if(choose<=2){
+                        bonus = probabilities[i].second;
+                        break;
+                    }
+                    else{
+                        bonus = probabilities[i+1].second;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    if(bonus == "spring"){
+        generatespring(platform);
+    }
+    else if(bonus == "jetpack"){
+        generatejetpack(platform);
+    }
+}
+
+std::string DoodleJump::World::returnScore() {
+    return "SCORE: " + std::to_string(score->getScore());
 }

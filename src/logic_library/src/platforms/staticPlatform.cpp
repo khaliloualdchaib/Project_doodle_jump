@@ -7,5 +7,11 @@ DoodleJump::StaticPlatform::StaticPlatform(std::tuple<float, float> pos): Platfo
 
 void DoodleJump::StaticPlatform::update(COMMAND c, float speed) {
     updateBonus(c);
-    DoodleJump::StaticPlatform::notifyObservers(StaticPlatform::getPosition());
+
+    if(getJumped()>0){
+        DoodleJump::StaticPlatform::notifyObservers(StaticPlatform::getPosition(), staticcol);
+    }
+    else{
+        DoodleJump::StaticPlatform::notifyObservers(StaticPlatform::getPosition(), zero);
+    }
 }

@@ -12,7 +12,7 @@ DoodleJump::TemporaryPlatform::TemporaryPlatform(std::tuple<float, float> pos): 
 
 void DoodleJump::TemporaryPlatform::update(COMMAND c, float speed) {
     updateBonus(c);
-    DoodleJump::TemporaryPlatform::notifyObservers(TemporaryPlatform::getPosition());
+    DoodleJump::TemporaryPlatform::notifyObservers(TemporaryPlatform::getPosition(), zero);
 }
 
 void DoodleJump::TemporaryPlatform::settemporaryJumped(bool b) {

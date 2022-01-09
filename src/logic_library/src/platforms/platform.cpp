@@ -29,3 +29,11 @@ bool DoodleJump::Platform::hasBonus() {
 const std::shared_ptr<DoodleJump::Bonus> &DoodleJump::Platform::getBonus() const {
     return bonus;
 }
+
+unsigned int DoodleJump::Platform::getJumped() const {
+    return jumped;
+}
+
+void DoodleJump::Platform::Jumped(){
+    jumped++;
+}

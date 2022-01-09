@@ -24,7 +24,7 @@ namespace SFMLDoodleJump{
 
         void draw(std::tuple<float, float> pos) override;
 
-        void HandleEvent(std::tuple<float, float> nextpos) override;
+        void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
 
     };
 }

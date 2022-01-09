@@ -9,7 +9,8 @@ DoodleJump::Player::Player(float width, float height, std::tuple<float, float> p
 void DoodleJump::Player::update(COMMAND c, float speed) {
     float X = 0.0f;
     float Y = 0.0f;
-
+    bool jetpack = false;
+    bool spring = false;
     if(!Jumping and !Falling){
         Jumping = true;
     }
@@ -24,6 +25,7 @@ void DoodleJump::Player::update(COMMAND c, float speed) {
     else{
         if(collisionSpring){
             velocity = 5*initial_velocity;
+            spring = true;
             Y = velocity;
             Falling = false;
             Jumping = true;
@@ -35,6 +37,7 @@ void DoodleJump::Player::update(COMMAND c, float speed) {
             velocity = 10*initial_velocity;
             Y = velocity;
             Falling = false;
+            jetpack = true;
             Jumping = true;
             collisionJetpack = false;
             highspeed = true;
@@ -65,7 +68,20 @@ void DoodleJump::Player::update(COMMAND c, float speed) {
         }
     }
     setPosition(std::make_tuple(std::get<0>(getPosition())+X, std::get<1>(getPosition())+Y));
-    notifyObservers(getPosition());
+
+    if(jetpack){
+        notifyObservers(getPosition(), jetpackcol);
+    }
+    else if(spring){
+        notifyObservers(getPosition(), springcol);
+    }
+    else if(std::get<1>(getPosition())>0){
+        notifyObservers(getPosition(), newHeight);
+    }
+    else{
+        notifyObservers(getPosition(), zero);
+    }
+
 }
 
 void DoodleJump::Player::setCollisionPlatform(bool c) {

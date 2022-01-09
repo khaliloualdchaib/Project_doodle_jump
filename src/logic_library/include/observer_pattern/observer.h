@@ -6,7 +6,7 @@
 #define DOODLEJUMP_OBSERVER_H
 #include <tuple>
 #include <limits>
-
+enum scoreUpdate{newHeight, staticcol, horizontalcol, verticalcol, springcol, jetpackcol, zero};
 namespace DoodleJump{
     class Observer{
     public:
@@ -14,7 +14,7 @@ namespace DoodleJump{
         /*
          * HandleEvent handles the events
          */
-        virtual void HandleEvent(std::tuple<float, float>){};
+        virtual void HandleEvent(std::tuple<float, float>, scoreUpdate s){};
 
         /*
          * This is a default constructor.

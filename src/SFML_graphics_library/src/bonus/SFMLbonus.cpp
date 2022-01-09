@@ -12,7 +12,7 @@ void SFMLDoodleJump::SFMLBonus::draw(std::tuple<float, float> pos) {
     getWindow()->draw(sprite);
 }
 
-void SFMLDoodleJump::SFMLBonus::HandleEvent(std::tuple<float, float> nextpos) {
+void SFMLDoodleJump::SFMLBonus::HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) {
     sprite.setPosition(sf::Vector2f(std::get<0>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos))) , std::get<1>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos)))));
     SFMLBonus::setPosition(nextpos);
     draw(getPosition());

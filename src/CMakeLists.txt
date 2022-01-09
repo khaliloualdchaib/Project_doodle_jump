@@ -96,6 +96,10 @@ ADD_EXECUTABLE(
         logic_library/include/command_pattern/command.h
 
         logic_library/include/command_pattern/collisionBonusPlayer.h
-        logic_library/src/command_pattern/collisionBonusPlayer.cpp)
+        logic_library/src/command_pattern/collisionBonusPlayer.cpp
+
+        logic_library/include/score.h
+        logic_library/src/score.cpp
+)
 target_link_libraries(doodlejump sfml-graphics sfml-window sfml-system)
 INSTALL(TARGETS doodlejump DESTINATION ${PROJECT_SOURCE_DIR}/bin)

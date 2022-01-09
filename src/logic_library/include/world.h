@@ -14,7 +14,9 @@
 #include "platforms/platform.h"
 #include "bonus/bonus.h"
 #include "abstractFactory.h"
+#include "score.h"
 #include <map>
+#include <string>
 
 namespace DoodleJump{
     class World{
@@ -32,7 +34,7 @@ namespace DoodleJump{
         std::shared_ptr<Observer> jetpackObserver;
         std::shared_ptr<Observer> bgTileObserver;
         std::shared_ptr<bg_Tile> tiles[2];
-
+        std::shared_ptr<Score> score = std::make_shared<Score>();
         unsigned int easy = 12;
         unsigned int medium = 9;
         unsigned int hard = 6;
@@ -107,6 +109,10 @@ namespace DoodleJump{
         void generatespring(const std::shared_ptr<DoodleJump::Platform>& platform);
 
         void generatejetpack(const std::shared_ptr<DoodleJump::Platform>& platform);
+
+        void generateBonus(const std::shared_ptr<DoodleJump::Platform>& platform, unsigned int none, unsigned int springprob, unsigned int jetpackprob);
+
+        std::string returnScore();
     };
 }
 #endif //DOODLEJUMP_WORLD_H

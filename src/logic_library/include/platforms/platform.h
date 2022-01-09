@@ -12,10 +12,14 @@ namespace DoodleJump{
     class Platform: public Entity{
     private:
         std::shared_ptr<DoodleJump::Bonus> bonus = nullptr;
+        unsigned int jumped = 0;
     public:
-        const std::shared_ptr<DoodleJump::Bonus> &getBonus() const;
 
-    public:
+        void Jumped();
+
+        unsigned int getJumped() const;
+
+        const std::shared_ptr<DoodleJump::Bonus> &getBonus() const;
 
         void setBonus(const std::shared_ptr<DoodleJump::Bonus> &b);
 

@@ -25,7 +25,7 @@ namespace SFMLDoodleJump{
         /*
          * Handles an event. inherited, form the virtual function in observer.h
          */
-        void HandleEvent(std::tuple<float, float> nextpos) override;
+        void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
         
     };
 }

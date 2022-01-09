@@ -48,7 +48,12 @@ void SFMLDoodleJump::Game::runGame() {
             text.setFillColor(sf::Color::White);
             window->draw(text);
             for(const auto& platform: world.getPlatforms()){
-                platform->update(NONE, 0);
+                if(platform->isHorizontal() or platform->isVertical()){
+                    platform->update(NONE, 0.03f);
+                }
+                else{
+                    platform->update(NONE, 0);
+                }
                 if(platform->hasBonus()){
                     DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
                     collision.execute();

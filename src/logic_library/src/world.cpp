@@ -87,7 +87,8 @@ void DoodleJump::World::collisionPlayerPlatform() {
                     (std::get<0>(topleftcorner)<=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) and std::get<0>(toprightcorner)>=std::get<0>(bottomrightcorner)-(player->getWidth()/3.2) )){
                     player->setCollisionPlatform(true);
                     platform->settemporaryJumped(true);
-                    platform->Jumped();
+                    platform->setJumped(true);
+                    platform->addjump();
                     if(platform->temporaryJumped()){
                         platforms.erase(platform);
                     }
@@ -239,7 +240,7 @@ void DoodleJump::World::generatestaticPlatform(unsigned int difficulty, std::tup
         return;
     }
     else{
-        generateBonus(platform, 80, 15, 5);
+        generateBonus(platform, 95, 3, 2);
         platform->addObserver(staticplatformObserver);
         platform->addObserver(score);
         platforms.insert(platform);
@@ -252,7 +253,7 @@ void DoodleJump::World::generatetemporaryPlatform(unsigned int difficulty, std::
         return;
     }
     else{
-        generateBonus(platform, 80, 15, 5);
+        generateBonus(platform, 95, 3, 2);
         platform->addObserver(temporaryplatformObserver);
         platforms.insert(platform);
     }
@@ -264,7 +265,7 @@ void DoodleJump::World::generatehorizontalPlatform(unsigned int difficulty, std:
         return;
     }
     else{
-        generateBonus(platform, 80, 15, 5);
+        generateBonus(platform, 95, 3, 2);
         platform->addObserver(horizontalplatformObserver);
         platform->addObserver(score);
         platforms.insert(platform);
@@ -277,7 +278,7 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
         return;
     }
     else{
-        generateBonus(platform, 80, 15, 5);
+        generateBonus(platform, 95, 3, 2);
         platform->addObserver(verticalplatformObserver);
         platform->addObserver(score);
         platforms.insert(platform);
@@ -286,14 +287,17 @@ void DoodleJump::World::generateVerticalPlatform(unsigned int difficulty, std::t
 
 void DoodleJump::World::updateWorldCamera() {
     if(std::get<1>(player->getPosition())>=0){
-        if(currentlvl<=2000){
+        if(currentlvl<=begintypes){
             generatePlatform(60, 20, 20, 0, easy);
         }
-        else if(currentlvl<=3000){
+        else if(currentlvl<=middletypes){
             generatePlatform(30, 30, 25, 15, medium);
         }
-        else{
+        else if(currentlvl<=endtypes){
             generatePlatform(10, 40, 30, 20, hard);
+        }
+        else{
+            generatePlatform(0, 40, 30, 30, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
@@ -491,4 +495,9 @@ void DoodleJump::World::generateBonus(const std::shared_ptr<DoodleJump::Platform
 
 std::string DoodleJump::World::returnScore() {
     return "SCORE: " + std::to_string(score->getScore());
+}
+
+std::string DoodleJump::World::Game_Over_Message() {
+    score->checkhighscore();
+    return "HIGHSCORE: " + score->getHighscore() + "\n SCORE: " + std::to_string(score->getScore());
 }

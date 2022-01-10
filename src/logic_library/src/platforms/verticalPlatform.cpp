@@ -33,7 +33,8 @@ void DoodleJump::VerticalPlatform::update(COMMAND c, float speed) {
         heightcounter -= speed;
     }
     updateBonus(c);
-    if(getJumped()>0){
+    if(isJumped() and getJumpcounter()>1){
+        setJumped(false);
         DoodleJump::VerticalPlatform::notifyObservers(getPosition(), verticalcol);
     }
     else{

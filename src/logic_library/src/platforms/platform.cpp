@@ -30,10 +30,18 @@ const std::shared_ptr<DoodleJump::Bonus> &DoodleJump::Platform::getBonus() const
     return bonus;
 }
 
-unsigned int DoodleJump::Platform::getJumped() const {
+bool DoodleJump::Platform::isJumped() const {
     return jumped;
 }
 
-void DoodleJump::Platform::Jumped(){
-    jumped++;
+void DoodleJump::Platform::setJumped(bool jumped) {
+    Platform::jumped = jumped;
+}
+
+int DoodleJump::Platform::getJumpcounter() const {
+    return jumpcounter;
+}
+
+void DoodleJump::Platform::addjump() {
+    jumpcounter++;
 }

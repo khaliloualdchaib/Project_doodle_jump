@@ -15,6 +15,10 @@ namespace DoodleJump{
 
         Score() = default;
 
+        void checkhighscore() const;
+
+        static std::string getHighscore();
+
         void addScoreSpring();
 
         void addScoreJetpack();

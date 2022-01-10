@@ -31,7 +31,8 @@ void DoodleJump::HorizontalPlatform::update(COMMAND c, float speed) {
         HorizontalPlatform::setPosition(std::make_tuple(std::get<0>(getPosition())-0.02, std::get<1>(getPosition())));
     }
     updateBonus(c);
-    if(getJumped()>0){
+    if(isJumped() and getJumpcounter()>1){
+        setJumped(false);
         DoodleJump::HorizontalPlatform::notifyObservers(HorizontalPlatform::getPosition(), horizontalcol);
     }
     else{

@@ -39,39 +39,50 @@ void SFMLDoodleJump::Game::runGame() {
         DoodleJump::Stopwatch::getInstance().tick();
         if(DoodleJump::Stopwatch::getInstance().getTime_difference() >=1/60.0f){
             window->clear(sf::Color::Black);
-            world.updateWorldCamera();
-            world.updateTiles();
-            sf::Text text;
-            text.setFont(font);
-            text.setString(world.returnScore());
-            text.setCharacterSize(24);
-            text.setFillColor(sf::Color::White);
-            window->draw(text);
-            for(const auto& platform: world.getPlatforms()){
-                if(platform->isHorizontal() or platform->isVertical()){
-                    platform->update(NONE, 0.03f);
+            if(std::get<1>(world.getPlayer()->getPosition())>=-3){
+                world.updateWorldCamera();
+                world.updateTiles();
+                sf::Text text;
+                text.setFont(font);
+                text.setString(world.returnScore());
+                text.setCharacterSize(24);
+                text.setFillColor(sf::Color::White);
+                window->draw(text);
+                for(const auto& platform: world.getPlatforms()){
+                    if(platform->isHorizontal() or platform->isVertical()){
+                        platform->update(NONE, 0.03f);
+                    }
+                    else{
+                        platform->update(NONE, 0);
+                    }
+                    if(platform->hasBonus()){
+                        DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
+                        collision.execute();
+                    }
+
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                {
+                    world.getPlayer()->update(LEFT, 0);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                {
+                    world.getPlayer()->update(RIGHT, 0);
                 }
                 else{
-                    platform->update(NONE, 0);
+                    world.getPlayer()->update(NONE, 0);
                 }
-                if(platform->hasBonus()){
-                    DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(world.getPlayer(), platform->getBonus());
-                    collision.execute();
-                }
-
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                world.getPlayer()->update(LEFT, 0);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                world.getPlayer()->update(RIGHT, 0);
+                world.collisionPlayerPlatform();
             }
             else{
-                world.getPlayer()->update(NONE, 0);
+                sf::Text game_over;
+                game_over.setFont(font);
+                game_over.setString(world.Game_Over_Message());
+                game_over.setCharacterSize(50);
+                game_over.setFillColor(sf::Color::Red);
+                game_over.setPosition(sf::Vector2f(std::get<0>(camera->Transformation(-2, 0.5)), std::get<1>(camera->Transformation(-2, 0.5))));
+                window->draw(game_over);
             }
-            world.collisionPlayerPlatform();
             DoodleJump::Stopwatch::getInstance().reset();
             window->display();
         }

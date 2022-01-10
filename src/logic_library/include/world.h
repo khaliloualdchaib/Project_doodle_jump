@@ -7,6 +7,7 @@
 #include "camera.h"
 #include <memory>
 #include <set>
+#include "random.h"
 #include <iostream>
 #include "entity.h"
 #include "player.h"
@@ -35,9 +36,12 @@ namespace DoodleJump{
         std::shared_ptr<Observer> bgTileObserver;
         std::shared_ptr<bg_Tile> tiles[2];
         std::shared_ptr<Score> score = std::make_shared<Score>();
-        unsigned int easy = 12;
-        unsigned int medium = 9;
-        unsigned int hard = 6;
+        const unsigned int easy = 12;
+        const unsigned int medium = 9;
+        const unsigned int hard = 6;
+        const unsigned int begintypes = floor(DoodleJump::Random::getInstance().getrandomDouble(1000, 2500));
+        const unsigned int middletypes = floor(DoodleJump::Random::getInstance().getrandomDouble(2500, 4000));
+        const unsigned int endtypes = floor(DoodleJump::Random::getInstance().getrandomDouble(4000, 5000));
         unsigned int currentlvl = 0;
     public:
 
@@ -113,6 +117,8 @@ namespace DoodleJump{
         void generateBonus(const std::shared_ptr<DoodleJump::Platform>& platform, unsigned int none, unsigned int springprob, unsigned int jetpackprob);
 
         std::string returnScore();
+
+        std::string Game_Over_Message();
     };
 }
 #endif //DOODLEJUMP_WORLD_H

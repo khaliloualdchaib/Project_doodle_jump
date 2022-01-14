@@ -14,45 +14,67 @@ namespace DoodleJump{
         bool collisionSpring = false;
         bool highspeed = false;
         bool collisionJetpack = false;
-        unsigned int jetpackcounter = 0;
         float accelerationX = 0.07;
         float accelerationY = 0.001;
         float initial_velocity = 0.03;
         float velocity = 2*initial_velocity;
     public:
-        void setCollisionJetpack(bool collisionJetpack);
 
+        /**
+         * Setter for collisionJetpack
+         * @param c: Set collisionJetpack to c
+         */
+        void setCollisionJetpack(bool c);
+
+        /**
+         * Getter for highspeed.
+         * @return highspeed
+         */
         bool isHighspeed() const;
 
+        /**
+         * Setter for collisionSpring.
+         * @param c: Set collisionSpring to c.
+         */
         void setCollisionSpring(bool c);
 
-        bool isCollisionSpring() const;
-
+        /**
+         * Getter for initial_velocity.
+         * @return initial_velocity
+         */
         float getInitialVelocity() const;
 
+
+        /**
+         * Getter for velocity.
+         * @return velocity
+         */
         float getVelocity() const;
 
-        /*
-         * Getter for the Falling boolean.
+        /**
+         * Getter for Falling
+         * @return Falling
          */
         bool isFalling() const;
 
-        /*
-         * Setter for the collision bool
+        /**
+         * Setter for collisionPlatform.
+         * @param c: Set collisionPlatform to c.
          */
         void setCollisionPlatform(bool c);
 
-        /*
+        /**
          * Constructor
-         * It has the following inputs:
-         * width, height and pos
+         * @param pos: Initial position of the player.
          */
-        Player(float width, float height, std::tuple<float, float> pos);
+        explicit Player(std::tuple<float, float> pos);
 
-        /*
-         * Updates the player
+        /**
+         * Updates the jetpack.
+         * @param c: Instruction that the player needs to carry out.
+         * @param speed: This input does not affect player.
          */
-        void update(COMMAND c, float speed) override;
+        void update(INSTRUCTION c, float speed) override;
 
     };
 }

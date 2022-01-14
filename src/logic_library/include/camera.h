@@ -12,26 +12,32 @@ namespace DoodleJump{
         unsigned int height;
     public:
 
-        /*
-         * This is a constructor.
-         * The inputs are the width and the height of the window
+        /**
+         * Constructor.
+         * @param height: Window Height
+         * @param width: Window Width
          */
         Camera(unsigned int width, unsigned int height);
 
-        /*
+        /**
          * Transform own 2D coordinate system coordinates to pixel coordinates.
-         * Takes own 2D coordinate system coordinates as input.
-         * Returns pixel coordinates.
+         * @param xpos: X coordinate of own 2D coordinate system coordinates.
+         * @param ypos: Y coordinate of own 2D coordinate system coordinates.
+         * @return pixel coordinate.
          */
         std::tuple<float, float> Transformation(float xpos, float ypos) const;
 
-        /*
+        /**
          * Transforms the width of my own coordinate system to width in pixels.
+         * @param w: Width of my own coordinate system.
+         * @return Width in pixels.
          */
         float TransformWidth(float w) const;
 
-        /*
-         *  Transforms the height of my own coordinate system to height in pixels.
+        /**
+         * Transforms the height of my own coordinate system to height in pixels.
+         * @param h: Height of my own coordinate system.
+         * @return Height in pixels
          */
         float TransformHeight(float h) const;
     };

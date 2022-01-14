@@ -13,8 +13,19 @@ namespace DoodleJump{
         std::shared_ptr<DoodleJump::Player> player;
         std::shared_ptr<DoodleJump::Bonus> bonus;
     public:
+
+        /**
+         * Executes the collision (this means it checks for collision).
+         */
         void execute() override;
+
+        /**
+         * Constructor
+         * @param p: player
+         * @param b: bonus
+         */
         CollisionBonusPlayer(std::shared_ptr<DoodleJump::Player>  p, std::shared_ptr<DoodleJump::Bonus>  b);
+
     };
 }
 #endif //DOODLEJUMP_COLLISIONBONUSPLAYER_H

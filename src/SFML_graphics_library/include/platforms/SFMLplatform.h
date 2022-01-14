@@ -11,19 +11,26 @@ namespace SFMLDoodleJump{
         sf::RectangleShape platform;
     public:
 
-        /*
-         * Getter for the platform
+        /**
+         * Getter for platform.
+         * @return platform
          */
         sf::RectangleShape &getPlatform();
 
-        /*
-         * Constructor that takes the same input as the SFMLEntity class
+        /**
+         * Constructor
+         * @param width: Width of the platform.
+         * @param height: Height of the platform.
+         * @param pos: Initial position of the platform.
+         * @param w: The window where the platform will be generated.
          */
         SFMLPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
-
-        void draw(std::tuple<float, float> pos) override;
-
+        /**
+         * Handles the event
+         * @param pos: Position of the observer.
+         * @param s: Gives how the score should be updated.
+         */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
 
     };

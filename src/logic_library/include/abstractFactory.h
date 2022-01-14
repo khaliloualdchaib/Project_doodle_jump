@@ -21,17 +21,17 @@ namespace DoodleJump{
     class AbstractFactory{
     public:
 
-        /*
-         * This is a default constructor.
+        /**
+         * Default constructor.
          */
         AbstractFactory() = default;
 
-        /*
-         * This is a default destructor
+        /**
+         * Default destructor
          */
-        virtual ~AbstractFactory() = default;
+        ~AbstractFactory() = default;
 
-
+        //The following functions create an observer and return it
         virtual std::shared_ptr<DoodleJump::Observer> createPlayer(std::shared_ptr<DoodleJump::Player> p) = 0;
 
         virtual std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::StaticPlatform> p) = 0;

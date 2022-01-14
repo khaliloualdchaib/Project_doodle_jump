@@ -14,23 +14,27 @@ namespace DoodleJump{
         std::vector<std::shared_ptr<Observer>> observers; //this is a list of shared pointers to observers
     public:
 
-        /*
-         * addObserver adds an observer to the observers list given the observer that needs to be added.
+        /**
+         * Adds an observer to the observers list.
+         * @param observer: The observer that needs to be added in the list.
          */
         void addObserver(const std::shared_ptr<Observer>& observer);
 
-        /*
-         * removeObserver removes an observer from the observers list given the index of the observer that needs to be removed.
+        /**
+         * Removes an observer from the observers list.
+         * @param index: The index of the observer that needs to be removed.
          */
         void removeObserver(int index);
 
-        /*
-         * notifyObservers notifies all observers in the list observers.
+        /**
+         * Notifies all observers in the list observers.
+         * @param pos: The position of the observable.
+         * @param s: Gives how the score should be updated.
          */
         void notifyObservers(std::tuple<float, float> pos, scoreUpdate s);
 
-        /*
-         * This is a default constructor.
+        /**
+         * Default constructor.
          */
         Observable() = default;
 

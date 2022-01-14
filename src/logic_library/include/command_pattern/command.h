@@ -7,8 +7,15 @@
 namespace DoodleJump{
     class Command{
     public:
+
+        /**
+         * Default constructor.
+         */
         Command() = default;
 
+        /**
+         * Virtual execute function.
+         */
         virtual void execute() = 0;
 
     };

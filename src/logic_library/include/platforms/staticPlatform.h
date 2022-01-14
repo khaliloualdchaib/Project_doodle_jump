@@ -8,15 +8,19 @@
 namespace DoodleJump{
     class StaticPlatform: public Platform{
     public:
-        /*
-         * Constructor with the same inputs as the Platform class.
+        /**
+         * Explicit constructor
+         * @param pos: The initial position of the Static Platform.
          */
         explicit StaticPlatform(std::tuple<float, float> pos);
 
-        /*
-         * update the platform
+        /**
+         * Updates the Static Platform.
+         * @param c: Instruction that the static platform needs to carry out.
+         * @param speed: The speed the static platform should move.
          */
-        void update(COMMAND c, float speed) override;
+        void update(INSTRUCTION c, float speed) override;
+
     };
 }
 #endif //DOODLEJUMP_STATICPLATFORM_H

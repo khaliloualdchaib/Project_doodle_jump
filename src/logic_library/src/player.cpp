@@ -4,9 +4,9 @@
 #include <iostream>
 #include "../include/player.h"
 
-DoodleJump::Player::Player(float width, float height, std::tuple<float, float> pos): Entity(width, height, pos) {}
+DoodleJump::Player::Player(std::tuple<float, float> pos): Entity(0.8f, 0.44f, pos) {}
 
-void DoodleJump::Player::update(COMMAND c, float speed) {
+void DoodleJump::Player::update(INSTRUCTION c, float speed) {
     float X = 0.0f;
     float Y = 0.0f;
     bool jetpack = false;
@@ -100,10 +100,6 @@ float DoodleJump::Player::getInitialVelocity() const {
     return initial_velocity;
 }
 
-bool DoodleJump::Player::isCollisionSpring() const {
-    return collisionSpring;
-}
-
 void DoodleJump::Player::setCollisionSpring(bool c) {
     Player::collisionSpring = c;
 }
@@ -112,6 +108,6 @@ bool DoodleJump::Player::isHighspeed() const {
     return highspeed;
 }
 
-void DoodleJump::Player::setCollisionJetpack(bool collisionJetpack) {
-    Player::collisionJetpack = collisionJetpack;
+void DoodleJump::Player::setCollisionJetpack(bool c) {
+    Player::collisionJetpack = c;
 }

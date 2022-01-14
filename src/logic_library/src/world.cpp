@@ -4,19 +4,18 @@
 
 #include "../include/world.h"
 #include "../include/random.h"
+#include "../include/command_pattern/collisionBonusPlayer.h"
 #include <utility>
 #include "cmath"
 #include <cassert>
 #include <vector>
 #include <algorithm>
 
-DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a, std::map<std::string, float> config) {
+DoodleJump::World::World(std::shared_ptr<DoodleJump::AbstractFactory> a) {
     factory = std::move(a);
-    GameConfigurations = std::move(config);
-
+    
     //Initialise Player
-    player = std::make_shared<DoodleJump::Player>(DoodleJump::Player(GameConfigurations["PlayerWidth"], GameConfigurations["PlayerHeight"],
-                                                                     std::make_tuple(GameConfigurations["PlayerX_Position"], GameConfigurations["PlayerY_Position"])));
+    player = std::make_shared<DoodleJump::Player>(DoodleJump::Player(std::make_tuple(0.f, -2.5f)));
     player->addObserver(factory->createPlayer(player));
     player->addObserver(score);
 
@@ -297,7 +296,7 @@ void DoodleJump::World::updateWorldCamera() {
             generatePlatform(10, 40, 30, 20, hard);
         }
         else{
-            generatePlatform(0, 40, 30, 30, hard);
+            generatePlatform(0, 35, 30, 35, hard);
         }
         for(auto& platform: platforms){
             float xpos = std::get<0>(platform->getPosition());
@@ -405,10 +404,6 @@ std::shared_ptr<DoodleJump::Player> DoodleJump::World::getPlayer() const {
     return player;
 }
 
-const std::set<std::shared_ptr<DoodleJump::Platform>> &DoodleJump::World::getPlatforms() const {
-    return platforms;
-}
-
 void DoodleJump::World::updateTiles() {
     if(std::get<1>(player->getPosition())>=0){
         tiles[1]->update(NONE, player->getInitialVelocity());
@@ -500,4 +495,20 @@ std::string DoodleJump::World::returnScore() {
 std::string DoodleJump::World::Game_Over_Message() {
     score->checkhighscore();
     return "HIGHSCORE: " + score->getHighscore() + "\n SCORE: " + std::to_string(score->getScore());
+}
+
+void DoodleJump::World::runGameLogic() {
+    for(const auto& platform: platforms){
+        if(platform->isHorizontal() or platform->isVertical()){
+            platform->update(NONE, 0.02f);
+        }
+        else{
+            platform->update(NONE, 0);
+        }
+        if(platform->hasBonus()){
+            DoodleJump::CollisionBonusPlayer collision = DoodleJump::CollisionBonusPlayer(player, platform->getBonus());
+            collision.execute();
+        }
+    }
+    collisionPlayerPlatform();
 }

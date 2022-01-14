@@ -13,13 +13,8 @@ SFMLDoodleJump::SFMLbg_Tile::SFMLbg_Tile(float width, float height, const std::t
     sprite.setScale(targetSize.x/sprite.getLocalBounds().width, targetSize.y/sprite.getLocalBounds().height);
 }
 
-void SFMLDoodleJump::SFMLbg_Tile::draw(std::tuple<float, float> pos) {
-    SFMLbg_Tile::getWindow()->draw(sprite);
-}
-
 void SFMLDoodleJump::SFMLbg_Tile::HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) {
-    //std::cout<<std::get<0>(nextpos)<<" "<<std::get<1>(nextpos)<<std::endl;
     SFMLbg_Tile::setPosition(nextpos);
     sprite.setPosition(sf::Vector2f(std::get<0>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos))) , std::get<1>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos)))));
-    draw(nextpos);
+    SFMLbg_Tile::getWindow()->draw(sprite);
 }

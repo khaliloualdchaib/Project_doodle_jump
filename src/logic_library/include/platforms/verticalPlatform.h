@@ -14,12 +14,29 @@ namespace DoodleJump{
         bool goDOWN = false;
         float heightcounter = 0;
     public:
+
+        /**
+         * Explicit constructor
+         * @param pos: The initial position of the Vertical Platform
+         */
         explicit VerticalPlatform(const std::tuple<float, float> &pos);
 
-        void update(COMMAND c, float speed) override;
+        /**
+         * Updates the Vertical Platform.
+         * @param c: Instruction that the vertical platform needs to carry out.
+         * @param speed: The speed the vertical platform should move.
+         */
+        void update(INSTRUCTION c, float speed) override;
 
+        /**
+         * @return true
+         */
         bool isVertical() override{return true;};
 
+        /**
+         * Getter for maxheight
+         * @return maxheight
+         */
         float getMaxHeight() override{return maxheight;};
     };
 

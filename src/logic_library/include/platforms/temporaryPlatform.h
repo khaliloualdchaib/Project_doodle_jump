@@ -10,9 +10,30 @@ namespace DoodleJump{
     private:
         bool temporaryjumped = false;
     public:
+
+        /**
+         * Getter for temporaryjumped boolean.
+         * @return temporaryjumped
+         */
         bool temporaryJumped() const override;
+
+        /**
+         * Explicit constructor
+         * @param pos: The initial position of the Temporary Platform
+         */
         explicit TemporaryPlatform(std::tuple<float, float> pos);
-        void update(COMMAND c, float speed) override;
+
+        /**
+          * Updates the Temporary Platform.
+          * @param c: Instruction that the temporary platform needs to carry out.
+          * @param speed: The speed the temporary platform should move.
+          */
+        void update(INSTRUCTION c, float speed) override;
+
+        /**
+         * Setter for tempraryjumped.
+         * @param b: Set temporaryjumped to b.
+         */
         void  settemporaryJumped(bool b) override;
     };
 }

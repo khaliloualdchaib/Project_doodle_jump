@@ -18,19 +18,15 @@ namespace SFMLDoodleJump{
         sf::Texture jetpackTexture;
     public:
 
-        /*
+        /**
          * Constructor
+         * @param w: Window where the enteties will be created.
          */
         ConcreteFactory(std::shared_ptr<sf::RenderWindow> w);
 
-        /*
-         * function that creates the player view
-         */
+        //Following functions create observers given  a logic entity.
         std::shared_ptr<DoodleJump::Observer> createPlayer(std::shared_ptr<DoodleJump::Player> p) override;
 
-        /*
-         *  function that creates the static platform view
-         */
         std::shared_ptr<DoodleJump::Observer> createStaticPlatform(std::shared_ptr<DoodleJump::StaticPlatform>p) override;
 
         std::shared_ptr<DoodleJump::Observer> createTemporaryPlatform(std::shared_ptr<DoodleJump::TemporaryPlatform>p) override;

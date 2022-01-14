@@ -11,19 +11,20 @@ namespace SFMLDoodleJump{
         sf::Sprite sprite;
     public:
 
-        /*
-         * SFMLPlayer constructor that takes the following inputs:
-         * width, height pos and a pointer to the window
+        /**
+         * Constructor
+         * @param width: Width of the player.
+         * @param height: Height of the player.
+         * @param pos: Initial position of the player.
+         * @param w: The window where the player will be generated.
+         * @param texture: The texture of the player.
          */
         SFMLPlayer(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w, const sf::Texture& texture);
 
-        /*
-         * Draws the player
-         */
-        void draw(std::tuple<float, float> pos) override;
-
-        /*
-         * Handles an event. inherited, form the virtual function in observer.h
+        /**
+         * Handles the event
+         * @param pos: Position of the observer.
+         * @param s: Gives how the score should be updated.
          */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
         

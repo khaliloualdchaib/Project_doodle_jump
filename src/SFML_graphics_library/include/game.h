@@ -13,17 +13,17 @@ namespace SFMLDoodleJump{
     class Game{
     private:
         std::map<std::string, unsigned int> windowConfiguration;
-        std::map<std::string, float> GameConfiguration;
         std::shared_ptr<sf::RenderWindow> window;
     public:
 
-        /*
+        /**
          * Constructor.
+         * @param windowconf: Window configurations
          */
-        Game(const std::map<std::string, unsigned int>& windowconf, const std::map<std::string, float>& config);
+        Game(const std::map<std::string, unsigned int>& windowconf);
 
-        /*
-         * runGame runs the game, thus it also runs the main game loop.
+        /**
+         * Runs the game, thus it also runs the main game loop.
          */
         void runGame();
 

@@ -10,8 +10,12 @@ namespace SFMLDoodleJump{
     class SFMLStaticPlatform: public SFMLPlatform{
     public:
 
-        /*
-         * Constructor that takes the same input as the SFMLPlatform class.
+        /**
+         * Constructor
+         * @param width: Width of the static platform.
+         * @param height: Height of the static platform.
+         * @param pos: Initial position of the static platform.
+         * @param w: The window where the static platform will be generated.
          */
         SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
     };

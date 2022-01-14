@@ -8,7 +8,7 @@
 #include "observer_pattern/observable.h"
 #include <set>
 #include "camera.h"
-enum COMMAND{LEFT, RIGHT, NONE};
+enum INSTRUCTION{LEFT, RIGHT, NONE};
 
 namespace DoodleJump{
     class Entity: public Observable{
@@ -18,46 +18,47 @@ namespace DoodleJump{
         float height; //height of the entity
     public:
 
-        /*
-         * getHeight is a getter for the height of the entity.
+        /**
+         * Getter for height.
+         * @return height
          */
         float getHeight() const;
 
-        /*
-         * update is a function that updates the entity.
+        /**
+         * Updates the entity.
+         * @param c: Instruction that the horizontal platform needs to carry out.
+         * @param speed: The speed the horizontal platform should move.
          */
-        virtual void update(COMMAND c, float speed){};
+        virtual void update(INSTRUCTION c, float speed){};
 
-        /*
-         * ~Entity is a default destructor.
+        /**
+         * Default destructor.
          */
-        virtual ~Entity() = default;
+        ~Entity() = default;
 
-        /*
-         * This is a default copy constructor.
-         * The input is the entity that will be copied.
-         */
-        Entity(const Entity& entity) = default;
-
-        /*
-         * getWidth is a getter for the width of the entity.
+        /**
+         * Getter for width.
+         * @return width
          */
         float getWidth() const;
 
-        /*
-         * This is a constructor.
-         * The inputs are the width, height and position of the entity.
-         */
+        /**
+        * Constructor
+        * @param width: Width of the entity.
+        * @param height: Height of the entity.
+        * @param pos: Initial position of the entity.
+        */
         Entity(float width, float height, std::tuple<float, float> pos);
 
-        /*
-         * setPosition is a setter for the position of the entity.
-         * The input is tuple that is the new position.
+        /**
+         * Setter for position.
+         * @param pos: Set the position to pos.
          */
         void setPosition(const std::tuple<float, float> &pos);
 
-        /*
-         * getPosition is a getter for the position of the entity.
+        /**
+         * Getter for position
+         * @return position
          */
         const std::tuple<float, float> &getPosition() const;
 

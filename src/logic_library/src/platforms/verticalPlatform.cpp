@@ -6,7 +6,7 @@
 
 DoodleJump::VerticalPlatform::VerticalPlatform(const std::tuple<float, float> &pos) : Platform(pos){}
 
-void DoodleJump::VerticalPlatform::update(COMMAND c, float speed) {
+void DoodleJump::VerticalPlatform::update(INSTRUCTION c, float speed) {
     if(!goUP and !goDOWN){
         double rng = DoodleJump::Random::getInstance().getrandomDouble(0, 2);
         if(rng>=1){
@@ -32,7 +32,7 @@ void DoodleJump::VerticalPlatform::update(COMMAND c, float speed) {
         setPosition(std::make_tuple(std::get<0>(getPosition()), std::get<1>(getPosition())-speed));
         heightcounter -= speed;
     }
-    updateBonus(c);
+    updateBonus();
     if(isJumped() and getJumpcounter()>1){
         setJumped(false);
         DoodleJump::VerticalPlatform::notifyObservers(getPosition(), verticalcol);

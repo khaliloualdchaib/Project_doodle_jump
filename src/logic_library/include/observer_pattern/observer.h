@@ -11,13 +11,15 @@ namespace DoodleJump{
     class Observer{
     public:
 
-        /*
-         * HandleEvent handles the events
+        /**
+         * Handles the events
+         * @param pos: Position of the observer.
+         * @param s: Gives how the score should be updated.
          */
-        virtual void HandleEvent(std::tuple<float, float>, scoreUpdate s){};
+        virtual void HandleEvent(std::tuple<float, float> pos, scoreUpdate s){};
 
-        /*
-         * This is a default constructor.
+        /**
+         * Default constructor.
          */
         Observer() = default;
 

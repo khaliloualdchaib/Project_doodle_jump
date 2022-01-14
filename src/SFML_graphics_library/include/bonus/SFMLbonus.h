@@ -11,12 +11,28 @@ namespace SFMLDoodleJump{
     private:
         sf::Sprite sprite;
     public:
+
+        /**
+         * Setter for the sprite.
+         * @param s: Set sprite to s.
+         */
         void setSprite(const sf::Sprite &s);
 
+        /**
+         * Constructor
+         * @param width: Width of the bonus.
+         * @param height: Height of the bonus.
+         * @param pos: Initial position of the bonus.
+         * @param w: The window where the bonus will be generated.
+         */
         SFMLBonus(float width, float height, const std::tuple<float, float> &pos,
                   const std::shared_ptr<sf::RenderWindow> &w);
-        void draw(std::tuple<float, float> pos) override;
 
+        /**
+         * Handles the event
+         * @param pos: Position of the observer.
+         * @param s: Gives how the score should be updated.
+         */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
 
     };

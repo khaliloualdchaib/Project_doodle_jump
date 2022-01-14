@@ -12,12 +12,8 @@ SFMLDoodleJump::SFMLPlayer::SFMLPlayer(float width, float height, std::tuple<flo
     sprite.setScale(targetSize.x/sprite.getLocalBounds().width, targetSize.y/sprite.getLocalBounds().height);
 }
 
-void SFMLDoodleJump::SFMLPlayer::draw(std::tuple<float, float> pos) {
-    SFMLDoodleJump::SFMLPlayer::getWindow()->draw(sprite);
-}
-
 void SFMLDoodleJump::SFMLPlayer::HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) {
-    draw(getPosition());
+    SFMLDoodleJump::SFMLPlayer::getWindow()->draw(sprite);
     SFMLPlayer::setPosition(nextpos);
     sprite.setPosition(sf::Vector2f(std::get<0>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos))) , std::get<1>(SFMLDoodleJump::SFMLEntity::getCamera()->Transformation(std::get<0>(nextpos), std::get<1>(nextpos)))));
 }

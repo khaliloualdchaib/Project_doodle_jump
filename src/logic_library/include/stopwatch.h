@@ -18,33 +18,35 @@ namespace DoodleJump{
         Stopwatch() = default;
     public:
 
-        /*
-         * Normal singleton getInstance function.
+        /**
+         * Singleton getInstance function
+         * @return Instance of the Stopwatch singleton
          */
         static Stopwatch& getInstance();
 
-        /*
+        /**
          * Changes the start time to now
          */
         void reset();
 
-        /*
+        /**
          * Sets the time_difference to the time now minus the start time.
          */
         void tick();
 
-        /*
+        /**
          * If the copy constructor is called the copy is going to get deleted.
          */
         Stopwatch(const Stopwatch&) = delete;
 
-        /*
-         * Delete the overloading operator.
+        /**
+         * Delete the overloading operator if it is called.
          */
         Stopwatch& operator = (const Stopwatch&) = delete;
 
-        /*
-         * getTime_difference is a getter for time_difference.
+        /**
+         * Getter for time_difference
+         * @return time_difference
          */
         float getTime_difference();
 

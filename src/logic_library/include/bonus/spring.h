@@ -9,9 +9,25 @@
 namespace DoodleJump{
     class Spring: public Bonus{
     public:
+
+        /**
+         * Explicit constructor
+         * @param pos: Initial position of the Jetpack.
+         */
         explicit Spring(const std::tuple<float, float> &pos);
-        void update(COMMAND c, float speed) override;
+
+        /**
+         * Updates the spring.
+         * @param c: Instruction that the spring needs to carry out.
+         * @param speed: The speed that the spring needs to move with.
+         */
+        void update(INSTRUCTION c, float speed) override;
+
+        /**
+         * @return true.
+         */
         bool isSpring() override{return true;};
+
     };
 }
 #endif //DOODLEJUMP_SPRING_H

@@ -10,10 +10,22 @@ namespace SFMLDoodleJump{
     private:
         sf::Sprite sprite;
     public:
+
+        /**
+         * Constructor
+         * @param width: Width of the tile.
+         * @param height: Height of the tile.
+         * @param pos: Initial position of the tile.
+         * @param w: The window where the tile will be generated.
+         * @param texture: Texture of the tile.
+         */
         SFMLbg_Tile(float width, float height, const std::tuple<float, float> &pos, const std::shared_ptr<sf::RenderWindow> &w, const sf::Texture& texture);
 
-        void draw(std::tuple<float, float> pos) override;
-
+        /**
+         * Handles the event
+         * @param pos: Position of the observer.
+         * @param s: Gives how the score should be updated.
+         */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
     };
 }

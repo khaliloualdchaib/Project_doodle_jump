@@ -9,8 +9,23 @@
 namespace DoodleJump{
     class Jetpack: public Bonus{
     public:
+
+        /**
+         * Explicit constructor
+         * @param pos: Initial position of the Jetpack.
+         */
         explicit Jetpack(const std::tuple<float, float> &pos);
-        void update(COMMAND c, float speed) override;
+
+        /**
+         * Updates the jetpack.
+         * @param c: Instruction that the jetpack needs to carry out.
+         * @param speed: The speed that the jetpack needs to move with.
+         */
+        void update(INSTRUCTION c, float speed) override;
+
+        /**
+         * @return true.
+         */
         bool isJetpack() override {return true;};
 
     };

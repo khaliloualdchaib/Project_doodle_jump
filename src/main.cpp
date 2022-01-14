@@ -5,8 +5,7 @@
 int main()
 {
     std::map<std::string, unsigned int> windowconf = {{"Width", 600}, {"Height", 800}};
-    std::map<std::string, float> configurations = {{"PlayerWidth", 0.8f}, {"PlayerHeight", 0.44f}, {"PlayerX_Position", 0.f}, {"PlayerY_Position", -2.5f}};
-    SFMLDoodleJump::Game game = SFMLDoodleJump::Game(windowconf, configurations);
+    SFMLDoodleJump::Game game = SFMLDoodleJump::Game(windowconf);
     game.runGame();
     return 0;
 }

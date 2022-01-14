@@ -12,10 +12,10 @@ void DoodleJump::Platform::setBonus(const std::shared_ptr<DoodleJump::Bonus> &b)
     Platform::bonus = b;
 }
 
-void DoodleJump::Platform::updateBonus(COMMAND c) {
+void DoodleJump::Platform::updateBonus() {
     if(bonus != nullptr){
         bonus->setPosition(std::make_tuple(std::get<0>(getPosition()), std::get<1>(getPosition())+0.5));
-        bonus->update(c, 0);
+        bonus->update(NONE, 0);
     }
 }
 

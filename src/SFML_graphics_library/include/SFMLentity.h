@@ -22,64 +22,55 @@ namespace SFMLDoodleJump{
         std::shared_ptr<DoodleJump::Camera> camera;
     public:
 
-        /*
-         * This is a getter for the Camera
+        /**
+         * Getter for camera.
+         * @return camera
          */
         const std::shared_ptr<DoodleJump::Camera> &getCamera() const;
 
-        /*
-         * This is a getter for the window
+        /**
+         * Getter for window.
+         * @return window
          */
         const std::shared_ptr<sf::RenderWindow> &getWindow() const;
 
-        /*
-         * getHeight is a getter for the height of the entity.
+        /**
+         * Getter for height.
+         * @return height
          */
         float getHeight() const;
 
-        /*
-         * update is a function that updates the entity.
+        /**
+         * Default destructor.
          */
-        virtual void update(){};
+        ~SFMLEntity() = default;
 
-        /*
-         * ~SFMLEntity is a default destructor.
-         */
-        virtual ~SFMLEntity() = default;
-
-        /*
-         * This is a default copy constructor.
-         * The input is the entity that will be copied.
-         */
-        SFMLEntity(const SFMLEntity& entity) = default;
-
-        /*
-         * getWidth is a getter for the width of the entity.
+        /**
+         * Getter for width.
+         * @return width
          */
         float getWidth() const;
 
-        /*
-         * This is a constructor.
-         * The inputs are the width, height and position of the entity.
-         * It also has a window input
+        /**
+         * Constructor
+         * @param width: Width of the entity.
+         * @param height: Height of the entity.
+         * @param pos: Initial position of the entity.
+         * @param w: The window where the entity will be generated.
          */
         SFMLEntity(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
 
-        /*
-         * setPosition is a setter for the position of the entity.
-         * The input is a tuple that is the new position.
+        /**
+         * Setter for position.
+         * @param pos: Set position to pos.
          */
         void setPosition(const std::tuple<float, float> &pos);
 
-        /*
-         * getPosition is a getter for the position of the entity.
+        /**
+         * Getter for position.
+         * @return position
          */
         const std::tuple<float, float> &getPosition() const;
-
-        /*
-         * virtual draw function that draws the entity on the window.
-         */
-        virtual void draw(std::tuple<float, float> pos) {};
 
     };
 }

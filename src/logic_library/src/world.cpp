@@ -317,7 +317,7 @@ void DoodleJump::World::updateWorldCamera()
                 } else if (currentlvl <= endtypes) {
                         generatePlatform(10, 40, 30, 20, hard);
                 } else {
-                        generatePlatform(0, 40, 30, 30, hard);
+                        generatePlatform(0, 40, 35, 25, hard);
                 }
                 for (auto& platform : platforms) {
                         float xpos = std::get<0>(platform->getPosition());

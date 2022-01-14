@@ -1,0 +1,88 @@
+\hypertarget{classSFMLDoodleJump_1_1SFMLBonus}{}\doxysection{S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Bonus Class Reference}
+\label{classSFMLDoodleJump_1_1SFMLBonus}\index{SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}}
+
+
+Inheritance diagram for S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Bonus\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSFMLDoodleJump_1_1SFMLBonus__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Bonus\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classSFMLDoodleJump_1_1SFMLBonus__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLBonus_a83ccdace2c38044b81cdea7492b43354}{set\+Sprite}} (const sf\+::\+Sprite \&s)
+\item 
+\mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLBonus_a3e1e52e7cb3e41fb610228f447377894}{S\+F\+M\+L\+Bonus}} (float width, float height, const std\+::tuple$<$ float, float $>$ \&pos, const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&w)
+\item 
+void \mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLBonus_a7789fc1c280892df5f06cd193f7970e1}{Handle\+Event}} (std\+::tuple$<$ float, float $>$ nextpos, score\+Update s) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLBonus_a3e1e52e7cb3e41fb610228f447377894}\label{classSFMLDoodleJump_1_1SFMLBonus_a3e1e52e7cb3e41fb610228f447377894}} 
+\index{SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}!SFMLBonus@{SFMLBonus}}
+\index{SFMLBonus@{SFMLBonus}!SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}}
+\doxysubsubsection{\texorpdfstring{SFMLBonus()}{SFMLBonus()}}
+{\footnotesize\ttfamily S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Bonus\+::\+S\+F\+M\+L\+Bonus (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{const std\+::tuple$<$ float, float $>$ \&}]{pos,  }\item[{const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&}]{w }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the bonus. \\
+\hline
+{\em height} & Height of the bonus. \\
+\hline
+{\em pos} & Initial position of the bonus. \\
+\hline
+{\em w} & The window where the bonus will be generated. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLBonus_a7789fc1c280892df5f06cd193f7970e1}\label{classSFMLDoodleJump_1_1SFMLBonus_a7789fc1c280892df5f06cd193f7970e1}} 
+\index{SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}!HandleEvent@{HandleEvent}}
+\index{HandleEvent@{HandleEvent}!SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}}
+\doxysubsubsection{\texorpdfstring{HandleEvent()}{HandleEvent()}}
+{\footnotesize\ttfamily void S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Bonus\+::\+Handle\+Event (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ float, float $>$}]{nextpos,  }\item[{score\+Update}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles the event 
+\begin{DoxyParams}{Parameters}
+{\em pos} & Position of the observer. \\
+\hline
+{\em s} & Gives how the score should be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDoodleJump_1_1Observer_a6c8096e5d5c1d3170e41db7270c4d77c}{Doodle\+Jump\+::\+Observer}}.
+
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLBonus_a83ccdace2c38044b81cdea7492b43354}\label{classSFMLDoodleJump_1_1SFMLBonus_a83ccdace2c38044b81cdea7492b43354}} 
+\index{SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}!setSprite@{setSprite}}
+\index{setSprite@{setSprite}!SFMLDoodleJump::SFMLBonus@{SFMLDoodleJump::SFMLBonus}}
+\doxysubsubsection{\texorpdfstring{setSprite()}{setSprite()}}
+{\footnotesize\ttfamily void S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Bonus\+::set\+Sprite (\begin{DoxyParamCaption}\item[{const sf\+::\+Sprite \&}]{s }\end{DoxyParamCaption})}
+
+Setter for the sprite. 
+\begin{DoxyParams}{Parameters}
+{\em s} & Set sprite to s. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/\+S\+F\+M\+L\+\_\+graphics\+\_\+library/include/bonus/S\+F\+M\+Lbonus.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/\+S\+F\+M\+L\+\_\+graphics\+\_\+library/src/bonus/S\+F\+M\+Lbonus.\+cpp\end{DoxyCompactItemize}

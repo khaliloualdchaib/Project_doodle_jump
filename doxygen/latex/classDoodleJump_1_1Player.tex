@@ -1,0 +1,152 @@
+\hypertarget{classDoodleJump_1_1Player}{}\doxysection{Doodle\+Jump\+::Player Class Reference}
+\label{classDoodleJump_1_1Player}\index{DoodleJump::Player@{DoodleJump::Player}}
+
+
+Inheritance diagram for Doodle\+Jump\+::Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classDoodleJump_1_1Player__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Doodle\+Jump\+::Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classDoodleJump_1_1Player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Player_a6510e3ddbf9a7f697688ad583ffbea93}{set\+Collision\+Jetpack}} (bool c)
+\item 
+bool \mbox{\hyperlink{classDoodleJump_1_1Player_aa35a1264e2e2ea52e37f92d40f4c6152}{is\+Highspeed}} () const
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Player_ac73ee84b647fb6af99b040e4d0838b1b}{set\+Collision\+Spring}} (bool c)
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1Player_aa1865d2c21e88ac628923271eeb69cf9}{get\+Initial\+Velocity}} () const
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1Player_aad4ee6ec805081e624a78c223f8cef2a}{get\+Velocity}} () const
+\item 
+bool \mbox{\hyperlink{classDoodleJump_1_1Player_a2bb337f3f3ec2098115509aa4a45559a}{is\+Falling}} () const
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Player_a01bf2489bf682cef7daff4b9288d33ad}{set\+Collision\+Platform}} (bool c)
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1Player_a0b5ac699a005cde1713d8960b2dc0736}{Player}} (std\+::tuple$<$ float, float $>$ pos)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Player_a64feee79be6329cdc0e51d6120d5d47e}{update}} (I\+N\+S\+T\+R\+U\+C\+T\+I\+ON c, float speed) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_a0b5ac699a005cde1713d8960b2dc0736}\label{classDoodleJump_1_1Player_a0b5ac699a005cde1713d8960b2dc0736}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!Player@{Player}}
+\index{Player@{Player}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ float, float $>$}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em pos} & Initial position of the player. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_aa1865d2c21e88ac628923271eeb69cf9}\label{classDoodleJump_1_1Player_aa1865d2c21e88ac628923271eeb69cf9}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!getInitialVelocity@{getInitialVelocity}}
+\index{getInitialVelocity@{getInitialVelocity}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{getInitialVelocity()}{getInitialVelocity()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+Player\+::get\+Initial\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for initial\+\_\+velocity. \begin{DoxyReturn}{Returns}
+initial\+\_\+velocity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_aad4ee6ec805081e624a78c223f8cef2a}\label{classDoodleJump_1_1Player_aad4ee6ec805081e624a78c223f8cef2a}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+Player\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for velocity. \begin{DoxyReturn}{Returns}
+velocity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_a2bb337f3f3ec2098115509aa4a45559a}\label{classDoodleJump_1_1Player_a2bb337f3f3ec2098115509aa4a45559a}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!isFalling@{isFalling}}
+\index{isFalling@{isFalling}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{isFalling()}{isFalling()}}
+{\footnotesize\ttfamily bool Doodle\+Jump\+::\+Player\+::is\+Falling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for Falling \begin{DoxyReturn}{Returns}
+Falling 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_aa35a1264e2e2ea52e37f92d40f4c6152}\label{classDoodleJump_1_1Player_aa35a1264e2e2ea52e37f92d40f4c6152}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!isHighspeed@{isHighspeed}}
+\index{isHighspeed@{isHighspeed}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{isHighspeed()}{isHighspeed()}}
+{\footnotesize\ttfamily bool Doodle\+Jump\+::\+Player\+::is\+Highspeed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for highspeed. \begin{DoxyReturn}{Returns}
+highspeed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_a6510e3ddbf9a7f697688ad583ffbea93}\label{classDoodleJump_1_1Player_a6510e3ddbf9a7f697688ad583ffbea93}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!setCollisionJetpack@{setCollisionJetpack}}
+\index{setCollisionJetpack@{setCollisionJetpack}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{setCollisionJetpack()}{setCollisionJetpack()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Player\+::set\+Collision\+Jetpack (\begin{DoxyParamCaption}\item[{bool}]{c }\end{DoxyParamCaption})}
+
+Setter for collision\+Jetpack 
+\begin{DoxyParams}{Parameters}
+{\em c} & Set collision\+Jetpack to c \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_a01bf2489bf682cef7daff4b9288d33ad}\label{classDoodleJump_1_1Player_a01bf2489bf682cef7daff4b9288d33ad}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!setCollisionPlatform@{setCollisionPlatform}}
+\index{setCollisionPlatform@{setCollisionPlatform}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{setCollisionPlatform()}{setCollisionPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Player\+::set\+Collision\+Platform (\begin{DoxyParamCaption}\item[{bool}]{c }\end{DoxyParamCaption})}
+
+Setter for collision\+Platform. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Set collision\+Platform to c. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_ac73ee84b647fb6af99b040e4d0838b1b}\label{classDoodleJump_1_1Player_ac73ee84b647fb6af99b040e4d0838b1b}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!setCollisionSpring@{setCollisionSpring}}
+\index{setCollisionSpring@{setCollisionSpring}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{setCollisionSpring()}{setCollisionSpring()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Player\+::set\+Collision\+Spring (\begin{DoxyParamCaption}\item[{bool}]{c }\end{DoxyParamCaption})}
+
+Setter for collision\+Spring. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Set collision\+Spring to c. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1Player_a64feee79be6329cdc0e51d6120d5d47e}\label{classDoodleJump_1_1Player_a64feee79be6329cdc0e51d6120d5d47e}} 
+\index{DoodleJump::Player@{DoodleJump::Player}!update@{update}}
+\index{update@{update}!DoodleJump::Player@{DoodleJump::Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Player\+::update (\begin{DoxyParamCaption}\item[{I\+N\+S\+T\+R\+U\+C\+T\+I\+ON}]{c,  }\item[{float}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Updates the jetpack. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Instruction that the player needs to carry out. \\
+\hline
+{\em speed} & This input does not affect player. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDoodleJump_1_1Entity_aa6e0343d1d44af056f3355f75643752b}{Doodle\+Jump\+::\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/player.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/player.\+cpp\end{DoxyCompactItemize}

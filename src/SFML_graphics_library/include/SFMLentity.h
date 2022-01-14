@@ -5,34 +5,35 @@
 #ifndef DOODLEJUMP_SFMLENTITY_H
 #define DOODLEJUMP_SFMLENTITY_H
 
-#include <iostream>
-#include <tuple>
+#include "../../logic_library/include/camera.h"
 #include "../../logic_library/include/observer_pattern/observer.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <memory>
-#include "../../logic_library/include/camera.h"
+#include <tuple>
 
-namespace SFMLDoodleJump{
-    class SFMLEntity: public DoodleJump::Observer{
-    private:
+namespace SFMLDoodleJump {
+class SFMLEntity : public DoodleJump::Observer
+{
+private:
         std::tuple<float, float> position = std::make_tuple(0.0, 0.0);
-        float width; //width of the entity
-        float height; //height of the entity
+        float width;  // width of the entity
+        float height; // height of the entity
         std::shared_ptr<sf::RenderWindow> window;
         std::shared_ptr<DoodleJump::Camera> camera;
-    public:
 
+public:
         /**
          * Getter for camera.
          * @return camera
          */
-        const std::shared_ptr<DoodleJump::Camera> &getCamera() const;
+        const std::shared_ptr<DoodleJump::Camera>& getCamera() const;
 
         /**
          * Getter for window.
          * @return window
          */
-        const std::shared_ptr<sf::RenderWindow> &getWindow() const;
+        const std::shared_ptr<sf::RenderWindow>& getWindow() const;
 
         /**
          * Getter for height.
@@ -64,15 +65,14 @@ namespace SFMLDoodleJump{
          * Setter for position.
          * @param pos: Set position to pos.
          */
-        void setPosition(const std::tuple<float, float> &pos);
+        void setPosition(const std::tuple<float, float>& pos);
 
         /**
          * Getter for position.
          * @return position
          */
-        const std::tuple<float, float> &getPosition() const;
+        const std::tuple<float, float>& getPosition() const;
+};
+} // namespace SFMLDoodleJump
 
-    };
-}
-
-#endif //DOODLEJUMP_SFMLENTITY_H
+#endif // DOODLEJUMP_SFMLENTITY_H

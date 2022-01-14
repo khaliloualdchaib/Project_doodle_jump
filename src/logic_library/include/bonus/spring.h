@@ -6,15 +6,15 @@
 #define DOODLEJUMP_SPRING_H
 #include "bonus.h"
 
-namespace DoodleJump{
-    class Spring: public Bonus{
-    public:
-
+namespace DoodleJump {
+class Spring : public Bonus
+{
+public:
         /**
          * Explicit constructor
          * @param pos: Initial position of the Jetpack.
          */
-        explicit Spring(const std::tuple<float, float> &pos);
+        explicit Spring(const std::tuple<float, float>& pos);
 
         /**
          * Updates the spring.
@@ -26,8 +26,7 @@ namespace DoodleJump{
         /**
          * @return true.
          */
-        bool isSpring() override{return true;};
-
-    };
-}
-#endif //DOODLEJUMP_SPRING_H
+        bool isSpring() override { return true; };
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_SPRING_H

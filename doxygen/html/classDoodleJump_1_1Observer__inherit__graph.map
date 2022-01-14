@@ -1,0 +1,15 @@
+<map id="DoodleJump::Observer" name="DoodleJump::Observer">
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,173,137"/>
+<area shape="rect" id="node2" href="$classDoodleJump_1_1Score.html" title=" " alt="" coords="257,85,403,112"/>
+<area shape="rect" id="node3" href="$classSFMLDoodleJump_1_1SFMLEntity.html" title=" " alt="" coords="221,136,439,163"/>
+<area shape="rect" id="node4" href="$classSFMLDoodleJump_1_1SFMLbg__Tile.html" title=" " alt="" coords="491,24,717,51"/>
+<area shape="rect" id="node5" href="$classSFMLDoodleJump_1_1SFMLBonus.html" title=" " alt="" coords="495,75,713,101"/>
+<area shape="rect" id="node8" href="$classSFMLDoodleJump_1_1SFMLPlatform.html" title=" " alt="" coords="487,161,721,188"/>
+<area shape="rect" id="node13" href="$classSFMLDoodleJump_1_1SFMLPlayer.html" title=" " alt="" coords="494,212,714,239"/>
+<area shape="rect" id="node6" href="$classSFMLDoodleJump_1_1SFMLJetpack.html" title=" " alt="" coords="779,5,1006,32"/>
+<area shape="rect" id="node7" href="$classSFMLDoodleJump_1_1SFMLSpring.html" title=" " alt="" coords="783,56,1003,83"/>
+<area shape="rect" id="node9" href="$classSFMLDoodleJump_1_1SFMLHorizontalPlatform.html" title=" " alt="" coords="769,107,1016,149"/>
+<area shape="rect" id="node10" href="$classSFMLDoodleJump_1_1SFMLStaticPlatform.html" title=" " alt="" coords="785,173,1001,214"/>
+<area shape="rect" id="node11" href="$classSFMLDoodleJump_1_1SFMLTemporaryPlatform.html" title=" " alt="" coords="769,238,1016,279"/>
+<area shape="rect" id="node12" href="$classSFMLDoodleJump_1_1SFMLVerticalPlatform.html" title=" " alt="" coords="779,303,1006,345"/>
+</map>

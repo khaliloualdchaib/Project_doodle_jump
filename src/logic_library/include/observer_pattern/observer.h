@@ -4,13 +4,22 @@
 
 #ifndef DOODLEJUMP_OBSERVER_H
 #define DOODLEJUMP_OBSERVER_H
-#include <tuple>
 #include <limits>
-enum scoreUpdate{newHeight, staticcol, horizontalcol, verticalcol, springcol, jetpackcol, zero};
-namespace DoodleJump{
-    class Observer{
-    public:
-
+#include <tuple>
+enum scoreUpdate
+{
+        newHeight,
+        staticcol,
+        horizontalcol,
+        verticalcol,
+        springcol,
+        jetpackcol,
+        zero
+};
+namespace DoodleJump {
+class Observer
+{
+public:
         /**
          * Handles the events
          * @param pos: Position of the observer.
@@ -22,8 +31,7 @@ namespace DoodleJump{
          * Default constructor.
          */
         Observer() = default;
+};
+} // namespace DoodleJump
 
-    };
-}
-
-#endif //DOODLEJUMP_OBSERVER_H
+#endif // DOODLEJUMP_OBSERVER_H

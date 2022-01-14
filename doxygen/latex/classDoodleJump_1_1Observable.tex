@@ -1,0 +1,76 @@
+\hypertarget{classDoodleJump_1_1Observable}{}\doxysection{Doodle\+Jump\+::Observable Class Reference}
+\label{classDoodleJump_1_1Observable}\index{DoodleJump::Observable@{DoodleJump::Observable}}
+
+
+Inheritance diagram for Doodle\+Jump\+::Observable\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDoodleJump_1_1Observable__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Observable_a3fbcc66b39136fe06b0339e7bdc9e376}{add\+Observer}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Observer}{Observer}} $>$ \&observer)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Observable_ad161822ccd59a131e0bedd6175ff86b8}{remove\+Observer}} (int index)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Observable_afe21b2064170d71a0ee9d819835a4ab4}{notify\+Observers}} (std\+::tuple$<$ float, float $>$ pos, score\+Update s)
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1Observable_ad2d9719bca35f8826aa054d2ca9c73da}{Observable}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Observable_ad2d9719bca35f8826aa054d2ca9c73da}\label{classDoodleJump_1_1Observable_ad2d9719bca35f8826aa054d2ca9c73da}} 
+\index{DoodleJump::Observable@{DoodleJump::Observable}!Observable@{Observable}}
+\index{Observable@{Observable}!DoodleJump::Observable@{DoodleJump::Observable}}
+\doxysubsubsection{\texorpdfstring{Observable()}{Observable()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+Observable\+::\+Observable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default constructor. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Observable_a3fbcc66b39136fe06b0339e7bdc9e376}\label{classDoodleJump_1_1Observable_a3fbcc66b39136fe06b0339e7bdc9e376}} 
+\index{DoodleJump::Observable@{DoodleJump::Observable}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!DoodleJump::Observable@{DoodleJump::Observable}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Observable\+::add\+Observer (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Observer}{Observer}} $>$ \&}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the observers list. 
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer that needs to be added in the list. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1Observable_afe21b2064170d71a0ee9d819835a4ab4}\label{classDoodleJump_1_1Observable_afe21b2064170d71a0ee9d819835a4ab4}} 
+\index{DoodleJump::Observable@{DoodleJump::Observable}!notifyObservers@{notifyObservers}}
+\index{notifyObservers@{notifyObservers}!DoodleJump::Observable@{DoodleJump::Observable}}
+\doxysubsubsection{\texorpdfstring{notifyObservers()}{notifyObservers()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Observable\+::notify\+Observers (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ float, float $>$}]{pos,  }\item[{score\+Update}]{s }\end{DoxyParamCaption})}
+
+Notifies all observers in the list observers. 
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position of the observable. \\
+\hline
+{\em s} & Gives how the score should be updated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1Observable_ad161822ccd59a131e0bedd6175ff86b8}\label{classDoodleJump_1_1Observable_ad161822ccd59a131e0bedd6175ff86b8}} 
+\index{DoodleJump::Observable@{DoodleJump::Observable}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!DoodleJump::Observable@{DoodleJump::Observable}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Observable\+::remove\+Observer (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Removes an observer from the observers list. 
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the observer that needs to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/observer\+\_\+pattern/observable.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/observer\+\_\+pattern/observable.\+cpp\end{DoxyCompactItemize}

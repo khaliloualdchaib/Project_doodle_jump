@@ -4,20 +4,21 @@
 
 #ifndef DOODLEJUMP_STOPWATCH_H
 #define DOODLEJUMP_STOPWATCH_H
+#include <chrono>
 #include <iostream>
 #include <memory>
-#include <chrono>
 
 using namespace std;
 
-namespace DoodleJump{
-    class Stopwatch{
-    private:
+namespace DoodleJump {
+class Stopwatch
+{
+private:
         chrono::system_clock::time_point start_time;
         chrono::duration<float> time_difference = chrono::duration<float>(0.0f);
         Stopwatch() = default;
-    public:
 
+public:
         /**
          * Singleton getInstance function
          * @return Instance of the Stopwatch singleton
@@ -42,14 +43,13 @@ namespace DoodleJump{
         /**
          * Delete the overloading operator if it is called.
          */
-        Stopwatch& operator = (const Stopwatch&) = delete;
+        Stopwatch& operator=(const Stopwatch&) = delete;
 
         /**
          * Getter for time_difference
          * @return time_difference
          */
         float getTime_difference();
-
-    };
-}
-#endif //DOODLEJUMP_STOPWATCH_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_STOPWATCH_H

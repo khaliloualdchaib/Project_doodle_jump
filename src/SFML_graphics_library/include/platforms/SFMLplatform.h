@@ -5,17 +5,18 @@
 #ifndef DOODLEJUMP_SFMLPLATFORM_H
 #define DOODLEJUMP_SFMLPLATFORM_H
 #include "../SFMLentity.h"
-namespace SFMLDoodleJump{
-    class SFMLPlatform: public SFMLEntity{
-    private:
+namespace SFMLDoodleJump {
+class SFMLPlatform : public SFMLEntity
+{
+private:
         sf::RectangleShape platform;
-    public:
 
+public:
         /**
          * Getter for platform.
          * @return platform
          */
-        sf::RectangleShape &getPlatform();
+        sf::RectangleShape& getPlatform();
 
         /**
          * Constructor
@@ -32,7 +33,6 @@ namespace SFMLDoodleJump{
          * @param s: Gives how the score should be updated.
          */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
-
-    };
-}
-#endif //DOODLEJUMP_SFMLPLATFORM_H
+};
+} // namespace SFMLDoodleJump
+#endif // DOODLEJUMP_SFMLPLATFORM_H

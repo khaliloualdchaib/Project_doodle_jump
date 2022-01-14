@@ -1,0 +1,7 @@
+<map id="DoodleJump::Bonus" name="DoodleJump::Bonus">
+<area shape="rect" id="node1" title=" " alt="" coords="99,155,248,181"/>
+<area shape="rect" id="node4" href="$classDoodleJump_1_1Jetpack.html" title=" " alt="" coords="5,229,163,256"/>
+<area shape="rect" id="node5" href="$classDoodleJump_1_1Spring.html" title=" " alt="" coords="187,229,338,256"/>
+<area shape="rect" id="node2" href="$classDoodleJump_1_1Entity.html" title=" " alt="" coords="100,80,247,107"/>
+<area shape="rect" id="node3" href="$classDoodleJump_1_1Observable.html" title=" " alt="" coords="82,5,265,32"/>
+</map>

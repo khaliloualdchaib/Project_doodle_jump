@@ -1,0 +1,86 @@
+\hypertarget{classSFMLDoodleJump_1_1SFMLPlatform}{}\doxysection{S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Platform Class Reference}
+\label{classSFMLDoodleJump_1_1SFMLPlatform}\index{SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}}
+
+
+Inheritance diagram for S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSFMLDoodleJump_1_1SFMLPlatform__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for S\+F\+M\+L\+Doodle\+Jump\+::S\+F\+M\+L\+Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classSFMLDoodleJump_1_1SFMLPlatform__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \& \mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLPlatform_ad81dd765e14bfba72958761244ae4d82}{get\+Platform}} ()
+\item 
+\mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLPlatform_aca86ac01fbbc6f6c8b5e10c842f24a74}{S\+F\+M\+L\+Platform}} (float width, float height, std\+::tuple$<$ float, float $>$ pos, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ w)
+\item 
+void \mbox{\hyperlink{classSFMLDoodleJump_1_1SFMLPlatform_af8fe9dde9afdf6dbbeef31e8bf8e4b85}{Handle\+Event}} (std\+::tuple$<$ float, float $>$ nextpos, score\+Update s) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLPlatform_aca86ac01fbbc6f6c8b5e10c842f24a74}\label{classSFMLDoodleJump_1_1SFMLPlatform_aca86ac01fbbc6f6c8b5e10c842f24a74}} 
+\index{SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}!SFMLPlatform@{SFMLPlatform}}
+\index{SFMLPlatform@{SFMLPlatform}!SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}}
+\doxysubsubsection{\texorpdfstring{SFMLPlatform()}{SFMLPlatform()}}
+{\footnotesize\ttfamily S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Platform\+::\+S\+F\+M\+L\+Platform (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{std\+::tuple$<$ float, float $>$}]{pos,  }\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{w }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the platform. \\
+\hline
+{\em height} & Height of the platform. \\
+\hline
+{\em pos} & Initial position of the platform. \\
+\hline
+{\em w} & The window where the platform will be generated. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLPlatform_ad81dd765e14bfba72958761244ae4d82}\label{classSFMLDoodleJump_1_1SFMLPlatform_ad81dd765e14bfba72958761244ae4d82}} 
+\index{SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}!getPlatform@{getPlatform}}
+\index{getPlatform@{getPlatform}!SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}}
+\doxysubsubsection{\texorpdfstring{getPlatform()}{getPlatform()}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape \& S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Platform\+::get\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for platform. \begin{DoxyReturn}{Returns}
+platform 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSFMLDoodleJump_1_1SFMLPlatform_af8fe9dde9afdf6dbbeef31e8bf8e4b85}\label{classSFMLDoodleJump_1_1SFMLPlatform_af8fe9dde9afdf6dbbeef31e8bf8e4b85}} 
+\index{SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}!HandleEvent@{HandleEvent}}
+\index{HandleEvent@{HandleEvent}!SFMLDoodleJump::SFMLPlatform@{SFMLDoodleJump::SFMLPlatform}}
+\doxysubsubsection{\texorpdfstring{HandleEvent()}{HandleEvent()}}
+{\footnotesize\ttfamily void S\+F\+M\+L\+Doodle\+Jump\+::\+S\+F\+M\+L\+Platform\+::\+Handle\+Event (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ float, float $>$}]{nextpos,  }\item[{score\+Update}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles the event 
+\begin{DoxyParams}{Parameters}
+{\em pos} & Position of the observer. \\
+\hline
+{\em s} & Gives how the score should be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDoodleJump_1_1Observer_a6c8096e5d5c1d3170e41db7270c4d77c}{Doodle\+Jump\+::\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/\+S\+F\+M\+L\+\_\+graphics\+\_\+library/include/platforms/S\+F\+M\+Lplatform.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/\+S\+F\+M\+L\+\_\+graphics\+\_\+library/src/platforms/S\+F\+M\+Lplatform.\+cpp\end{DoxyCompactItemize}

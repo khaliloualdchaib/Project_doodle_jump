@@ -1,0 +1,92 @@
+\hypertarget{classDoodleJump_1_1Bonus}{}\doxysection{Doodle\+Jump\+::Bonus Class Reference}
+\label{classDoodleJump_1_1Bonus}\index{DoodleJump::Bonus@{DoodleJump::Bonus}}
+
+
+Inheritance diagram for Doodle\+Jump\+::Bonus\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{classDoodleJump_1_1Bonus__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Doodle\+Jump\+::Bonus\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classDoodleJump_1_1Bonus__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1Bonus_a726ee29f2be44f1fe81e5a15acc4d9e3}{Bonus}} (float width, float height, const std\+::tuple$<$ float, float $>$ \&pos)
+\item 
+virtual bool \mbox{\hyperlink{classDoodleJump_1_1Bonus_abfca681e3642731e4f84d4097579e574}{is\+Jetpack}} ()
+\item 
+virtual bool \mbox{\hyperlink{classDoodleJump_1_1Bonus_a4b4aec86928c344d53d026ea5cc73a77}{is\+Spring}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Bonus_a24ed29758abf1182f4e085a84defb1e4}{check\+Collision}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Player}{Player}} $>$ \&player)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Bonus_a726ee29f2be44f1fe81e5a15acc4d9e3}\label{classDoodleJump_1_1Bonus_a726ee29f2be44f1fe81e5a15acc4d9e3}} 
+\index{DoodleJump::Bonus@{DoodleJump::Bonus}!Bonus@{Bonus}}
+\index{Bonus@{Bonus}!DoodleJump::Bonus@{DoodleJump::Bonus}}
+\doxysubsubsection{\texorpdfstring{Bonus()}{Bonus()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+Bonus\+::\+Bonus (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{const std\+::tuple$<$ float, float $>$ \&}]{pos }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the bonus. \\
+\hline
+{\em height} & Height of the bonus. \\
+\hline
+{\em pos} & Initial position of the bonus. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Bonus_a24ed29758abf1182f4e085a84defb1e4}\label{classDoodleJump_1_1Bonus_a24ed29758abf1182f4e085a84defb1e4}} 
+\index{DoodleJump::Bonus@{DoodleJump::Bonus}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!DoodleJump::Bonus@{DoodleJump::Bonus}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Bonus\+::check\+Collision (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Player}{Player}} $>$ \&}]{player }\end{DoxyParamCaption})}
+
+Checks for collision between the bonus and the player. \mbox{\Hypertarget{classDoodleJump_1_1Bonus_abfca681e3642731e4f84d4097579e574}\label{classDoodleJump_1_1Bonus_abfca681e3642731e4f84d4097579e574}} 
+\index{DoodleJump::Bonus@{DoodleJump::Bonus}!isJetpack@{isJetpack}}
+\index{isJetpack@{isJetpack}!DoodleJump::Bonus@{DoodleJump::Bonus}}
+\doxysubsubsection{\texorpdfstring{isJetpack()}{isJetpack()}}
+{\footnotesize\ttfamily virtual bool Doodle\+Jump\+::\+Bonus\+::is\+Jetpack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+true if the bonus is a jetpack, false if not. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classDoodleJump_1_1Jetpack_a153fffa4ceea50965eba7c549e9679bb}{Doodle\+Jump\+::\+Jetpack}}.
+
+\mbox{\Hypertarget{classDoodleJump_1_1Bonus_a4b4aec86928c344d53d026ea5cc73a77}\label{classDoodleJump_1_1Bonus_a4b4aec86928c344d53d026ea5cc73a77}} 
+\index{DoodleJump::Bonus@{DoodleJump::Bonus}!isSpring@{isSpring}}
+\index{isSpring@{isSpring}!DoodleJump::Bonus@{DoodleJump::Bonus}}
+\doxysubsubsection{\texorpdfstring{isSpring()}{isSpring()}}
+{\footnotesize\ttfamily virtual bool Doodle\+Jump\+::\+Bonus\+::is\+Spring (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+true if the bonus is a spring, false if not. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classDoodleJump_1_1Spring_a9f9b4b6a6b89c8d8f8acf06e50235ddf}{Doodle\+Jump\+::\+Spring}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/bonus/bonus.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/bonus/bonus.\+cpp\end{DoxyCompactItemize}

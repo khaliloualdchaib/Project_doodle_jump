@@ -9,16 +9,15 @@
 
 using namespace std;
 
-namespace DoodleJump
+namespace DoodleJump {
+class Random
 {
-    class Random{
-    private:
-        Random()=default;
+private:
+        Random() = default;
         std::random_device rng;
         std::mt19937 engine{rng()};
 
-    public:
-
+public:
         /**
          * Singleton getInstance function
          * @return Instance of the Random singleton
@@ -33,7 +32,7 @@ namespace DoodleJump
         /**
          * Delete the overloading operator if it is called.
          */
-        Random& operator = (const Random&) = delete;
+        Random& operator=(const Random&) = delete;
 
         /**
          * @return This function returns a random double
@@ -41,7 +40,6 @@ namespace DoodleJump
          * @param min: The minimum range that the double can be.
          */
         double getrandomDouble(double min, double max);
-
-    };
-}
-#endif //DOODLEJUMP_RANDOM_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_RANDOM_H

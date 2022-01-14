@@ -1,0 +1,145 @@
+\hypertarget{classDoodleJump_1_1Score}{}\doxysection{Doodle\+Jump\+::Score Class Reference}
+\label{classDoodleJump_1_1Score}\index{DoodleJump::Score@{DoodleJump::Score}}
+
+
+Inheritance diagram for Doodle\+Jump\+::Score\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{classDoodleJump_1_1Score__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Doodle\+Jump\+::Score\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{classDoodleJump_1_1Score__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classDoodleJump_1_1Score_a2578882b944c42e4c85bdb40cb130f80}{get\+Score}} () const
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1Score_a1ce25db50fe21fa45527ddf1b9baee4f}{Score}} ()=default
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_ad726c5d0efcc0a4bc6e69bdb594ecd09}{checkhighscore}} () const
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_a37b5200d5296cb0e0a7c3b0651897843}{add\+Score\+Spring}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_a4ae162bae04a61f7d09ec11e05318673}{add\+Score\+Jetpack}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_a2ca8e09e87846e9e1ee8475d7c66af60}{add\+Score\+Height}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_accd2a65072767a000ab470f0ada1e59f}{sub\+Score\+Static}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_a98a09385f0b18c080d885b9f2dbd066d}{sub\+Score\+Horizontal}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_ab66b2cf6e46ad712dd073cea3c49b67f}{sub\+Score\+Vertical}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1Score_a933d943accc68d9aace27161a5c65039}{Handle\+Event}} (std\+::tuple$<$ float, float $>$ nextpos, score\+Update s) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classDoodleJump_1_1Score_acf886b987e05714ebe718c596d124522}{get\+Highscore}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Score_a1ce25db50fe21fa45527ddf1b9baee4f}\label{classDoodleJump_1_1Score_a1ce25db50fe21fa45527ddf1b9baee4f}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!Score@{Score}}
+\index{Score@{Score}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{Score()}{Score()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+Score\+::\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default score 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Score_a2ca8e09e87846e9e1ee8475d7c66af60}\label{classDoodleJump_1_1Score_a2ca8e09e87846e9e1ee8475d7c66af60}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!addScoreHeight@{addScoreHeight}}
+\index{addScoreHeight@{addScoreHeight}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{addScoreHeight()}{addScoreHeight()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::add\+Score\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Adding to the score for reaching a new height. \mbox{\Hypertarget{classDoodleJump_1_1Score_a4ae162bae04a61f7d09ec11e05318673}\label{classDoodleJump_1_1Score_a4ae162bae04a61f7d09ec11e05318673}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!addScoreJetpack@{addScoreJetpack}}
+\index{addScoreJetpack@{addScoreJetpack}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{addScoreJetpack()}{addScoreJetpack()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::add\+Score\+Jetpack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Adding to the score for taking a jetpack \mbox{\Hypertarget{classDoodleJump_1_1Score_a37b5200d5296cb0e0a7c3b0651897843}\label{classDoodleJump_1_1Score_a37b5200d5296cb0e0a7c3b0651897843}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!addScoreSpring@{addScoreSpring}}
+\index{addScoreSpring@{addScoreSpring}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{addScoreSpring()}{addScoreSpring()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::add\+Score\+Spring (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Adding to the score for hitting a spring. \mbox{\Hypertarget{classDoodleJump_1_1Score_ad726c5d0efcc0a4bc6e69bdb594ecd09}\label{classDoodleJump_1_1Score_ad726c5d0efcc0a4bc6e69bdb594ecd09}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!checkhighscore@{checkhighscore}}
+\index{checkhighscore@{checkhighscore}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{checkhighscore()}{checkhighscore()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::checkhighscore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+checks and changes the high score if needed. \mbox{\Hypertarget{classDoodleJump_1_1Score_acf886b987e05714ebe718c596d124522}\label{classDoodleJump_1_1Score_acf886b987e05714ebe718c596d124522}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!getHighscore@{getHighscore}}
+\index{getHighscore@{getHighscore}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{getHighscore()}{getHighscore()}}
+{\footnotesize\ttfamily std\+::string Doodle\+Jump\+::\+Score\+::get\+Highscore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Getter for high score \begin{DoxyReturn}{Returns}
+high score, it is saved in highscore.\+txt 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Score_a2578882b944c42e4c85bdb40cb130f80}\label{classDoodleJump_1_1Score_a2578882b944c42e4c85bdb40cb130f80}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!getScore@{getScore}}
+\index{getScore@{getScore}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily int Doodle\+Jump\+::\+Score\+::get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for score. \begin{DoxyReturn}{Returns}
+score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Score_a933d943accc68d9aace27161a5c65039}\label{classDoodleJump_1_1Score_a933d943accc68d9aace27161a5c65039}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!HandleEvent@{HandleEvent}}
+\index{HandleEvent@{HandleEvent}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{HandleEvent()}{HandleEvent()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::\+Handle\+Event (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ float, float $>$}]{nextpos,  }\item[{score\+Update}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles an event. 
+\begin{DoxyParams}{Parameters}
+{\em nextpos} & This argument does nothing for this observer. \\
+\hline
+{\em s} & Gives how the score should be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDoodleJump_1_1Observer_a6c8096e5d5c1d3170e41db7270c4d77c}{Doodle\+Jump\+::\+Observer}}.
+
+\mbox{\Hypertarget{classDoodleJump_1_1Score_a98a09385f0b18c080d885b9f2dbd066d}\label{classDoodleJump_1_1Score_a98a09385f0b18c080d885b9f2dbd066d}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!subScoreHorizontal@{subScoreHorizontal}}
+\index{subScoreHorizontal@{subScoreHorizontal}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{subScoreHorizontal()}{subScoreHorizontal()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::sub\+Score\+Horizontal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Subtracting from the score for jumping from a horizontal platform that the player already jumped from. \mbox{\Hypertarget{classDoodleJump_1_1Score_accd2a65072767a000ab470f0ada1e59f}\label{classDoodleJump_1_1Score_accd2a65072767a000ab470f0ada1e59f}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!subScoreStatic@{subScoreStatic}}
+\index{subScoreStatic@{subScoreStatic}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{subScoreStatic()}{subScoreStatic()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::sub\+Score\+Static (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Subtracting from the score for jumping from a static platform that the player already jumped from. \mbox{\Hypertarget{classDoodleJump_1_1Score_ab66b2cf6e46ad712dd073cea3c49b67f}\label{classDoodleJump_1_1Score_ab66b2cf6e46ad712dd073cea3c49b67f}} 
+\index{DoodleJump::Score@{DoodleJump::Score}!subScoreVertical@{subScoreVertical}}
+\index{subScoreVertical@{subScoreVertical}!DoodleJump::Score@{DoodleJump::Score}}
+\doxysubsubsection{\texorpdfstring{subScoreVertical()}{subScoreVertical()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+Score\+::sub\+Score\+Vertical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Subtracting from the score for jumping from a vertical platform that the player already jumped from. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/score.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/score.\+cpp\end{DoxyCompactItemize}

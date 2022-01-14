@@ -6,15 +6,15 @@
 #define DOODLEJUMP_JETPACK_H
 #include "bonus.h"
 
-namespace DoodleJump{
-    class Jetpack: public Bonus{
-    public:
-
+namespace DoodleJump {
+class Jetpack : public Bonus
+{
+public:
         /**
          * Explicit constructor
          * @param pos: Initial position of the Jetpack.
          */
-        explicit Jetpack(const std::tuple<float, float> &pos);
+        explicit Jetpack(const std::tuple<float, float>& pos);
 
         /**
          * Updates the jetpack.
@@ -26,8 +26,7 @@ namespace DoodleJump{
         /**
          * @return true.
          */
-        bool isJetpack() override {return true;};
-
-    };
-}
-#endif //DOODLEJUMP_JETPACK_H
+        bool isJetpack() override { return true; };
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_JETPACK_H

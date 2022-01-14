@@ -1,0 +1,9 @@
+<map id="DoodleJump::Platform" name="DoodleJump::Platform">
+<area shape="rect" id="node1" title=" " alt="" coords="431,81,596,108"/>
+<area shape="rect" id="node4" href="$classDoodleJump_1_1HorizontalPlatform.html" title=" " alt="" coords="645,5,877,32"/>
+<area shape="rect" id="node5" href="$classDoodleJump_1_1StaticPlatform.html" title=" " alt="" coords="660,56,863,83"/>
+<area shape="rect" id="node6" href="$classDoodleJump_1_1TemporaryPlatform.html" title=" " alt="" coords="644,107,879,133"/>
+<area shape="rect" id="node7" href="$classDoodleJump_1_1VerticalPlatform.html" title=" " alt="" coords="654,157,869,184"/>
+<area shape="rect" id="node2" href="$classDoodleJump_1_1Entity.html" title=" " alt="" coords="236,81,383,108"/>
+<area shape="rect" id="node3" href="$classDoodleJump_1_1Observable.html" title=" " alt="" coords="5,81,188,108"/>
+</map>

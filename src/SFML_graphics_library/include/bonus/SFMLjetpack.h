@@ -6,10 +6,10 @@
 #define DOODLEJUMP_SFMLJETPACK_H
 #include "SFMLbonus.h"
 
-namespace SFMLDoodleJump{
-    class SFMLJetpack: public SFMLBonus{
-    public:
-
+namespace SFMLDoodleJump {
+class SFMLJetpack : public SFMLBonus
+{
+public:
         /**
          * Constructor
          * @param width: Width of the jetpack.
@@ -18,9 +18,8 @@ namespace SFMLDoodleJump{
          * @param w: The window where the jetpack will be generated.
          * @param texture: Texture of the jetpack
          */
-        SFMLJetpack(float width, float height, const std::tuple<float, float> &pos,
-                    const std::shared_ptr<sf::RenderWindow> &w, const sf::Texture& texture);
-
-    };
-}
-#endif //DOODLEJUMP_SFMLJETPACK_H
+        SFMLJetpack(float width, float height, const std::tuple<float, float>& pos,
+                    const std::shared_ptr<sf::RenderWindow>& w, const sf::Texture& texture);
+};
+} // namespace SFMLDoodleJump
+#endif // DOODLEJUMP_SFMLJETPACK_H

@@ -5,13 +5,14 @@
 #ifndef DOODLEJUMP_CAMERA_H
 #define DOODLEJUMP_CAMERA_H
 #include <tuple>
-namespace DoodleJump{
-    class Camera{
-    private:
+namespace DoodleJump {
+class Camera
+{
+private:
         unsigned int width;
         unsigned int height;
-    public:
 
+public:
         /**
          * Constructor.
          * @param height: Window Height
@@ -40,6 +41,6 @@ namespace DoodleJump{
          * @return Height in pixels
          */
         float TransformHeight(float h) const;
-    };
-}
-#endif //DOODLEJUMP_CAMERA_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_CAMERA_H

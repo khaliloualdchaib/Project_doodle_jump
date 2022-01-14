@@ -5,12 +5,13 @@
 #ifndef DOODLEJUMP_TEMPORARYPLATFORM_H
 #define DOODLEJUMP_TEMPORARYPLATFORM_H
 #include "platform.h"
-namespace DoodleJump{
-    class TemporaryPlatform: public Platform{
-    private:
+namespace DoodleJump {
+class TemporaryPlatform : public Platform
+{
+private:
         bool temporaryjumped = false;
-    public:
 
+public:
         /**
          * Getter for temporaryjumped boolean.
          * @return temporaryjumped
@@ -24,17 +25,17 @@ namespace DoodleJump{
         explicit TemporaryPlatform(std::tuple<float, float> pos);
 
         /**
-          * Updates the Temporary Platform.
-          * @param c: Instruction that the temporary platform needs to carry out.
-          * @param speed: The speed the temporary platform should move.
-          */
+         * Updates the Temporary Platform.
+         * @param c: Instruction that the temporary platform needs to carry out.
+         * @param speed: The speed the temporary platform should move.
+         */
         void update(INSTRUCTION c, float speed) override;
 
         /**
          * Setter for tempraryjumped.
          * @param b: Set temporaryjumped to b.
          */
-        void  settemporaryJumped(bool b) override;
-    };
-}
-#endif //DOODLEJUMP_TEMPORARYPLATFORM_H
+        void settemporaryJumped(bool b) override;
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_TEMPORARYPLATFORM_H

@@ -1,0 +1,5 @@
+<map id="DoodleJump::Player" name="DoodleJump::Player">
+<area shape="rect" id="node1" title=" " alt="" coords="21,155,172,181"/>
+<area shape="rect" id="node2" href="$classDoodleJump_1_1Entity.html" title=" " alt="" coords="23,80,170,107"/>
+<area shape="rect" id="node3" href="$classDoodleJump_1_1Observable.html" title=" " alt="" coords="5,5,188,32"/>
+</map>

@@ -5,11 +5,12 @@
 #ifndef DOODLEJUMP_PLAYER_H
 #define DOODLEJUMP_PLAYER_H
 #include "entity.h"
-namespace DoodleJump{
-    class Player: public Entity{
-    private:
-        bool Jumping = false; //checks if the player is middle in a jump
-        bool Falling = false; //checks if the player is falling
+namespace DoodleJump {
+class Player : public Entity
+{
+private:
+        bool Jumping = false; // checks if the player is middle in a jump
+        bool Falling = false; // checks if the player is falling
         bool collisionPlatform = false;
         bool collisionSpring = false;
         bool highspeed = false;
@@ -17,9 +18,9 @@ namespace DoodleJump{
         float accelerationX = 0.07;
         float accelerationY = 0.001;
         float initial_velocity = 0.03;
-        float velocity = 2*initial_velocity;
-    public:
+        float velocity = 2 * initial_velocity;
 
+public:
         /**
          * Setter for collisionJetpack
          * @param c: Set collisionJetpack to c
@@ -43,7 +44,6 @@ namespace DoodleJump{
          * @return initial_velocity
          */
         float getInitialVelocity() const;
-
 
         /**
          * Getter for velocity.
@@ -75,7 +75,6 @@ namespace DoodleJump{
          * @param speed: This input does not affect player.
          */
         void update(INSTRUCTION c, float speed) override;
-
-    };
-}
-#endif //DOODLEJUMP_PLAYER_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_PLAYER_H

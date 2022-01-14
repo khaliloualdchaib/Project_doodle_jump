@@ -1,0 +1,310 @@
+\hypertarget{classDoodleJump_1_1World}{}\doxysection{Doodle\+Jump\+::World Class Reference}
+\label{classDoodleJump_1_1World}\index{DoodleJump::World@{DoodleJump::World}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a8e305806b3850c6f4b810012761a1d7f}{update\+Tiles}} ()
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1World_ad96293931b91ca539756a5a692845230}{round\+\_\+float2decimals}} (float f)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Player}{Doodle\+Jump\+::\+Player}} $>$ \mbox{\hyperlink{classDoodleJump_1_1World_a806437ffd85e1b9e79e39ff8ccf5523f}{get\+Player}} () const
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a8603e5c263eac270e4fbf6b0dbfb147d}{generate\+\_\+init\+Platforms}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a404988e071d46731c4e9ebfd8e2f5ba1}{generate\+Platform}} (unsigned int prob\+Static, unsigned int prob\+Temporary, unsigned int prob\+Horizontal, unsigned int prob\+Vertical, unsigned int difficulty)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a8b73e63e78b195d25ab9be403096eab1}{generatestatic\+Platform}} (unsigned int difficulty, std\+::tuple$<$ float, float $>$ pos)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_aef8564e684fbf8b3866ad1644995d1b4}{generatetemporary\+Platform}} (unsigned int difficulty, std\+::tuple$<$ float, float $>$ pos)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a174c3ffd5aa3dd2638a20b47e0975f8d}{generatehorizontal\+Platform}} (unsigned int difficulty, std\+::tuple$<$ float, float $>$ pos)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a75afa944c84ae8c2b53506b44bb6fd62}{generate\+Vertical\+Platform}} (unsigned int difficulty, std\+::tuple$<$ float, float $>$ pos)
+\item 
+bool \mbox{\hyperlink{classDoodleJump_1_1World_ad2651c3400787cd50496205654944729}{do\+Platforms\+Collide}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&p)
+\item 
+bool \mbox{\hyperlink{classDoodleJump_1_1World_a91d4edea2ae6c99e79e0c25c9e9cb869}{are\+Platforms2close}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&p)
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1World_acfbaea2eec61fef368824e11246f94a5}{World}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1AbstractFactory}{Doodle\+Jump\+::\+Abstract\+Factory}} $>$ a)
+\item 
+std\+::tuple$<$ std\+::tuple$<$ float, float $>$, std\+::tuple$<$ float, float $>$ $>$ \mbox{\hyperlink{classDoodleJump_1_1World_ae10831f2f0faffe5961bac5ee0838810}{get\+Bottom\+Corners}} (const \mbox{\hyperlink{classDoodleJump_1_1Entity}{Doodle\+Jump\+::\+Entity}} \&entity) const
+\item 
+std\+::tuple$<$ std\+::tuple$<$ float, float $>$, std\+::tuple$<$ float, float $>$ $>$ \mbox{\hyperlink{classDoodleJump_1_1World_a40d10001dd1b5ac4216f29ba80487355}{get\+Top\+Corners}} (const \mbox{\hyperlink{classDoodleJump_1_1Entity}{Doodle\+Jump\+::\+Entity}} \&entity) const
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a05b7d835f50a415e3af8781547a7e89e}{collision\+Player\+Platform}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a9cbd9147b0d4218a340d4da5c0ab30af}{update\+World\+Camera}} ()
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1World_a4a1b1f2d5b4cc538c3f0bd9818231e31}{heighest\+Platform\+\_\+\+Ypos}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a329c6662c29cf980b260252bf8179e9e}{generatespring}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&platform)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a644c82ebd9d8d809ab5ddb6bc8a7f86d}{generatejetpack}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&platform)
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_a0b6ca47f88262e5910a69df7a365d6db}{generate\+Bonus}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&platform, unsigned int none, unsigned int springprob, unsigned int jetpackprob)
+\item 
+std\+::string \mbox{\hyperlink{classDoodleJump_1_1World_a80f938c4acb0470d3d35290a55cbfabd}{return\+Score}} ()
+\item 
+std\+::string \mbox{\hyperlink{classDoodleJump_1_1World_a68052bf3a8b6cc7a3806594356b9d106}{Game\+\_\+\+Over\+\_\+\+Message}} ()
+\item 
+void \mbox{\hyperlink{classDoodleJump_1_1World_af67eb5e93ca927c6653101c641535f8f}{run\+Game\+Logic}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1World_acfbaea2eec61fef368824e11246f94a5}\label{classDoodleJump_1_1World_acfbaea2eec61fef368824e11246f94a5}} 
+\index{DoodleJump::World@{DoodleJump::World}!World@{World}}
+\index{World@{World}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+World\+::\+World (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1AbstractFactory}{Doodle\+Jump\+::\+Abstract\+Factory}} $>$}]{a }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em a} & Abstract factory class. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a91d4edea2ae6c99e79e0c25c9e9cb869}\label{classDoodleJump_1_1World_a91d4edea2ae6c99e79e0c25c9e9cb869}} 
+\index{DoodleJump::World@{DoodleJump::World}!arePlatforms2close@{arePlatforms2close}}
+\index{arePlatforms2close@{arePlatforms2close}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{arePlatforms2close()}{arePlatforms2close()}}
+{\footnotesize\ttfamily bool Doodle\+Jump\+::\+World\+::are\+Platforms2close (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&}]{p }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if platforms are to close, or else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a05b7d835f50a415e3af8781547a7e89e}\label{classDoodleJump_1_1World_a05b7d835f50a415e3af8781547a7e89e}} 
+\index{DoodleJump::World@{DoodleJump::World}!collisionPlayerPlatform@{collisionPlayerPlatform}}
+\index{collisionPlayerPlatform@{collisionPlayerPlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{collisionPlayerPlatform()}{collisionPlayerPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::collision\+Player\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+checks for collision between player and platform \mbox{\Hypertarget{classDoodleJump_1_1World_ad2651c3400787cd50496205654944729}\label{classDoodleJump_1_1World_ad2651c3400787cd50496205654944729}} 
+\index{DoodleJump::World@{DoodleJump::World}!doPlatformsCollide@{doPlatformsCollide}}
+\index{doPlatformsCollide@{doPlatformsCollide}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{doPlatformsCollide()}{doPlatformsCollide()}}
+{\footnotesize\ttfamily bool Doodle\+Jump\+::\+World\+::do\+Platforms\+Collide (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&}]{p }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if all the logic platform rules are followed, or else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a68052bf3a8b6cc7a3806594356b9d106}\label{classDoodleJump_1_1World_a68052bf3a8b6cc7a3806594356b9d106}} 
+\index{DoodleJump::World@{DoodleJump::World}!Game\_Over\_Message@{Game\_Over\_Message}}
+\index{Game\_Over\_Message@{Game\_Over\_Message}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{Game\_Over\_Message()}{Game\_Over\_Message()}}
+{\footnotesize\ttfamily std\+::string Doodle\+Jump\+::\+World\+::\+Game\+\_\+\+Over\+\_\+\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+A string that will be displayed when the player dies. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a8603e5c263eac270e4fbf6b0dbfb147d}\label{classDoodleJump_1_1World_a8603e5c263eac270e4fbf6b0dbfb147d}} 
+\index{DoodleJump::World@{DoodleJump::World}!generate\_initPlatforms@{generate\_initPlatforms}}
+\index{generate\_initPlatforms@{generate\_initPlatforms}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generate\_initPlatforms()}{generate\_initPlatforms()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generate\+\_\+init\+Platforms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Generates random amount of platforms between 9 and 12 for the begin state of the game. \mbox{\Hypertarget{classDoodleJump_1_1World_a0b6ca47f88262e5910a69df7a365d6db}\label{classDoodleJump_1_1World_a0b6ca47f88262e5910a69df7a365d6db}} 
+\index{DoodleJump::World@{DoodleJump::World}!generateBonus@{generateBonus}}
+\index{generateBonus@{generateBonus}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generateBonus()}{generateBonus()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generate\+Bonus (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&}]{platform,  }\item[{unsigned int}]{none,  }\item[{unsigned int}]{springprob,  }\item[{unsigned int}]{jetpackprob }\end{DoxyParamCaption})}
+
+Generate a random bonus. 
+\begin{DoxyParams}{Parameters}
+{\em none} & The probability that nothing will be generated. \\
+\hline
+{\em springprob} & The probability that a spring will be generated. \\
+\hline
+{\em jetpackprob} & The probability that a jetpack will be generated. \\
+\hline
+{\em platform} & The platform on which the bonus wil be generated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a174c3ffd5aa3dd2638a20b47e0975f8d}\label{classDoodleJump_1_1World_a174c3ffd5aa3dd2638a20b47e0975f8d}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatehorizontalPlatform@{generatehorizontalPlatform}}
+\index{generatehorizontalPlatform@{generatehorizontalPlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatehorizontalPlatform()}{generatehorizontalPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generatehorizontal\+Platform (\begin{DoxyParamCaption}\item[{unsigned int}]{difficulty,  }\item[{std\+::tuple$<$ float, float $>$}]{pos }\end{DoxyParamCaption})}
+
+Generate horizontal platform. 
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & max number of platforms that are allowed. \\
+\hline
+{\em pos} & Position for the horizontal platform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a644c82ebd9d8d809ab5ddb6bc8a7f86d}\label{classDoodleJump_1_1World_a644c82ebd9d8d809ab5ddb6bc8a7f86d}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatejetpack@{generatejetpack}}
+\index{generatejetpack@{generatejetpack}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatejetpack()}{generatejetpack()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generatejetpack (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&}]{platform }\end{DoxyParamCaption})}
+
+Generate a jetpack. 
+\begin{DoxyParams}{Parameters}
+{\em platform} & The platform on which the jetpack wil be generated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a404988e071d46731c4e9ebfd8e2f5ba1}\label{classDoodleJump_1_1World_a404988e071d46731c4e9ebfd8e2f5ba1}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatePlatform@{generatePlatform}}
+\index{generatePlatform@{generatePlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatePlatform()}{generatePlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generate\+Platform (\begin{DoxyParamCaption}\item[{unsigned int}]{prob\+Static,  }\item[{unsigned int}]{prob\+Temporary,  }\item[{unsigned int}]{prob\+Horizontal,  }\item[{unsigned int}]{prob\+Vertical,  }\item[{unsigned int}]{difficulty }\end{DoxyParamCaption})}
+
+Generate a random platform. 
+\begin{DoxyParams}{Parameters}
+{\em prob\+Static} & Probability of generating a static platform. \\
+\hline
+{\em prob\+Temporary} & Probability of generating a temporary platform. \\
+\hline
+{\em prob\+Horizontal} & Probability of generating a horizontal platform. \\
+\hline
+{\em prob\+Vertical} & Probability of generating a vertical platform. \\
+\hline
+{\em difficulty} & max number of platforms that are allowed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a329c6662c29cf980b260252bf8179e9e}\label{classDoodleJump_1_1World_a329c6662c29cf980b260252bf8179e9e}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatespring@{generatespring}}
+\index{generatespring@{generatespring}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatespring()}{generatespring()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generatespring (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Platform}{Doodle\+Jump\+::\+Platform}} $>$ \&}]{platform }\end{DoxyParamCaption})}
+
+Generate a spring. 
+\begin{DoxyParams}{Parameters}
+{\em platform} & The platform on which the spring wil be generated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a8b73e63e78b195d25ab9be403096eab1}\label{classDoodleJump_1_1World_a8b73e63e78b195d25ab9be403096eab1}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatestaticPlatform@{generatestaticPlatform}}
+\index{generatestaticPlatform@{generatestaticPlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatestaticPlatform()}{generatestaticPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generatestatic\+Platform (\begin{DoxyParamCaption}\item[{unsigned int}]{difficulty,  }\item[{std\+::tuple$<$ float, float $>$}]{pos }\end{DoxyParamCaption})}
+
+Generate static platform. 
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & max number of platforms that are allowed. \\
+\hline
+{\em pos} & Position for the static platform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_aef8564e684fbf8b3866ad1644995d1b4}\label{classDoodleJump_1_1World_aef8564e684fbf8b3866ad1644995d1b4}} 
+\index{DoodleJump::World@{DoodleJump::World}!generatetemporaryPlatform@{generatetemporaryPlatform}}
+\index{generatetemporaryPlatform@{generatetemporaryPlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generatetemporaryPlatform()}{generatetemporaryPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generatetemporary\+Platform (\begin{DoxyParamCaption}\item[{unsigned int}]{difficulty,  }\item[{std\+::tuple$<$ float, float $>$}]{pos }\end{DoxyParamCaption})}
+
+Generate temporary platform. 
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & max number of platforms that are allowed. \\
+\hline
+{\em pos} & Position for the temporary platform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a75afa944c84ae8c2b53506b44bb6fd62}\label{classDoodleJump_1_1World_a75afa944c84ae8c2b53506b44bb6fd62}} 
+\index{DoodleJump::World@{DoodleJump::World}!generateVerticalPlatform@{generateVerticalPlatform}}
+\index{generateVerticalPlatform@{generateVerticalPlatform}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{generateVerticalPlatform()}{generateVerticalPlatform()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::generate\+Vertical\+Platform (\begin{DoxyParamCaption}\item[{unsigned int}]{difficulty,  }\item[{std\+::tuple$<$ float, float $>$}]{pos }\end{DoxyParamCaption})}
+
+Generate vertical platform. 
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & max number of platforms that are allowed. \\
+\hline
+{\em pos} & Position for the vertical platform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDoodleJump_1_1World_ae10831f2f0faffe5961bac5ee0838810}\label{classDoodleJump_1_1World_ae10831f2f0faffe5961bac5ee0838810}} 
+\index{DoodleJump::World@{DoodleJump::World}!getBottomCorners@{getBottomCorners}}
+\index{getBottomCorners@{getBottomCorners}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{getBottomCorners()}{getBottomCorners()}}
+{\footnotesize\ttfamily std\+::tuple$<$ std\+::tuple$<$ float, float $>$, std\+::tuple$<$ float, float $>$ $>$ Doodle\+Jump\+::\+World\+::get\+Bottom\+Corners (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDoodleJump_1_1Entity}{Doodle\+Jump\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & An entity class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The positions of the bottom corners of the given entity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a806437ffd85e1b9e79e39ff8ccf5523f}\label{classDoodleJump_1_1World_a806437ffd85e1b9e79e39ff8ccf5523f}} 
+\index{DoodleJump::World@{DoodleJump::World}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDoodleJump_1_1Player}{Doodle\+Jump\+::\+Player}} $>$ Doodle\+Jump\+::\+World\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for player \begin{DoxyReturn}{Returns}
+player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a40d10001dd1b5ac4216f29ba80487355}\label{classDoodleJump_1_1World_a40d10001dd1b5ac4216f29ba80487355}} 
+\index{DoodleJump::World@{DoodleJump::World}!getTopCorners@{getTopCorners}}
+\index{getTopCorners@{getTopCorners}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{getTopCorners()}{getTopCorners()}}
+{\footnotesize\ttfamily std\+::tuple$<$ std\+::tuple$<$ float, float $>$, std\+::tuple$<$ float, float $>$ $>$ Doodle\+Jump\+::\+World\+::get\+Top\+Corners (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDoodleJump_1_1Entity}{Doodle\+Jump\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & An entity class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The positions of the top corners of the given entity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a4a1b1f2d5b4cc538c3f0bd9818231e31}\label{classDoodleJump_1_1World_a4a1b1f2d5b4cc538c3f0bd9818231e31}} 
+\index{DoodleJump::World@{DoodleJump::World}!heighestPlatform\_Ypos@{heighestPlatform\_Ypos}}
+\index{heighestPlatform\_Ypos@{heighestPlatform\_Ypos}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{heighestPlatform\_Ypos()}{heighestPlatform\_Ypos()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+World\+::heighest\+Platform\+\_\+\+Ypos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the highest platform. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_a80f938c4acb0470d3d35290a55cbfabd}\label{classDoodleJump_1_1World_a80f938c4acb0470d3d35290a55cbfabd}} 
+\index{DoodleJump::World@{DoodleJump::World}!returnScore@{returnScore}}
+\index{returnScore@{returnScore}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{returnScore()}{returnScore()}}
+{\footnotesize\ttfamily std\+::string Doodle\+Jump\+::\+World\+::return\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+A string that \char`\"{}\+S\+C\+O\+R\+E\+: \char`\"{} + score. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_ad96293931b91ca539756a5a692845230}\label{classDoodleJump_1_1World_ad96293931b91ca539756a5a692845230}} 
+\index{DoodleJump::World@{DoodleJump::World}!round\_float2decimals@{round\_float2decimals}}
+\index{round\_float2decimals@{round\_float2decimals}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{round\_float2decimals()}{round\_float2decimals()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+World\+::round\+\_\+float2decimals (\begin{DoxyParamCaption}\item[{float}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & a float number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The given float but rounded to 2 decimals. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1World_af67eb5e93ca927c6653101c641535f8f}\label{classDoodleJump_1_1World_af67eb5e93ca927c6653101c641535f8f}} 
+\index{DoodleJump::World@{DoodleJump::World}!runGameLogic@{runGameLogic}}
+\index{runGameLogic@{runGameLogic}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{runGameLogic()}{runGameLogic()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::run\+Game\+Logic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Updates the platforms and runs the collision checks. \mbox{\Hypertarget{classDoodleJump_1_1World_a8e305806b3850c6f4b810012761a1d7f}\label{classDoodleJump_1_1World_a8e305806b3850c6f4b810012761a1d7f}} 
+\index{DoodleJump::World@{DoodleJump::World}!updateTiles@{updateTiles}}
+\index{updateTiles@{updateTiles}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{updateTiles()}{updateTiles()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::update\+Tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Update the bg tiles \mbox{\Hypertarget{classDoodleJump_1_1World_a9cbd9147b0d4218a340d4da5c0ab30af}\label{classDoodleJump_1_1World_a9cbd9147b0d4218a340d4da5c0ab30af}} 
+\index{DoodleJump::World@{DoodleJump::World}!updateWorldCamera@{updateWorldCamera}}
+\index{updateWorldCamera@{updateWorldCamera}!DoodleJump::World@{DoodleJump::World}}
+\doxysubsubsection{\texorpdfstring{updateWorldCamera()}{updateWorldCamera()}}
+{\footnotesize\ttfamily void Doodle\+Jump\+::\+World\+::update\+World\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Update the camera of the world. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/world.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/world.\+cpp\end{DoxyCompactItemize}

@@ -4,18 +4,19 @@
 
 #ifndef DOODLEJUMP_GAME_H
 #define DOODLEJUMP_GAME_H
-#include <iostream>
-#include <tuple>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <memory>
+#include <tuple>
 
-namespace SFMLDoodleJump{
-    class Game{
-    private:
+namespace SFMLDoodleJump {
+class Game
+{
+private:
         std::map<std::string, unsigned int> windowConfiguration;
         std::shared_ptr<sf::RenderWindow> window;
-    public:
 
+public:
         /**
          * Constructor.
          * @param windowconf: Window configurations
@@ -26,7 +27,6 @@ namespace SFMLDoodleJump{
          * Runs the game, thus it also runs the main game loop.
          */
         void runGame();
-
-    };
-}
-#endif //DOODLEJUMP_GAME_H
+};
+} // namespace SFMLDoodleJump
+#endif // DOODLEJUMP_GAME_H

@@ -1,0 +1,82 @@
+\hypertarget{classDoodleJump_1_1Camera}{}\doxysection{Doodle\+Jump\+::Camera Class Reference}
+\label{classDoodleJump_1_1Camera}\index{DoodleJump::Camera@{DoodleJump::Camera}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDoodleJump_1_1Camera_acdb79503b3dcb4b5e5e20d67712ec40b}{Camera}} (unsigned int width, unsigned int height)
+\item 
+std\+::tuple$<$ float, float $>$ \mbox{\hyperlink{classDoodleJump_1_1Camera_aa507c36e79748780853f580191183169}{Transformation}} (float xpos, float ypos) const
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1Camera_a3792df00d3de161658627ea2522d9691}{Transform\+Width}} (float w) const
+\item 
+float \mbox{\hyperlink{classDoodleJump_1_1Camera_a48f4397ff5c144207fea6b1f99f628f7}{Transform\+Height}} (float h) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Camera_acdb79503b3dcb4b5e5e20d67712ec40b}\label{classDoodleJump_1_1Camera_acdb79503b3dcb4b5e5e20d67712ec40b}} 
+\index{DoodleJump::Camera@{DoodleJump::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!DoodleJump::Camera@{DoodleJump::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Doodle\+Jump\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em height} & Window Height \\
+\hline
+{\em width} & Window Width \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoodleJump_1_1Camera_aa507c36e79748780853f580191183169}\label{classDoodleJump_1_1Camera_aa507c36e79748780853f580191183169}} 
+\index{DoodleJump::Camera@{DoodleJump::Camera}!Transformation@{Transformation}}
+\index{Transformation@{Transformation}!DoodleJump::Camera@{DoodleJump::Camera}}
+\doxysubsubsection{\texorpdfstring{Transformation()}{Transformation()}}
+{\footnotesize\ttfamily std\+::tuple$<$ float, float $>$ Doodle\+Jump\+::\+Camera\+::\+Transformation (\begin{DoxyParamCaption}\item[{float}]{xpos,  }\item[{float}]{ypos }\end{DoxyParamCaption}) const}
+
+Transform own 2D coordinate system coordinates to pixel coordinates. 
+\begin{DoxyParams}{Parameters}
+{\em xpos} & X coordinate of own 2D coordinate system coordinates. \\
+\hline
+{\em ypos} & Y coordinate of own 2D coordinate system coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pixel coordinate. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Camera_a48f4397ff5c144207fea6b1f99f628f7}\label{classDoodleJump_1_1Camera_a48f4397ff5c144207fea6b1f99f628f7}} 
+\index{DoodleJump::Camera@{DoodleJump::Camera}!TransformHeight@{TransformHeight}}
+\index{TransformHeight@{TransformHeight}!DoodleJump::Camera@{DoodleJump::Camera}}
+\doxysubsubsection{\texorpdfstring{TransformHeight()}{TransformHeight()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+Camera\+::\+Transform\+Height (\begin{DoxyParamCaption}\item[{float}]{h }\end{DoxyParamCaption}) const}
+
+Transforms the height of my own coordinate system to height in pixels. 
+\begin{DoxyParams}{Parameters}
+{\em h} & Height of my own coordinate system. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Height in pixels 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDoodleJump_1_1Camera_a3792df00d3de161658627ea2522d9691}\label{classDoodleJump_1_1Camera_a3792df00d3de161658627ea2522d9691}} 
+\index{DoodleJump::Camera@{DoodleJump::Camera}!TransformWidth@{TransformWidth}}
+\index{TransformWidth@{TransformWidth}!DoodleJump::Camera@{DoodleJump::Camera}}
+\doxysubsubsection{\texorpdfstring{TransformWidth()}{TransformWidth()}}
+{\footnotesize\ttfamily float Doodle\+Jump\+::\+Camera\+::\+Transform\+Width (\begin{DoxyParamCaption}\item[{float}]{w }\end{DoxyParamCaption}) const}
+
+Transforms the width of my own coordinate system to width in pixels. 
+\begin{DoxyParams}{Parameters}
+{\em w} & Width of my own coordinate system. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Width in pixels. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/include/camera.\+h\item 
+/home/khalil/\+Desktop/\+Project\+\_\+doodle\+\_\+jump-\/khalil\+\_\+ouald\+\_\+chaib/src/logic\+\_\+library/src/camera.\+cpp\end{DoxyCompactItemize}

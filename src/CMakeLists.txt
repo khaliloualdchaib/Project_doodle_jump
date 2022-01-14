@@ -93,11 +93,6 @@ ADD_EXECUTABLE(
         SFML_graphics_library/include/bonus/SFMLjetpack.h
         SFML_graphics_library/src/bonus/SFMLjetpack.cpp
 
-        logic_library/include/command_pattern/command.h
-
-        logic_library/include/command_pattern/collisionBonusPlayer.h
-        logic_library/src/command_pattern/collisionBonusPlayer.cpp
-
         logic_library/include/score.h
         logic_library/src/score.cpp
 )

@@ -6,18 +6,19 @@
 #define DOODLEJUMP_HORIZONTALPLATFORM_H
 #include "platform.h"
 
-namespace DoodleJump{
-    class HorizontalPlatform: public Platform{
-    private:
+namespace DoodleJump {
+class HorizontalPlatform : public Platform
+{
+private:
         bool goLeft = false;
         bool goRight = false;
-    public:
 
+public:
         /**
          * Explicit constructor
          * @param pos: The initial position of the Horizontal Platform.
          */
-        explicit HorizontalPlatform(const std::tuple<float, float> &pos);
+        explicit HorizontalPlatform(const std::tuple<float, float>& pos);
 
         /**
          * Updates the Horizontal Platform.
@@ -29,8 +30,7 @@ namespace DoodleJump{
         /**
          * @return true
          */
-        bool isHorizontal() override {return true;};
-
-    };
-}
-#endif //DOODLEJUMP_HORIZONTALPLATFORM_H
+        bool isHorizontal() override { return true; };
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_HORIZONTALPLATFORM_H

@@ -5,12 +5,13 @@
 #ifndef DOODLEJUMP_SCORE_H
 #define DOODLEJUMP_SCORE_H
 #include "observer_pattern/observer.h"
-namespace DoodleJump{
-    class Score: public DoodleJump::Observer{
-    private:
+namespace DoodleJump {
+class Score : public DoodleJump::Observer
+{
+private:
         int score = 0;
-    public:
 
+public:
         /**
          * Getter for score.
          * @return score
@@ -62,12 +63,12 @@ namespace DoodleJump{
          *  Subtracting from the score for jumping from a vertical platform that the player already jumped from.
          */
         void subScoreVertical();
-         /**
-          * Handles an event.
-          * @param nextpos: This argument does nothing for this observer.
-          * @param s: Gives how the score should be updated.
-          */
+        /**
+         * Handles an event.
+         * @param nextpos: This argument does nothing for this observer.
+         * @param s: Gives how the score should be updated.
+         */
         void HandleEvent(std::tuple<float, float> nextpos, scoreUpdate s) override;
-    };
-}
-#endif //DOODLEJUMP_SCORE_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_SCORE_H

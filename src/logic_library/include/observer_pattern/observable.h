@@ -4,16 +4,16 @@
 
 #ifndef DOODLEJUMP_OBSERVABLE_H
 #define DOODLEJUMP_OBSERVABLE_H
+#include "observer.h"
 #include <memory>
 #include <vector>
-#include "observer.h"
 
-namespace DoodleJump{
-    class Observable{
-    private:
-        std::vector<std::shared_ptr<Observer>> observers; //this is a list of shared pointers to observers
-    public:
-
+namespace DoodleJump {
+class Observable
+{
+private:
+        std::vector<std::shared_ptr<Observer>> observers; // this is a list of shared pointers to observers
+public:
         /**
          * Adds an observer to the observers list.
          * @param observer: The observer that needs to be added in the list.
@@ -37,7 +37,6 @@ namespace DoodleJump{
          * Default constructor.
          */
         Observable() = default;
-
-    };
-}
-#endif //DOODLEJUMP_OBSERVABLE_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_OBSERVABLE_H

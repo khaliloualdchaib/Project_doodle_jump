@@ -1,0 +1,43 @@
+Compile and run
+\begin{DoxyItemize}
+\item ./build.sh
+\item ./run.sh
+\end{DoxyItemize}
+
+Game Description
+\begin{DoxyItemize}
+\item The goal of the game is to go as high as possible.
+\item You can only move left and right and the player jumps without any user input.
+\item There are bonuses that give you a jump boost.
+\item There are 4 types of platforms\+:
+\begin{DoxyItemize}
+\item Static platform (green platform) \&\#8594; these are just normal platforms.
+\item Temporary platform (white platform) \&\#8594; after jumping once on these platforms, it will disappear.
+\item Horizontal platform (blue platform) \&\#8594; these platforms keep moving horizontally across the whole window.
+\item Vertical platform (yellow platform) \&\#8594; these platforms keep moving a certain distance vertically.
+\end{DoxyItemize}
+\item A player can move left or right through the window and will then spawn on the opposite side.
+\end{DoxyItemize}
+
+Score system
+\begin{DoxyItemize}
+\item Jumping more than once on the same platform gives you minus points depending on the platform.
+\begin{DoxyItemize}
+\item Static platform\+: -\/300 points
+\item Vertical platform\+: -\/100 points
+\item Horizontal platform\+: -\/200 points
+\end{DoxyItemize}
+\item If the minus point makes the score negative, score will just reset to 0.
+\item Bonuses give bonus points depending on de bonus.
+\begin{DoxyItemize}
+\item Spring\+: +6 points
+\item jetpack\+: +7 points
+\end{DoxyItemize}
+\item Everytime the player\textquotesingle{}s y coordinate is above or equal to 0, you will gain +1 point (this means the player has reached a new height).
+\end{DoxyItemize}
+
+Controls
+\begin{DoxyItemize}
+\item Left arrow key\+: The player moves left.
+\item Right arrow key\+: The player moves right. 
+\end{DoxyItemize}

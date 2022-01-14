@@ -4,24 +4,25 @@
 
 #ifndef DOODLEJUMP_WORLD_H
 #define DOODLEJUMP_WORLD_H
+#include "abstractFactory.h"
+#include "bg_tile.h"
+#include "bonus/bonus.h"
 #include "camera.h"
+#include "entity.h"
+#include "platforms/platform.h"
+#include "player.h"
+#include "random.h"
+#include "score.h"
+#include <iostream>
+#include <map>
 #include <memory>
 #include <set>
-#include "random.h"
-#include <iostream>
-#include "entity.h"
-#include "player.h"
-#include "bg_tile.h"
-#include "platforms/platform.h"
-#include "bonus/bonus.h"
-#include "abstractFactory.h"
-#include "score.h"
-#include <map>
 #include <string>
 
-namespace DoodleJump{
-    class World{
-    private:
+namespace DoodleJump {
+class World
+{
+private:
         std::shared_ptr<DoodleJump::Player> player;
         std::set<std::shared_ptr<Platform>> platforms;
         std::shared_ptr<DoodleJump::AbstractFactory> factory;
@@ -41,8 +42,8 @@ namespace DoodleJump{
         const unsigned int middletypes = floor(DoodleJump::Random::getInstance().getrandomDouble(2500, 4000));
         const unsigned int endtypes = floor(DoodleJump::Random::getInstance().getrandomDouble(4000, 5000));
         unsigned int currentlvl = 0;
-    public:
 
+public:
         /**
          * Update the bg tiles
          */
@@ -73,7 +74,8 @@ namespace DoodleJump{
          * @param probVertical: Probability of generating a vertical platform.
          * @param difficulty: max number of platforms that are allowed.
          */
-        void generatePlatform(unsigned int probStatic, unsigned int probTemporary, unsigned int probHorizontal, unsigned int probVertical, unsigned int difficulty);
+        void generatePlatform(unsigned int probStatic, unsigned int probTemporary, unsigned int probHorizontal,
+                              unsigned int probVertical, unsigned int difficulty);
 
         /**
          * Generate static platform.
@@ -123,13 +125,15 @@ namespace DoodleJump{
          * @param entity: An entity class
          * @return The positions of the bottom corners of the given entity
          */
-        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getBottomCorners(const DoodleJump::Entity& entity) const;
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getBottomCorners(
+            const DoodleJump::Entity& entity) const;
 
         /**
          * @param entity: An entity class
          * @return The positions of the top corners of the given entity
          */
-        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getTopCorners(const DoodleJump::Entity& entity) const;
+        std::tuple<std::tuple<float, float>, std::tuple<float, float>> getTopCorners(
+            const DoodleJump::Entity& entity) const;
 
         /**
          * checks for collision between player and platform
@@ -165,7 +169,8 @@ namespace DoodleJump{
          * @param jetpackprob: The probability that a jetpack will be generated.
          * @param platform: The platform on which the bonus wil be generated.
          */
-        void generateBonus(const std::shared_ptr<DoodleJump::Platform>& platform, unsigned int none, unsigned int springprob, unsigned int jetpackprob);
+        void generateBonus(const std::shared_ptr<DoodleJump::Platform>& platform, unsigned int none,
+                           unsigned int springprob, unsigned int jetpackprob);
 
         /**
          * @return A string that "SCORE: " + score.
@@ -181,7 +186,6 @@ namespace DoodleJump{
          * Updates the platforms and runs the collision checks.
          */
         void runGameLogic();
-
-    };
-}
-#endif //DOODLEJUMP_WORLD_H
+};
+} // namespace DoodleJump
+#endif // DOODLEJUMP_WORLD_H

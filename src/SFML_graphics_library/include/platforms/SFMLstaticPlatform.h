@@ -6,10 +6,10 @@
 #define DOODLEJUMP_SFMLSTATICPLATFORM_H
 #include "SFMLplatform.h"
 
-namespace SFMLDoodleJump{
-    class SFMLStaticPlatform: public SFMLPlatform{
-    public:
-
+namespace SFMLDoodleJump {
+class SFMLStaticPlatform : public SFMLPlatform
+{
+public:
         /**
          * Constructor
          * @param width: Width of the static platform.
@@ -17,7 +17,8 @@ namespace SFMLDoodleJump{
          * @param pos: Initial position of the static platform.
          * @param w: The window where the static platform will be generated.
          */
-        SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos, std::shared_ptr<sf::RenderWindow> w);
-    };
-}
-#endif //DOODLEJUMP_SFMLSTATICPLATFORM_H
+        SFMLStaticPlatform(float width, float height, std::tuple<float, float> pos,
+                           std::shared_ptr<sf::RenderWindow> w);
+};
+} // namespace SFMLDoodleJump
+#endif // DOODLEJUMP_SFMLSTATICPLATFORM_H

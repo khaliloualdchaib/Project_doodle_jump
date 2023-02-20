@@ -20,7 +20,7 @@ Score system
   * Vertical platform: -100 points
   * Horizontal platform: -200 points
 * If the minus point makes the score negative, score will just reset to 0.
-* Bonuses give bonus points depending on de bonus.
+* Bonus:
   * Spring: +6 points
   * jetpack: +7 points
 * Everytime the player's y coordinate is above or equal to 0, you will gain +1 point (this means the player has reached a new height).
